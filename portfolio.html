@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Solutions & Web Development</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font import for a professional look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #374151;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        .section-padding {
+            padding: 5rem 0;
+        }
+        .card {
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 1.5rem; /* More rounded corners for a softer feel */
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px); /* More pronounced lift on hover */
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+        }
+        /* Smooth scrolling behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 100;
+        }
+        .gradient-bg {
+            background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .cta-button {
+            transition: all 0.3s ease;
+            transform: scale(1);
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Header and Navigation -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto p-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gray-800">Your Company Name</a>
+            <div class="hidden md:flex space-x-4 items-center">
+                <a href="#services" class="text-gray-600 hover:text-blue-600 font-semibold transition-colors duration-300">Services</a>
+                <a href="#expertise" class="text-gray-600 hover:text-blue-600 font-semibold transition-colors duration-300">Expertise</a>
+                <a href="#portfolio" class="text-gray-600 hover:text-blue-600 font-semibold transition-colors duration-300">Portfolio</a>
+                <a href="#testimonials" class="text-gray-600 hover:text-blue-600 font-semibold transition-colors duration-300">Testimonials</a>
+                <a href="#about" class="text-gray-600 hover:text-blue-600 font-semibold transition-colors duration-300">About</a>
+                <a href="#contact" class="bg-blue-600 text-white font-semibold py-2 px-6 rounded-full hover:bg-blue-700 transition-all duration-300 shadow-lg transform hover:scale-105">
+                    Contact Us
+                </a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button id="menu-button" class="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </nav>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+            <a href="#services" class="block py-3 px-6 text-gray-800 hover:bg-gray-100 transition-colors">Services</a>
+            <a href="#expertise" class="block py-3 px-6 text-gray-800 hover:bg-gray-100 transition-colors">Expertise</a>
+            <a href="#portfolio" class="block py-3 px-6 text-gray-800 hover:bg-gray-100 transition-colors">Portfolio</a>
+            <a href="#testimonials" class="block py-3 px-6 text-gray-800 hover:bg-gray-100 transition-colors">Testimonials</a>
+            <a href="#about" class="block py-3 px-6 text-gray-800 hover:bg-gray-100 transition-colors">About</a>
+            <a href="#contact" class="block py-3 px-6 bg-blue-600 text-white hover:bg-blue-700 transition-colors">Contact Us</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main>
+        <section id="hero" class="gradient-bg text-white section-padding">
+            <div class="container text-center py-16 md:py-24">
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+                    Innovate. Develop. Grow.
+                </h1>
+                <p class="text-md md:text-xl mb-12 opacity-90 max-w-2xl mx-auto">
+                    We build stunning websites, launch powerful digital marketing campaigns, and craft intuitive mobile applications to help your business thrive.
+                </p>
+                <a href="#contact" class="bg-white text-gray-800 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-200 transition-colors duration-300 cta-button">
+                    Start Your Project
+                </a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section-padding bg-white">
+            <div class="container text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Core Services</h2>
+                <p class="text-gray-500 mb-12 max-w-3xl mx-auto">We provide comprehensive solutions from concept to launch, tailored to your business needs.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <!-- Service Card 1: Web Development & Design -->
+                    <div class="card flex flex-col items-center text-center">
+                        <div class="w-16 h-16 mb-4 flex items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                            <!-- Website Icon (SVG) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3.5-3.5a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3.5 3.5a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Web Design & Development</h3>
+                        <p class="text-gray-600">
+                            From custom builds to CMS solutions, we create stunning, responsive, and user-friendly websites that captivate your audience.
+                        </p>
+                    </div>
+
+                    <!-- Service Card 2: Digital Marketing -->
+                    <div class="card flex flex-col items-center text-center">
+                        <div class="w-16 h-16 mb-4 flex items-center justify-center rounded-full bg-green-100 text-green-600">
+                            <!-- Marketing Icon (SVG) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5A5.5 5.5 0 0 1 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3A5.5 5.5 0 0 1 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Digital Marketing</h3>
+                        <p class="text-gray-600">
+                            We attract customers and increase brand visibility with targeted strategies for SEO, **Instagram, Facebook, and YouTube ads.**
+                        </p>
+                    </div>
+
+                    <!-- Service Card 3: App Development -->
+                    <div class="card flex flex-col items-center text-center">
+                        <div class="w-16 h-16 mb-4 flex items-center justify-center rounded-full bg-purple-100 text-purple-600">
+                            <!-- App Icon (SVG) -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><path d="M12 18h.01"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">App Development</h3>
+                        <p class="text-gray-600">
+                            Build scalable and secure mobile applications for iOS and Android that provide exceptional user experiences.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Support Section (New) -->
+        <section id="our-support" class="section-padding bg-yellow-400 text-gray-800 text-center">
+            <div class="container max-w-3xl mx-auto">
+                <h2 class="text-2xl md:text-4xl font-extrabold mb-4">Empowering Small Businesses & Individuals</h2>
+                <p class="text-lg md:text-xl font-semibold mb-6">
+                    We specialize in helping **small businesses and Instagram pages** grow with budget-friendly solutions. Our services are affordable for any individual, with a special offer for **Women Entrepreneurs**!
+                </p>
+            </div>
+        </section>
+
+        <!-- Specialized Solutions Section -->
+        <section id="expertise" class="section-padding bg-gray-100">
+            <div class="container text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Specialized Solutions</h2>
+                <p class="text-gray-500 mb-12 max-w-3xl mx-auto">
+                    We are experts in building tailored online presences for key industries.
+                </p>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Expertise Card 1: Doctors -->
+                    <div class="card text-center">
+                        <img src="https://placehold.co/200x200/B2F5EA/10B981?text=Doctor+Website" alt="Doctor Website" class="rounded-lg mb-4 mx-auto">
+                        <h3 class="text-xl font-semibold mb-2">For Doctors</h3>
+                        <p class="text-gray-600 text-sm">
+                            Custom websites for clinics and medical professionals, featuring appointment booking and patient portals.
+                        </p>
+                    </div>
+
+                    <!-- Expertise Card 2: Schools -->
+                    <div class="card text-center">
+                        <img src="https://placehold.co/200x200/FEE2E2/EF4444?text=School+Website" alt="School Website" class="rounded-lg mb-4 mx-auto">
+                        <h3 class="text-xl font-semibold mb-2">For Schools</h3>
+                        <p class="text-gray-600 text-sm">
+                            Easy-to-manage websites for schools and universities with student information systems and event calendars.
+                        </p>
+                    </div>
+                    
+                    <!-- Expertise Card 3: NGOs -->
+                    <div class="card text-center">
+                        <img src="https://placehold.co/200x200/D1FADF/3B82F6?text=NGO+Website" alt="NGO Website" class="rounded-lg mb-4 mx-auto">
+                        <h3 class="text-xl font-semibold mb-2">For NGOs</h3>
+                        <p class="text-gray-600 text-sm">
+                            Powerful online platforms for non-profits to manage donations, volunteers, and campaign visibility.
+                        </p>
+                    </div>
+
+                    <!-- Expertise Card 4: Gyms -->
+                    <div class="card text-center">
+                        <img src="https://placehold.co/200x200/D6BCFA/9B59B6?text=Gym+Website" alt="Gym Website" class="rounded-lg mb-4 mx-auto">
+                        <h3 class="text-xl font-semibold mb-2">For Gyms</h3>
+                        <p class="text-gray-600 text-sm">
+                            Dynamic websites for fitness centers with class schedules, membership sign-ups, and trainer profiles.
+                        </p>
+                    </div>
+
+                    <!-- Expertise Card 5: Restaurants -->
+                    <div class="card text-center">
+                        <img src="https://placehold.co/200x200/FDBA74/C56501?text=Restaurant+Website" alt="Restaurant Website" class="rounded-lg mb-4 mx-auto">
+                        <h3 class="text-xl font-semibold mb-2">For Restaurants</h3>
+                        <p class="text-gray-600 text-sm">
+                            Custom websites for restaurants with online menus, reservation systems, and high-quality photo galleries.
+                        </p>
+                    </div>
+
+                    <!-- Expertise Card 6: E-commerce Stores -->
+                    <div class="card text-center">
+                        <img src="https://placehold.co/200x200/93C5FD/3366FF?text=E-commerce+Store" alt="E-commerce Store" class="rounded-lg mb-4 mx-auto">
+                        <h3 class="text-xl font-semibold mb-2">For E-commerce</h3>
+                        <p class="text-gray-600 text-sm">
+                            Robust e-commerce platforms with secure payment gateways, inventory management, and intuitive shopping experiences.
+                        </p>
+                    </div>
+
+                    <!-- Expertise Card 7: Real Estate -->
+                    <div class="card text-center">
+                        <img src="https://placehold.co/200x200/E879F9/FFFFFF?text=Real+Estate" alt="Real Estate Website" class="rounded-lg mb-4 mx-auto">
+                        <h3 class="text-xl font-semibold mb-2">For Real Estate</h3>
+                        <p class="text-gray-600 text-sm">
+                            Property listing websites with search functionality, agent profiles, and high-resolution image galleries.
+                        </p>
+                    </div>
+
+                    <!-- Expertise Card 8: Legal Services -->
+                    <div class="card text-center">
+                        <img src="https://placehold.co/200x200/4B5563/FFFFFF?text=Legal+Services" alt="Legal Services Website" class="rounded-lg mb-4 mx-auto">
+                        <h3 class="text-xl font-semibold mb-2">For Legal Services</h3>
+                        <p class="text-gray-600 text-sm">
+                            Professional websites for law firms with attorney bios, case studies, and secure client communication portals.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="section-padding bg-white">
+            <div class="container text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Recent Work</h2>
+                <p class="text-gray-500 mb-12 max-w-3xl mx-auto">
+                    A glimpse into some of our successful projects across various industries.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project Card 1 -->
+                    <div class="card overflow-hidden p-0 rounded-xl">
+                        <img src="https://placehold.co/600x400/2563EB/ffffff?text=E-commerce+Platform" alt="E-commerce Platform" class="w-full h-auto">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">E-commerce Platform</h3>
+                            <p class="text-gray-600">A high-performance online store for a retail client.</p>
+                        </div>
+                    </div>
+                    <!-- Project Card 2 -->
+                    <div class="card overflow-hidden p-0 rounded-xl">
+                        <img src="https://placehold.co/600x400/10B981/ffffff?text=Travel+App+Design" alt="Travel App Design" class="w-full h-auto">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Travel App Design</h3>
+                            <p class="text-gray-600">A mobile app to simplify travel bookings and planning.</p>
+                        </div>
+                    </div>
+                    <!-- Project Card 3 -->
+                    <div class="card overflow-hidden p-0 rounded-xl">
+                        <img src="https://placehold.co/600x400/EF4444/ffffff?text=Analytics+Dashboard" alt="Analytics Dashboard" class="w-full h-auto">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">Analytics Dashboard</h3>
+                            <p class="text-gray-600">A custom dashboard for real-time data visualization.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="section-padding bg-gray-100">
+            <div class="container text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
+                <p class="text-gray-500 mb-12 max-w-3xl mx-auto">
+                    Hear from the businesses we've helped succeed.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="card p-6">
+                        <p class="text-gray-700 italic mb-4">
+                            "The team at Your Company Name transformed our online presence. Their web design expertise is unmatched!"
+                        </p>
+                        <div class="font-semibold text-gray-800">- Jane Doe, CEO of TechCorp</div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="card p-6">
+                        <p class="text-gray-700 italic mb-4">
+                            "Our digital marketing campaign has been a huge success thanks to their targeted approach and deep knowledge of social media ads."
+                        </p>
+                        <div class="font-semibold text-gray-800">- John Smith, Marketing Manager</div>
+                    </div>
+                    <!-- Testimonial 3 -->
+                    <div class="card p-6">
+                        <p class="text-gray-700 italic mb-4">
+                            "The mobile app they developed for us is not only beautiful but also incredibly intuitive and fast. Highly recommended!"
+                        </p>
+                        <div class="font-semibold text-gray-800">- Emily Chen, Founder of App Solutions</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section id="cta" class="gradient-bg text-white section-padding text-center">
+            <div class="container">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Project?</h2>
+                <p class="text-lg md:text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+                    Let's discuss how we can bring your vision to life and help your business grow. We have a special offer for **Women Entrepreneurs**!
+                </p>
+                <a href="#contact" class="bg-white text-gray-800 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-200 transition-colors duration-300 cta-button">
+                    Get a Free Quote
+                </a>
+            </div>
+        </section>
+        
+        <!-- About Us Section -->
+        <section id="about" class="section-padding bg-white">
+            <div class="container">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <img src="https://placehold.co/600x400/D1D5DB/6B7280?text=About+Us+Image" alt="Team collaborating" class="rounded-xl shadow-lg">
+                    </div>
+                    <div class="text-center md:text-left">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-4">A Team That Builds For Success</h2>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            Founded on the principle of innovation, our team is committed to delivering high-quality digital solutions that drive real results. We work closely with our clients to understand their vision and translate it into a powerful online presence. Our passion is your success.
+                        </p>
+                        <a href="#services" class="text-blue-600 font-semibold hover:underline transition-colors duration-300">
+                            Learn More About What We Do &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="section-padding bg-white">
+            <div class="container">
+                <div class="card max-w-2xl mx-auto text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Let's Build Something Great</h2>
+                    <p class="text-gray-600 mb-8">Ready to start your project? Fill out the form below and we'll get back to you within 24 hours.</p>
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <input type="text" id="name" name="name" placeholder="Your Name" class="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div>
+                            <input type="email" id="email" name="email" placeholder="Your Email Address" class="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project..." class="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition-colors duration-300 shadow-md">
+                            Send Message
+                        </button>
+                    </form>
+                    <div id="status-message" class="mt-6 text-sm font-semibold hidden"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 text-center py-6">
+        <p>&copy; 2024 Your Company Name. All Rights Reserved.</p>
+    </footer>
+
+    <!-- WhatsApp Floating Icon -->
+    <a href="https://wa.me/918889997841" class="whatsapp-float bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-colors duration-300" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2.16c-5.46 0-9.94 4.48-9.94 9.94s4.48 9.94 9.94 9.94c5.46 0 9.94-4.48 9.94-9.94S17.5 2.16 12.04 2.16zm5.8 14.86c-.19.6-.82 1.34-1.25 1.54-.53.2-1.12.1-1.78-.15-1.14-.4-2.27-.9-3.32-1.42-2.12-1.03-3.8-2.65-4.88-4.73-.24-.46-.5-1-.75-1.48-.36-.65-.6-1.3-.7-2.06-.05-.4.07-.8.36-1.1s.68-.45 1.1-.38.74.22 1.05.5c.3.28.5.54.76.88.24.32.44.62.62.9.2.3.4.6.64.9.44.8 1.13 1.7 1.9 2.5.4.4.8.8 1.2 1.2.9.8 1.9 1.7 3.02 2.1.84.3 1.5.1 1.9-.3.2-.2.4-.4.6-.6.3-.3.6-.5 1-.6.3-.1.6-.1.8.02.4.1.7.3 1 .6.3.3.6.5 1 .7.4.2.7.4 1.1.5.3.1.6.2 1 .3.4.1.7.1 1.1.08.3-.01.6-.08.9-.17.3-.1.6-.3.9-.5.2-.2.4-.5.6-.8.4-.6.6-1.2.6-1.9 0-.4-.1-.7-.3-1-.2-.3-.5-.5-.8-.7-.3-.1-.6-.2-1-.2-.3-.1-.7-.1-1-.1-.3 0-.6.1-.9.2-.3.1-.6.3-.9.5-.3.2-.6.4-.9.7-.3.2-.6.5-1 .8-.3.2-.6.5-.9.7l-1.6 1.1c-.2.2-.4.4-.6.6-.2.2-.4.4-.6.6-.2.2-.4.4-.6.6-.2.2-.4.4-.6.6-.2.2-.4.4-.6.6z"></path></svg>
+    </a>
+
+    <!-- JavaScript for form and mobile menu handling -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Existing contact form logic
+            const contactForm = document.getElementById('contact-form');
+            const statusMessage = document.getElementById('status-message');
+
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                statusMessage.textContent = 'Sending message...';
+                statusMessage.classList.remove('hidden');
+                statusMessage.classList.add('text-gray-500');
+
+                setTimeout(() => {
+                    statusMessage.textContent = 'Message sent successfully! We will be in touch shortly.';
+                    statusMessage.classList.remove('text-gray-500');
+                    statusMessage.classList.add('text-green-600');
+                    contactForm.reset();
+                }, 1500);
+            });
+
+            // Mobile menu logic
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu when a link is clicked
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

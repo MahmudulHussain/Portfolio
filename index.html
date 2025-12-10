@@ -1,424 +1,472 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Solutions & Web Development</title>
-    <!-- Tailwind CSS CDN -->
+    <title>Assam Unani Clinic | Heals with Herbals</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Custom font import for a professional look */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f3f4f6;
-            color: #374151;
-        }
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-        .section-padding {
-            padding: 5rem 0;
-        }
-        .card {
-            background-color: white;
-            padding: 2.5rem;
-            border-radius: 1.5rem; /* More rounded corners for a softer feel */
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-8px); /* More pronounced lift on hover */
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
-        }
-        /* Smooth scrolling behavior */
-        html {
-            scroll-behavior: smooth;
-        }
-        .whatsapp-float {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 100;
-        }
-        .gradient-bg {
-            background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        .cta-button {
-            transition: all 0.3s ease;
-            transform: scale(1);
-        }
-        .cta-button:hover {
-            transform: scale(1.05);
-        }
-    </style>
-</head>
-<body class="bg-gray-100">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Header and Navigation -->
-    <header class="bg-white shadow-lg sticky top-0 z-50">
-        <nav class="container mx-auto p-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-gray-800">Your Company Name</a>
-            <div class="hidden md:flex space-x-4 items-center">
-                <a href="#services" class="text-gray-600 hover:text-blue-600 font-semibold transition-colors duration-300">Services</a>
-                <a href="#expertise" class="text-gray-600 hover:text-blue-600 font-semibold transition-colors duration-300">Expertise</a>
-                <a href="#portfolio" class="text-gray-600 hover:text-blue-600 font-semibold transition-colors duration-300">Portfolio</a>
-                <a href="#testimonials" class="text-gray-600 hover:text-blue-600 font-semibold transition-colors duration-300">Testimonials</a>
-                <a href="#about" class="text-gray-600 hover:text-blue-600 font-semibold transition-colors duration-300">About</a>
-                <a href="#contact" class="bg-blue-600 text-white font-semibold py-2 px-6 rounded-full hover:bg-blue-700 transition-all duration-300 shadow-lg transform hover:scale-105">
-                    Contact Us
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            500: '#10b981',
+                            600: '#059669',
+                            800: '#065f46',
+                            900: '#064e3b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+    <!-- Navigation -->
+    <nav class="bg-brand-900 text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="bg-white text-brand-900 p-2 rounded-full">
+                        <i class="fas fa-leaf text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg md:text-xl font-bold tracking-wide uppercase leading-tight">Assam Unani Clinic</h1>
+                        <p class="text-xs text-brand-100 font-medium">Unani & Ayurveda</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="hover:text-brand-100 transition duration-300">Home</a>
+                    <a href="#specialties" class="hover:text-brand-100 transition duration-300">Specialties</a>
+                    <a href="#hijama" class="hover:text-brand-100 transition duration-300">Cupping Therapy</a>
+                    <a href="#contact" class="hover:text-brand-100 transition duration-300">Contact</a>
+                    <a href="tel:9613785243" class="bg-brand-500 hover:bg-brand-600 text-white px-5 py-2 rounded-full font-semibold transition shadow-md flex items-center">
+                        <i class="fas fa-phone-alt mr-2"></i> Call Now
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="focus:outline-none text-white p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 border-t border-brand-800 pt-4 pb-2">
+                <a href="#home" class="block py-2 px-2 hover:bg-brand-800 rounded transition">Home</a>
+                <a href="#specialties" class="block py-2 px-2 hover:bg-brand-800 rounded transition">Specialties</a>
+                <a href="#hijama" class="block py-2 px-2 hover:bg-brand-800 rounded transition">Cupping Therapy</a>
+                <a href="#contact" class="block py-2 px-2 hover:bg-brand-800 rounded transition">Contact</a>
+                <a href="tel:9613785243" class="block mt-4 text-center bg-brand-500 text-white py-3 rounded-lg font-bold shadow-md">
+                    <i class="fas fa-phone-alt mr-2"></i> Call Now
                 </a>
             </div>
-            <!-- Mobile Menu Button -->
-            <button id="menu-button" class="md:hidden p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
-        </nav>
-        <!-- Mobile Menu (Hidden by default) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
-            <a href="#services" class="block py-3 px-6 text-gray-800 hover:bg-gray-100 transition-colors">Services</a>
-            <a href="#expertise" class="block py-3 px-6 text-gray-800 hover:bg-gray-100 transition-colors">Expertise</a>
-            <a href="#portfolio" class="block py-3 px-6 text-gray-800 hover:bg-gray-100 transition-colors">Portfolio</a>
-            <a href="#testimonials" class="block py-3 px-6 text-gray-800 hover:bg-gray-100 transition-colors">Testimonials</a>
-            <a href="#about" class="block py-3 px-6 text-gray-800 hover:bg-gray-100 transition-colors">About</a>
-            <a href="#contact" class="block py-3 px-6 bg-blue-600 text-white hover:bg-blue-700 transition-colors">Contact Us</a>
         </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
-    <main>
-        <section id="hero" class="gradient-bg text-white section-padding">
-            <div class="container text-center py-16 md:py-24">
-                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
-                    Innovate. Develop. Grow.
-                </h1>
-                <p class="text-md md:text-xl mb-12 opacity-90 max-w-2xl mx-auto">
-                    We build stunning websites, launch powerful digital marketing campaigns, and craft intuitive mobile applications to help your business thrive.
-                </p>
-                <a href="#contact" class="bg-white text-gray-800 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-200 transition-colors duration-300 cta-button">
-                    Start Your Project
+    <section id="home" class="relative bg-brand-800 h-[500px] flex items-center">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" 
+                 alt="Herbs Background" 
+                 class="w-full h-full object-cover opacity-30 mix-blend-overlay">
+        </div>
+        
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <span class="inline-block bg-brand-500 text-white px-4 py-1 rounded-full text-sm font-semibold mb-4 animate-pulse">
+                Natural Healing
+            </span>
+            <h2 class="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-md">Heals with Herbals</h2>
+            <p class="text-xl text-brand-100 max-w-2xl mx-auto mb-8 font-light">
+                Restoring your health through the ancient wisdom of Unani & Ayurveda Medicine.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="tel:9613785243" class="bg-white text-brand-900 hover:bg-gray-100 px-8 py-3 rounded-full text-lg font-bold transition shadow-lg transform hover:-translate-y-1">
+                    Book Appointment
+                </a>
+                <a href="#specialties" class="border-2 border-white text-white hover:bg-white hover:text-brand-900 px-8 py-3 rounded-full text-lg font-bold transition">
+                    Our Treatments
                 </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Services Section -->
-        <section id="services" class="section-padding bg-white">
-            <div class="container text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Core Services</h2>
-                <p class="text-gray-500 mb-12 max-w-3xl mx-auto">We provide comprehensive solutions from concept to launch, tailored to your business needs.</p>
+    <!-- About Intro -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center max-w-3xl">
+            <div class="w-16 h-16 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-600">
+                <i class="fas fa-heartbeat text-3xl"></i>
+            </div>
+            <h3 class="text-3xl font-bold text-gray-800 mb-4">Welcome to Assam Unani Clinic</h3>
+            <p class="text-gray-600 text-lg leading-relaxed">
+                Located in Hatigaon, Guwahati, we specialize in treating chronic and acute ailments using natural herbal remedies. 
+                Our approach combines the best of Unani and Ayurveda to treat the root cause of the disease, ensuring a healthy life without side effects.
+            </p>
+        </div>
+    </section>
+
+    <!-- Specialties Section -->
+    <section id="specialties" class="py-16 bg-brand-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold text-brand-900">Our Specialties</h3>
+                <div class="w-20 h-1 bg-brand-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                    <!-- Service Card 1: Web Development & Design -->
-                    <div class="card flex flex-col items-center text-center">
-                        <div class="w-16 h-16 mb-4 flex items-center justify-center rounded-full bg-blue-100 text-blue-600">
-                            <!-- Website Icon (SVG) -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3.5-3.5a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3.5 3.5a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                <!-- Specialty Card Template -->
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition duration-300 border-b-4 border-brand-500 group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition">
+                            <i class="fas fa-mars text-xl"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Web Design & Development</h3>
-                        <p class="text-gray-600">
-                            From custom builds to CMS solutions, we create stunning, responsive, and user-friendly websites that captivate your audience.
-                        </p>
-                    </div>
-
-                    <!-- Service Card 2: Digital Marketing -->
-                    <div class="card flex flex-col items-center text-center">
-                        <div class="w-16 h-16 mb-4 flex items-center justify-center rounded-full bg-green-100 text-green-600">
-                            <!-- Marketing Icon (SVG) -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5A5.5 5.5 0 0 1 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3A5.5 5.5 0 0 1 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Digital Marketing</h3>
-                        <p class="text-gray-600">
-                            We attract customers and increase brand visibility with targeted strategies for SEO, **Instagram, Facebook, and YouTube ads.**
-                        </p>
-                    </div>
-
-                    <!-- Service Card 3: App Development -->
-                    <div class="card flex flex-col items-center text-center">
-                        <div class="w-16 h-16 mb-4 flex items-center justify-center rounded-full bg-purple-100 text-purple-600">
-                            <!-- App Icon (SVG) -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><path d="M12 18h.01"></path></svg>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">App Development</h3>
-                        <p class="text-gray-600">
-                            Build scalable and secure mobile applications for iOS and Android that provide exceptional user experiences.
-                        </p>
+                        <h4 class="ml-4 font-bold text-gray-800 text-lg leading-tight">Males Sexual Problems</h4>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Our Support Section (New) -->
-        <section id="our-support" class="section-padding bg-yellow-400 text-gray-800 text-center">
-            <div class="container max-w-3xl mx-auto">
-                <h2 class="text-2xl md:text-4xl font-extrabold mb-4">Empowering Small Businesses & Individuals</h2>
-                <p class="text-lg md:text-xl font-semibold mb-6">
-                    We specialize in helping **small businesses and Instagram pages** grow with budget-friendly solutions. Our services are affordable for any individual, with a special offer for **Women Entrepreneurs**!
-                </p>
-            </div>
-        </section>
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition duration-300 border-b-4 border-brand-500 group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition">
+                            <i class="fas fa-tint text-xl"></i>
+                        </div>
+                        <h4 class="ml-4 font-bold text-gray-800 text-lg leading-tight">Diabetes Care</h4>
+                    </div>
+                </div>
 
-        <!-- Specialized Solutions Section -->
-        <section id="expertise" class="section-padding bg-gray-100">
-            <div class="container text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Specialized Solutions</h2>
-                <p class="text-gray-500 mb-12 max-w-3xl mx-auto">
-                    We are experts in building tailored online presences for key industries.
-                </p>
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition duration-300 border-b-4 border-brand-500 group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition">
+                            <i class="fas fa-wave-square text-xl"></i>
+                        </div>
+                        <h4 class="ml-4 font-bold text-gray-800 text-lg leading-tight">Thyroid Disorder</h4>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition duration-300 border-b-4 border-brand-500 group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition">
+                            <i class="fas fa-fire-alt text-xl"></i>
+                        </div>
+                        <h4 class="ml-4 font-bold text-gray-800 text-lg leading-tight">Gastric Problems</h4>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition duration-300 border-b-4 border-brand-500 group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition">
+                            <i class="fas fa-procedures text-xl"></i>
+                        </div>
+                        <h4 class="ml-4 font-bold text-gray-800 text-lg leading-tight">Hepatitis & Liver Cirrhosis</h4>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition duration-300 border-b-4 border-brand-500 group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition">
+                            <i class="fas fa-dot-circle text-xl"></i>
+                        </div>
+                        <h4 class="ml-4 font-bold text-gray-800 text-lg leading-tight">Piles, Fissure & Fistula</h4>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition duration-300 border-b-4 border-brand-500 group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition">
+                            <i class="fas fa-venus text-xl"></i>
+                        </div>
+                        <h4 class="ml-4 font-bold text-gray-800 text-lg leading-tight">PCOD</h4>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition duration-300 border-b-4 border-brand-500 group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition">
+                            <i class="fas fa-cookie text-xl"></i>
+                        </div>
+                        <h4 class="ml-4 font-bold text-gray-800 text-lg leading-tight">Kidney Stone</h4>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition duration-300 border-b-4 border-brand-500 group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition">
+                            <i class="fas fa-allergies text-xl"></i>
+                        </div>
+                        <h4 class="ml-4 font-bold text-gray-800 text-lg leading-tight">Skin Diseases</h4>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition duration-300 border-b-4 border-brand-500 group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition">
+                            <i class="fas fa-user-md text-xl"></i>
+                        </div>
+                        <h4 class="ml-4 font-bold text-gray-800 text-lg leading-tight">Prostate</h4>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition duration-300 border-b-4 border-brand-500 group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition">
+                            <i class="fas fa-bolt text-xl"></i>
+                        </div>
+                        <h4 class="ml-4 font-bold text-gray-800 text-lg leading-tight">Migraine & Sinusitis</h4>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition duration-300 border-b-4 border-brand-500 group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition">
+                            <i class="fas fa-wind text-xl"></i>
+                        </div>
+                        <h4 class="ml-4 font-bold text-gray-800 text-lg leading-tight">Allergy</h4>
+                    </div>
+                </div>
                 
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Expertise Card 1: Doctors -->
-                    <div class="card text-center">
-                        <img src="https://placehold.co/200x200/B2F5EA/10B981?text=Doctor+Website" alt="Doctor Website" class="rounded-lg mb-4 mx-auto">
-                        <h3 class="text-xl font-semibold mb-2">For Doctors</h3>
-                        <p class="text-gray-600 text-sm">
-                            Custom websites for clinics and medical professionals, featuring appointment booking and patient portals.
-                        </p>
+                 <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition duration-300 border-b-4 border-brand-500 group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition">
+                            <i class="fas fa-sun text-xl"></i>
+                        </div>
+                        <h4 class="ml-4 font-bold text-gray-800 text-lg leading-tight">Leucoderma</h4>
                     </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-lg transition duration-300 border-b-4 border-brand-500 group">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 group-hover:bg-brand-600 group-hover:text-white transition">
+                            <i class="fas fa-bone text-xl"></i>
+                        </div>
+                        <h4 class="ml-4 font-bold text-gray-800 text-lg leading-tight">Joint Pain & RA</h4>
+                    </div>
+                </div>
 
-                    <!-- Expertise Card 2: Schools -->
-                    <div class="card text-center">
-                        <img src="https://placehold.co/200x200/FEE2E2/EF4444?text=School+Website" alt="School Website" class="rounded-lg mb-4 mx-auto">
-                        <h3 class="text-xl font-semibold mb-2">For Schools</h3>
-                        <p class="text-gray-600 text-sm">
-                            Easy-to-manage websites for schools and universities with student information systems and event calendars.
-                        </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hijama / Cupping Therapy Section -->
+    <section id="hijama" class="py-20 bg-brand-900 text-white relative overflow-hidden">
+        <!-- Decorative Circle -->
+        <div class="absolute top-0 right-0 -mt-20 -mr-20 w-80 h-80 bg-brand-800 rounded-full opacity-50 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-80 h-80 bg-brand-800 rounded-full opacity-50 blur-3xl"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <div class="inline-flex items-center bg-brand-700 px-4 py-1 rounded-full text-sm font-semibold mb-6">
+                        <i class="fas fa-star text-yellow-400 mr-2"></i> Specialized Treatment
                     </div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Cupping Therapy (Hijama)</h2>
+                    <p class="text-xl text-brand-100 mb-8 leading-relaxed">
+                        A specialized detoxification therapy done by our expert doctors to promote healing and rejuvenation.
+                    </p>
                     
-                    <!-- Expertise Card 3: NGOs -->
-                    <div class="card text-center">
-                        <img src="https://placehold.co/200x200/D1FADF/3B82F6?text=NGO+Website" alt="NGO Website" class="rounded-lg mb-4 mx-auto">
-                        <h3 class="text-xl font-semibold mb-2">For NGOs</h3>
-                        <p class="text-gray-600 text-sm">
-                            Powerful online platforms for non-profits to manage donations, volunteers, and campaign visibility.
-                        </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-10 h-10 bg-brand-500 rounded-full flex items-center justify-center mt-1">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold">Done by Expert Doctor</h4>
+                                <p class="text-brand-200 text-sm">Professional and hygienic procedure.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-10 h-10 bg-brand-500 rounded-full flex items-center justify-center mt-1">
+                                <i class="fas fa-spa"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold">Pain Management</h4>
+                                <p class="text-brand-200 text-sm">Effective for back pain, joint pain, and migraines.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-10 h-10 bg-brand-500 rounded-full flex items-center justify-center mt-1">
+                                <i class="fas fa-filter"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-bold">Detoxification</h4>
+                                <p class="text-brand-200 text-sm">Removes toxins and improves blood circulation.</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Expertise Card 4: Gyms -->
-                    <div class="card text-center">
-                        <img src="https://placehold.co/200x200/D6BCFA/9B59B6?text=Gym+Website" alt="Gym Website" class="rounded-lg mb-4 mx-auto">
-                        <h3 class="text-xl font-semibold mb-2">For Gyms</h3>
-                        <p class="text-gray-600 text-sm">
-                            Dynamic websites for fitness centers with class schedules, membership sign-ups, and trainer profiles.
-                        </p>
-                    </div>
-
-                    <!-- Expertise Card 5: Restaurants -->
-                    <div class="card text-center">
-                        <img src="https://placehold.co/200x200/FDBA74/C56501?text=Restaurant+Website" alt="Restaurant Website" class="rounded-lg mb-4 mx-auto">
-                        <h3 class="text-xl font-semibold mb-2">For Restaurants</h3>
-                        <p class="text-gray-600 text-sm">
-                            Custom websites for restaurants with online menus, reservation systems, and high-quality photo galleries.
-                        </p>
-                    </div>
-
-                    <!-- Expertise Card 6: E-commerce Stores -->
-                    <div class="card text-center">
-                        <img src="https://placehold.co/200x200/93C5FD/3366FF?text=E-commerce+Store" alt="E-commerce Store" class="rounded-lg mb-4 mx-auto">
-                        <h3 class="text-xl font-semibold mb-2">For E-commerce</h3>
-                        <p class="text-gray-600 text-sm">
-                            Robust e-commerce platforms with secure payment gateways, inventory management, and intuitive shopping experiences.
-                        </p>
-                    </div>
-
-                    <!-- Expertise Card 7: Real Estate -->
-                    <div class="card text-center">
-                        <img src="https://placehold.co/200x200/E879F9/FFFFFF?text=Real+Estate" alt="Real Estate Website" class="rounded-lg mb-4 mx-auto">
-                        <h3 class="text-xl font-semibold mb-2">For Real Estate</h3>
-                        <p class="text-gray-600 text-sm">
-                            Property listing websites with search functionality, agent profiles, and high-resolution image galleries.
-                        </p>
-                    </div>
-
-                    <!-- Expertise Card 8: Legal Services -->
-                    <div class="card text-center">
-                        <img src="https://placehold.co/200x200/4B5563/FFFFFF?text=Legal+Services" alt="Legal Services Website" class="rounded-lg mb-4 mx-auto">
-                        <h3 class="text-xl font-semibold mb-2">For Legal Services</h3>
-                        <p class="text-gray-600 text-sm">
-                            Professional websites for law firms with attorney bios, case studies, and secure client communication portals.
-                        </p>
-                    </div>
+                    <a href="tel:9613785243" class="inline-block mt-10 bg-white text-brand-900 hover:bg-gray-100 px-8 py-3 rounded-lg font-bold transition">
+                        Book Hijama Session
+                    </a>
                 </div>
-            </div>
-        </section>
-        
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="section-padding bg-white">
-            <div class="container text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Recent Work</h2>
-                <p class="text-gray-500 mb-12 max-w-3xl mx-auto">
-                    A glimpse into some of our successful projects across various industries.
-                </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Project Card 1 -->
-                    <div class="card overflow-hidden p-0 rounded-xl">
-                        <img src="https://placehold.co/600x400/2563EB/ffffff?text=E-commerce+Platform" alt="E-commerce Platform" class="w-full h-auto">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2">E-commerce Platform</h3>
-                            <p class="text-gray-600">A high-performance online store for a retail client.</p>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-2xl">
+                        <div class="text-center mb-8">
+                            <i class="fas fa-heartbeat text-6xl text-brand-300 mb-4"></i>
+                            <h3 class="text-2xl font-bold">Health Benefits</h3>
                         </div>
-                    </div>
-                    <!-- Project Card 2 -->
-                    <div class="card overflow-hidden p-0 rounded-xl">
-                        <img src="https://placehold.co/600x400/10B981/ffffff?text=Travel+App+Design" alt="Travel App Design" class="w-full h-auto">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2">Travel App Design</h3>
-                            <p class="text-gray-600">A mobile app to simplify travel bookings and planning.</p>
-                        </div>
-                    </div>
-                    <!-- Project Card 3 -->
-                    <div class="card overflow-hidden p-0 rounded-xl">
-                        <img src="https://placehold.co/600x400/EF4444/ffffff?text=Analytics+Dashboard" alt="Analytics Dashboard" class="w-full h-auto">
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2">Analytics Dashboard</h3>
-                            <p class="text-gray-600">A custom dashboard for real-time data visualization.</p>
+                        <div class="grid grid-cols-2 gap-4 text-center">
+                            <div class="bg-brand-800/50 p-4 rounded-lg">
+                                <i class="fas fa-running text-2xl mb-2 text-brand-300"></i>
+                                <p class="font-medium">Boosts Immunity</p>
+                            </div>
+                            <div class="bg-brand-800/50 p-4 rounded-lg">
+                                <i class="fas fa-brain text-2xl mb-2 text-brand-300"></i>
+                                <p class="font-medium">Relieves Stress</p>
+                            </div>
+                            <div class="bg-brand-800/50 p-4 rounded-lg">
+                                <i class="fas fa-tint text-2xl mb-2 text-brand-300"></i>
+                                <p class="font-medium">Purifies Blood</p>
+                            </div>
+                            <div class="bg-brand-800/50 p-4 rounded-lg">
+                                <i class="fas fa-bed text-2xl mb-2 text-brand-300"></i>
+                                <p class="font-medium">Better Sleep</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Testimonials Section -->
-        <section id="testimonials" class="section-padding bg-gray-100">
-            <div class="container text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
-                <p class="text-gray-500 mb-12 max-w-3xl mx-auto">
-                    Hear from the businesses we've helped succeed.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Testimonial 1 -->
-                    <div class="card p-6">
-                        <p class="text-gray-700 italic mb-4">
-                            "The team at Your Company Name transformed our online presence. Their web design expertise is unmatched!"
-                        </p>
-                        <div class="font-semibold text-gray-800">- Jane Doe, CEO of TechCorp</div>
-                    </div>
-                    <!-- Testimonial 2 -->
-                    <div class="card p-6">
-                        <p class="text-gray-700 italic mb-4">
-                            "Our digital marketing campaign has been a huge success thanks to their targeted approach and deep knowledge of social media ads."
-                        </p>
-                        <div class="font-semibold text-gray-800">- John Smith, Marketing Manager</div>
-                    </div>
-                    <!-- Testimonial 3 -->
-                    <div class="card p-6">
-                        <p class="text-gray-700 italic mb-4">
-                            "The mobile app they developed for us is not only beautiful but also incredibly intuitive and fast. Highly recommended!"
-                        </p>
-                        <div class="font-semibold text-gray-800">- Emily Chen, Founder of App Solutions</div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
+                <div class="flex flex-col md:flex-row">
+                    <!-- Contact Info -->
+                    <div class="bg-brand-800 p-10 md:w-1/2 text-white">
+                        <h3 class="text-2xl font-bold mb-8">Get In Touch</h3>
+                        
+                        <div class="space-y-8">
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-2xl text-brand-400 mt-1 w-8"></i>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">Clinic Address</h4>
+                                    <p class="text-brand-100 leading-relaxed">
+                                        Hatigaon Near Police Station<br>
+                                        Guwahati - 781038 (Assam)
+                                    </p>
+                                </div>
+                            </div>
 
-        <!-- Call to Action Section -->
-        <section id="cta" class="gradient-bg text-white section-padding text-center">
-            <div class="container">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Project?</h2>
-                <p class="text-lg md:text-xl mb-8 opacity-90 max-w-2xl mx-auto">
-                    Let's discuss how we can bring your vision to life and help your business grow. We have a special offer for **Women Entrepreneurs**!
-                </p>
-                <a href="#contact" class="bg-white text-gray-800 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-200 transition-colors duration-300 cta-button">
-                    Get a Free Quote
-                </a>
-            </div>
-        </section>
-        
-        <!-- About Us Section -->
-        <section id="about" class="section-padding bg-white">
-            <div class="container">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <img src="https://placehold.co/600x400/D1D5DB/6B7280?text=About+Us+Image" alt="Team collaborating" class="rounded-xl shadow-lg">
+                            <div class="flex items-start">
+                                <i class="fas fa-phone-volume text-2xl text-brand-400 mt-1 w-8"></i>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">Contact Number</h4>
+                                    <p class="text-brand-100 text-lg">9613785243</p>
+                                    <p class="text-xs text-brand-300 mt-1">Available on Call & WhatsApp</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <i class="fas fa-clock text-2xl text-brand-400 mt-1 w-8"></i>
+                                <div>
+                                    <h4 class="font-bold text-lg mb-1">Working Hours</h4>
+                                    <p class="text-brand-100">Open all days</p>
+                                    <p class="text-xs text-brand-300 mt-1">Please call before visiting</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Proof/Trust -->
+                        <div class="mt-12 pt-8 border-t border-brand-700">
+                            <p class="font-medium mb-4">Follow us</p>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 rounded-full bg-brand-700 flex items-center justify-center hover:bg-brand-600 transition"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-brand-700 flex items-center justify-center hover:bg-brand-600 transition"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-brand-700 flex items-center justify-center hover:bg-brand-600 transition"><i class="fab fa-whatsapp"></i></a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="text-center md:text-left">
-                        <h2 class="text-3xl md:text-4xl font-bold mb-4">A Team That Builds For Success</h2>
-                        <p class="text-gray-600 leading-relaxed mb-6">
-                            Founded on the principle of innovation, our team is committed to delivering high-quality digital solutions that drive real results. We work closely with our clients to understand their vision and translate it into a powerful online presence. Our passion is your success.
-                        </p>
-                        <a href="#services" class="text-blue-600 font-semibold hover:underline transition-colors duration-300">
-                            Learn More About What We Do &rarr;
-                        </a>
+
+                    <!-- Contact Form (Visual) -->
+                    <div class="p-10 md:w-1/2 bg-gray-50">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Book an Appointment</h3>
+                        <form onsubmit="event.preventDefault(); window.location.href='tel:9613785243'" class="space-y-5">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition" placeholder="Enter your name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                                <input type="tel" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition" placeholder="Enter your number">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Problem / Query</label>
+                                <textarea class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none transition h-32" placeholder="Briefly describe your problem"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-bold py-4 rounded-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5">
+                                Call for Appointment
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
-        </section>
-        
-        <!-- Contact Section -->
-        <section id="contact" class="section-padding bg-white">
-            <div class="container">
-                <div class="card max-w-2xl mx-auto text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Let's Build Something Great</h2>
-                    <p class="text-gray-600 mb-8">Ready to start your project? Fill out the form below and we'll get back to you within 24 hours.</p>
-                    <form id="contact-form" class="space-y-6">
-                        <div>
-                            <input type="text" id="name" name="name" placeholder="Your Name" class="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                        </div>
-                        <div>
-                            <input type="email" id="email" name="email" placeholder="Your Email Address" class="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
-                        </div>
-                        <div>
-                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your project..." class="w-full px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
-                        </div>
-                        <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition-colors duration-300 shadow-md">
-                            Send Message
-                        </button>
-                    </form>
-                    <div id="status-message" class="mt-6 text-sm font-semibold hidden"></div>
-                </div>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-300 text-center py-6">
-        <p>&copy; 2024 Your Company Name. All Rights Reserved.</p>
+    <footer class="bg-gray-900 text-gray-300 py-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex flex-col items-center justify-center mb-6">
+                <div class="bg-brand-900 text-white p-3 rounded-full mb-3">
+                    <i class="fas fa-leaf text-2xl"></i>
+                </div>
+                <h2 class="text-xl font-bold text-white">Assam Unani Clinic</h2>
+                <p class="text-sm text-brand-500">Heals with Herbals</p>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-6 mb-8 text-sm">
+                <a href="#home" class="hover:text-white transition">Home</a>
+                <a href="#specialties" class="hover:text-white transition">Specialties</a>
+                <a href="#hijama" class="hover:text-white transition">Cupping Therapy</a>
+                <a href="#contact" class="hover:text-white transition">Contact</a>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-6 text-sm text-gray-500">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> Assam Unani Clinic. All Rights Reserved.</p>
+                <p class="mt-2 text-xs">Hatigaon, Guwahati, Assam</p>
+            </div>
+        </div>
     </footer>
 
-    <!-- WhatsApp Floating Icon -->
-    <a href="https://wa.me/918889997841" class="whatsapp-float bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-colors duration-300" target="_blank">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2.16c-5.46 0-9.94 4.48-9.94 9.94s4.48 9.94 9.94 9.94c5.46 0 9.94-4.48 9.94-9.94S17.5 2.16 12.04 2.16zm5.8 14.86c-.19.6-.82 1.34-1.25 1.54-.53.2-1.12.1-1.78-.15-1.14-.4-2.27-.9-3.32-1.42-2.12-1.03-3.8-2.65-4.88-4.73-.24-.46-.5-1-.75-1.48-.36-.65-.6-1.3-.7-2.06-.05-.4.07-.8.36-1.1s.68-.45 1.1-.38.74.22 1.05.5c.3.28.5.54.76.88.24.32.44.62.62.9.2.3.4.6.64.9.44.8 1.13 1.7 1.9 2.5.4.4.8.8 1.2 1.2.9.8 1.9 1.7 3.02 2.1.84.3 1.5.1 1.9-.3.2-.2.4-.4.6-.6.3-.3.6-.5 1-.6.3-.1.6-.1.8.02.4.1.7.3 1 .6.3.3.6.5 1 .7.4.2.7.4 1.1.5.3.1.6.2 1 .3.4.1.7.1 1.1.08.3-.01.6-.08.9-.17.3-.1.6-.3.9-.5.2-.2.4-.5.6-.8.4-.6.6-1.2.6-1.9 0-.4-.1-.7-.3-1-.2-.3-.5-.5-.8-.7-.3-.1-.6-.2-1-.2-.3-.1-.7-.1-1-.1-.3 0-.6.1-.9.2-.3.1-.6.3-.9.5-.3.2-.6.4-.9.7-.3.2-.6.5-1 .8-.3.2-.6.5-.9.7l-1.6 1.1c-.2.2-.4.4-.6.6-.2.2-.4.4-.6.6-.2.2-.4.4-.6.6-.2.2-.4.4-.6.6-.2.2-.4.4-.6.6z"></path></svg>
-    </a>
-
-    <!-- JavaScript for form and mobile menu handling -->
+    <!-- Scripts -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Existing contact form logic
-            const contactForm = document.getElementById('contact-form');
-            const statusMessage = document.getElementById('status-message');
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
 
-            contactForm.addEventListener('submit', (e) => {
-                e.preventDefault();
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
 
-                statusMessage.textContent = 'Sending message...';
-                statusMessage.classList.remove('hidden');
-                statusMessage.classList.add('text-gray-500');
-
-                setTimeout(() => {
-                    statusMessage.textContent = 'Message sent successfully! We will be in touch shortly.';
-                    statusMessage.classList.remove('text-gray-500');
-                    statusMessage.classList.add('text-green-600');
-                    contactForm.reset();
-                }, 1500);
-            });
-
-            // Mobile menu logic
-            const menuButton = document.getElementById('menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-
-            menuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-
-            // Close mobile menu when a link is clicked
-            mobileMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                });
+        // Close menu when clicking a link
+        const links = menu.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
             });
         });
     </script>

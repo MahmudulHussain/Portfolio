@@ -70,13 +70,12 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
                 <div class="flex items-center gap-2">
-                    <div class="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">C</div>
-                    <span class="text-xl font-extrabold tracking-tight text-slate-900">COSTA<span class="text-red-600">CART</span></span>
+                    <!-- Logo Removed -->
                 </div>
                 <div class="hidden md:flex space-x-8 font-semibold text-sm uppercase tracking-widest text-slate-600">
-                    <a href="#gift-finder" class="hover:text-red-600 transition">Gift Finder</a>
                     <a href="#trending" class="hover:text-red-600 transition">Top Picks</a>
                     <a href="#comparison" class="hover:text-red-600 transition">Comparison</a>
+                    <a href="#gift-finder" class="hover:text-red-600 transition">Gift Finder</a>
                 </div>
                 <div class="flex items-center gap-4">
                     <button class="bg-slate-900 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-red-600 transition shadow-lg shadow-slate-200">
@@ -98,11 +97,11 @@
                 <span class="text-red-600">Smile Brighter.</span>
             </h1>
             <p class="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-                Hand-picked gifts people actually want — based on demand, reviews, and real-world usefulness for the 2025 holiday season.
+                Explore our curated selection of the most-wanted gifts for Christmas 2025, optimized for demand, reviews, and quality.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#gift-finder" class="bg-red-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-red-700 transition-all transform hover:scale-105 shadow-xl shadow-red-200">
-                    🎁 Start Finding Gifts
+                <a href="#trending" class="bg-red-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-red-700 transition-all transform hover:scale-105 shadow-xl shadow-red-200">
+                    🛍️ Browse Top Picks
                 </a>
                 <a href="#comparison" class="bg-white border-2 border-slate-100 px-10 py-4 rounded-full font-bold text-lg hover:border-red-200 transition-all">
                     Quick Comparison
@@ -115,52 +114,16 @@
         <div class="absolute -top-24 -right-24 w-96 h-96 bg-green-50 rounded-full blur-3xl opacity-50"></div>
     </section>
 
-    <!-- Interactive Section (Bounce Rate Reducer) -->
-    <section id="gift-finder" class="py-24 bg-white">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div class="glass p-8 md:p-12 rounded-[2.5rem] shadow-2xl shadow-slate-200 border border-slate-100">
-                <div class="text-center mb-8">
-                    <h2 class="text-3xl font-bold mb-2">Instant Gift Finder</h2>
-                    <p class="text-slate-500">Find the perfect match in seconds.</p>
-                </div>
-                <div class="space-y-4">
-                    <select id="who" class="w-full p-4 rounded-2xl bg-slate-50 border-none ring-1 ring-slate-200 focus:ring-2 focus:ring-red-500 transition outline-none appearance-none">
-                        <option value="anyone">For Anyone</option>
-                        <option value="tech">For Tech Lovers</option>
-                        <option value="fitness">For Fitness Enthusiasts</option>
-                        <option value="kids">For Kids</option>
-                    </select>
-                    <button onclick="findGifts()" class="w-full bg-slate-900 text-white py-5 rounded-2xl font-bold text-lg hover:bg-red-600 transition-colors shadow-lg">
-                        Find My Perfect Gift
-                    </button>
-                </div>
-            </div>
-
-            <div class="bg-red-600 p-8 md:p-12 rounded-[2.5rem] text-white shadow-2xl shadow-red-200 text-center">
-                <div class="text-4xl mb-4">🎲</div>
-                <h2 class="text-3xl font-bold mb-2">Feeling Lucky?</h2>
-                <p class="text-red-100 mb-8">Not sure what to buy? Let us pick a top-rated surprise for you.</p>
-                <button onclick="pickGift()" class="bg-white text-red-600 px-8 py-4 rounded-2xl font-bold text-lg hover:bg-red-50 transition shadow-xl">
-                    Pick a Gift for Me
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Main Product Feed -->
-    <section id="trending" class="py-20 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="serif text-4xl md:text-5xl mb-4">Best Gifts People Love</h2>
-                <p class="text-slate-500">Hand-selected based on real reviews and social trends for 2025.</p>
-            </div>
-
-            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <!-- Main Content with Sidebar -->
+    <main id="trending" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row gap-12">
+        
+        <!-- Left Column: Product Feed -->
+        <div class="flex-1">
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
                 
                 <!-- Product: AirPods -->
                 <div class="product-card group bg-white rounded-[2rem] overflow-hidden p-6 border border-slate-100 flex flex-col">
                     <a href="https://amzn.to/48XQW7e" target="_blank" class="block flex flex-col h-full">
-                        <!-- Buy Link Above Product -->
                         <div class="bg-green-600 text-white text-center py-4 rounded-xl font-bold hover:bg-green-700 transition mb-6 shadow-md">
                             Check Price on Amazon
                         </div>
@@ -227,7 +190,7 @@
                         <div class="relative aspect-square mb-6 bg-slate-50 rounded-2xl overflow-hidden flex items-center justify-center">
                             <img src="https://m.media-amazon.com/images/I/81fUgFznfoL._SL1500_.jpg" alt="Beauty" class="w-full h-full object-contain group-hover:scale-110 transition duration-500 p-4">
                         </div>
-                        <h3 class="font-bold text-lg mb-2 group-hover:text-red-600 transition">Luxury Beauty & Skincare Kit</h3>
+                        <h3 class="font-bold text-lg mb-2 group-hover:text-red-600 transition">Luxury Beauty Kit</h3>
                         <p class="text-slate-400 text-sm flex-grow">A complete set for relaxation and self-care.</p>
                     </a>
                 </div>
@@ -245,7 +208,7 @@
                         <p class="text-slate-400 text-sm flex-grow">Unlimited creativity for kids and hobbyists.</p>
                     </a>
                 </div>
-
+                
                 <!-- Product: Handheld Console -->
                 <div class="product-card group bg-white rounded-[2rem] overflow-hidden p-6 border border-slate-100 flex flex-col">
                     <a href="https://amzn.to/3KOf4kS" target="_blank" class="block flex flex-col h-full">
@@ -255,7 +218,7 @@
                         <div class="relative aspect-square mb-6 bg-slate-50 rounded-2xl overflow-hidden flex items-center justify-center">
                             <img src="https://m.media-amazon.com/images/I/51vZFwgK6CL._AC_SL1000_.jpg" alt="Console" class="w-full h-full object-contain group-hover:scale-110 transition duration-500 p-4">
                         </div>
-                        <h3 class="font-bold text-lg mb-2 group-hover:text-red-600 transition">Portable Retro Gaming System</h3>
+                        <h3 class="font-bold text-lg mb-2 group-hover:text-red-600 transition">Portable Retro Console</h3>
                         <p class="text-slate-400 text-sm flex-grow">The ultimate travel companion for gamers.</p>
                     </a>
                 </div>
@@ -269,16 +232,57 @@
                         <div class="relative aspect-square mb-6 bg-slate-50 rounded-2xl overflow-hidden flex items-center justify-center">
                             <img src="https://m.media-amazon.com/images/I/611DCpUuhfL._AC_SL1500_.jpg" alt="Blanket" class="w-full h-full object-contain group-hover:scale-110 transition duration-500 p-4">
                         </div>
-                        <h3 class="font-bold text-lg mb-2 group-hover:text-red-600 transition">Ultra-Cozy Wearable Blanket</h3>
+                        <h3 class="font-bold text-lg mb-2 group-hover:text-red-600 transition">Wearable Blanket</h3>
                         <p class="text-slate-400 text-sm flex-grow">Stay warm and comfortable all winter long.</p>
                     </a>
                 </div>
+
             </div>
         </div>
-    </section>
+
+        <!-- Right Column: Sidebar -->
+        <aside id="gift-finder" class="lg:w-80 lg:shrink-0 space-y-8">
+            
+            <!-- Instant Gift Finder -->
+            <div class="glass p-8 rounded-[2rem] shadow-xl border border-slate-100 sticky top-24">
+                <div class="text-center mb-6">
+                    <h2 class="text-2xl font-bold mb-1">Instant Gift Finder</h2>
+                    <p class="text-slate-500 text-sm">Find the perfect match in seconds.</p>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 block">For Whom?</label>
+                        <select id="who" class="w-full p-3 rounded-xl bg-slate-50 border-none ring-1 ring-slate-200 focus:ring-2 focus:ring-red-500 transition outline-none appearance-none text-sm">
+                            <option value="anyone">For Anyone</option>
+                            <option value="tech">For Tech Lovers</option>
+                            <option value="fitness">For Fitness Enthusiasts</option>
+                            <option value="kids">For Kids</option>
+                        </select>
+                    </div>
+                    <button onclick="findGifts()" class="w-full bg-slate-900 text-white py-4 rounded-xl font-bold text-md hover:bg-red-600 transition-colors shadow-lg">
+                        Find My Perfect Gift
+                    </button>
+                </div>
+
+                <hr class="my-8 border-slate-100">
+
+                <!-- Feeling Lucky -->
+                <div class="text-center">
+                    <div class="text-3xl mb-2">🎲</div>
+                    <h2 class="text-xl font-bold mb-1">Feeling Lucky?</h2>
+                    <p class="text-slate-500 text-sm mb-6">Let us pick a surprise top-rated gift for you.</p>
+                    <button onclick="pickGift()" class="w-full bg-red-600 text-white px-6 py-4 rounded-xl font-bold text-md hover:bg-red-700 transition shadow-lg">
+                        Pick a Gift for Me
+                    </button>
+                </div>
+            </div>
+
+        </aside>
+
+    </main>
 
     <!-- Comparison Section -->
-    <section id="comparison" class="py-24 bg-white">
+    <section id="comparison" class="py-24 bg-white border-t border-slate-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="serif text-4xl mb-4">Gifts at a Glance</h2>
@@ -314,12 +318,6 @@
                             <td class="p-6">Families</td>
                             <td class="p-6"><a href="https://amzn.to/4q4TzLA" target="_blank" class="text-red-600 font-bold hover:underline">See Price</a></td>
                         </tr>
-                        <tr class="hover:bg-slate-50 transition">
-                            <td class="p-6 font-bold">Wearable Blanket</td>
-                            <td class="p-6 text-slate-500">Comfort</td>
-                            <td class="p-6">Winter Lovers</td>
-                            <td class="p-6"><a href="https://amzn.to/4iZl3Ql" target="_blank" class="text-red-600 font-bold hover:underline">Buy Now</a></td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -332,22 +330,22 @@
             <div class="text-center p-6 bg-white rounded-3xl border border-slate-100 shadow-sm">
                 <div class="text-3xl mb-4">⭐</div>
                 <h4 class="font-bold mb-2">4.5+ Rated Only</h4>
-                <p class="text-slate-500 text-sm">We only showcase top-tier products with verified reviews.</p>
+                <p class="text-slate-500 text-sm">Top-tier products with verified reviews.</p>
             </div>
             <div class="text-center p-6 bg-white rounded-3xl border border-slate-100 shadow-sm">
                 <div class="text-3xl mb-4">🔥</div>
                 <h4 class="font-bold mb-2">Trending 2025</h4>
-                <p class="text-slate-500 text-sm">Every item is checked against current holiday demand.</p>
+                <p class="text-slate-500 text-sm">Checked against current holiday demand.</p>
             </div>
             <div class="text-center p-6 bg-white rounded-3xl border border-slate-100 shadow-sm">
                 <div class="text-3xl mb-4">✅</div>
                 <h4 class="font-bold mb-2">Stock Checked</h4>
-                <p class="text-slate-500 text-sm">We prioritize items that are available for shipping.</p>
+                <p class="text-slate-500 text-sm">Available for shipping right now.</p>
             </div>
             <div class="text-center p-6 bg-white rounded-3xl border border-slate-100 shadow-sm">
                 <div class="text-3xl mb-4">🛡️</div>
                 <h4 class="font-bold mb-2">No Gimmicks</h4>
-                <p class="text-slate-500 text-sm">Real utility products that won't end up in the junk drawer.</p>
+                <p class="text-slate-500 text-sm">Real utility products for lasting enjoyment.</p>
             </div>
         </div>
     </section>
@@ -357,20 +355,19 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center mb-12">
                 <div class="flex items-center gap-2 mb-8 md:mb-0">
-                    <div class="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">C</div>
-                    <span class="text-2xl font-extrabold tracking-tight">COSTA<span class="text-red-600">CART</span></span>
+                    <!-- Logo Removed -->
                 </div>
-                <div class="flex gap-8 text-slate-400">
+                <div class="flex gap-8 text-slate-400 text-sm">
                     <a href="#" class="hover:text-white transition">Home</a>
                     <a href="#" class="hover:text-white transition">About</a>
-                    <a href="#" class="hover:text-white transition">Privacy</a>
+                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
                     <a href="#" class="hover:text-white transition">Terms</a>
                     <a href="#" class="hover:text-white transition">Contact</a>
                 </div>
             </div>
             <div class="border-t border-slate-800 pt-10 text-center">
-                <p class="text-slate-500 text-sm mb-4 italic">Disclosure: As an Amazon Associate, we earn from qualifying purchases at no extra cost to you. Pricing and availability are subject to change.</p>
-                <p class="text-slate-500 text-sm">&copy; 2025 CostaCart. Professional Gift Guides for Modern Shoppers.</p>
+                <p class="text-slate-500 text-xs mb-4 italic">Disclosure: As an Amazon Associate, we earn from qualifying purchases at no extra cost to you.</p>
+                <p class="text-slate-500 text-sm">&copy; 2025 Holiday Gift Guide. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -394,7 +391,6 @@
         }
 
         function findGifts() {
-            const who = document.getElementById('who').value;
             const btn = event.target;
             btn.innerText = "Analyzing 2025 Trends...";
             setTimeout(() => {

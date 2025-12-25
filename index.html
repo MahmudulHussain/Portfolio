@@ -102,56 +102,69 @@
             100% { transform: translateX(-100%); }
         }
 
-        .logo-badge {
+        /* Improved Two-Color Logo */
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+        }
+        .logo-part-1 {
             background: #000;
             color: #fff;
-            padding: 2px 8px;
-            border: 2px solid #000;
-            display: inline-block;
-            transform: rotate(-2deg);
-            margin-right: 4px;
+            padding: 4px 10px;
+            border: 3px solid #000;
+        }
+        .logo-part-2 {
+            background: #facc15;
+            color: #000;
+            padding: 4px 10px;
+            border: 3px solid #000;
+            margin-left: -3px; /* Overlap border */
         }
     </style>
 </head>
-<body class="overflow-x-hidden pt-20">
+<body class="overflow-x-hidden pt-20 text-black">
 
     <!-- Navbar -->
     <nav class="fixed top-0 w-full z-50 bg-white border-b-4 border-black">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
             <div class="flex items-center">
-                <a href="#home" class="text-2xl font-black uppercase tracking-tighter text-black flex items-center">
-                    <span class="logo-badge">OFFLINE2.</span>DIGITAL
+                <a href="#home" class="brand-logo text-2xl">
+                    <span class="logo-part-1">Offline2.</span><span class="logo-part-2">Digital</span>
                 </a>
             </div>
-            <div class="hidden md:flex items-center gap-8 font-black uppercase text-sm text-black">
-                <a href="#services" class="hover:underline decoration-4 transition-all">Services</a>
-                <a href="#work" class="hover:underline decoration-4 transition-all">Portfolios</a>
-                <a href="#ceo" class="hover:underline decoration-4 transition-all">CEO Message</a>
-                <a href="#contact" class="brutalist-btn px-6 py-2 bg-pink-400 text-black">Contact</a>
+            <div class="hidden md:flex items-center gap-8 font-black uppercase text-sm">
+                <a href="#services" class="hover:underline decoration-4 underline-offset-4 transition-all">Services</a>
+                <a href="#work" class="hover:underline decoration-4 underline-offset-4 transition-all">Portfolios</a>
+                <a href="#ceo" class="hover:underline decoration-4 underline-offset-4 transition-all">CEO Message</a>
+                <a href="#contact" class="brutalist-btn px-6 py-2 bg-pink-400">Contact</a>
             </div>
             <button id="mobile-menu-button" class="md:hidden border-4 border-black bg-yellow-400 p-2 shadow-[2px_2px_0px_0px_#000] active:shadow-none active:translate-x-0.5 active:translate-y-0.5 transition-all">
-                <i class="fa-solid fa-bars-staggered text-2xl text-black"></i>
+                <i class="fa-solid fa-bars-staggered text-2xl"></i>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b-4 border-black p-6 space-y-4 font-black uppercase text-black">
-            <a href="#services" class="block text-xl hover:text-pink-500">Services</a>
-            <a href="#work" class="block text-xl hover:text-pink-500">Work</a>
-            <a href="#ceo" class="block text-xl hover:text-pink-500">CEO Message</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b-4 border-black p-6 space-y-4 font-black uppercase">
+            <a href="#services" class="block text-xl hover:text-pink-500 transition-colors">Services</a>
+            <a href="#work" class="block text-xl hover:text-pink-500 transition-colors">Work</a>
+            <a href="#ceo" class="block text-xl hover:text-pink-500 transition-colors">CEO Message</a>
             <a href="#contact" class="block text-xl text-yellow-600 border-t-2 border-black pt-2">Contact Us</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="py-20 px-6 bg-yellow-400 border-b-4 border-black">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-            <div class="space-y-8 text-black text-left">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8 text-left">
                 <div class="bg-white border-4 border-black p-4 inline-block font-black uppercase tracking-widest text-sm rotate-[-2deg] shadow-[4px_4px_0px_0px_#000]">
                     🚀 Leading Digital Agency in Assam
                 </div>
-                <h1 class="text-6xl md:text-8xl font-black leading-[0.9] uppercase tracking-tighter">
-                    Convert Your <br> <span class="bg-white px-2 shadow-[6px_6px_0px_0px_#000]">Business</span> <br> Offline To <span class="bg-pink-400 text-white px-2 shadow-[8px_8px_0px_0px_#000]">Digital</span>
+                <!-- Fixed Hero UI Text -->
+                <h1 class="text-6xl md:text-8xl font-black leading-[1.0] uppercase tracking-tighter">
+                    Convert <br> Your <span class="bg-white px-3 shadow-[8px_8px_0px_0px_#000]">Offline</span> <br> To <span class="bg-pink-400 text-white px-3 shadow-[8px_8px_0px_0px_#000]">Digital</span>
                 </h1>
-                <p class="text-xl md:text-2xl font-bold border-l-8 border-black pl-6 max-w-xl">
+                <p class="text-xl md:text-2xl font-bold border-l-8 border-black pl-6 max-w-xl bg-white/30 py-2">
                     WE CONVERT OFFLINE BUSINESS TO DIGITAL WORLDS. Affordable. Best-in-Class. High ROI.
                 </p>
                 <div class="flex flex-wrap gap-6">
@@ -162,7 +175,7 @@
                 </div>
             </div>
             <div class="hidden lg:block relative">
-                <div class="brutalist-card p-4 rotate-[3deg]">
+                <div class="brutalist-card p-4 rotate-[3deg] bg-white">
                     <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" class="border-4 border-black w-full grayscale hover:grayscale-0 transition-all duration-500" alt="Digital Marketing">
                     <div class="mt-4 font-black uppercase text-xl">#1 Agency in Assam</div>
                 </div>
@@ -183,7 +196,7 @@
     <!-- Services Section -->
     <section id="services" class="py-24 px-6 bg-white">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-5xl md:text-7xl font-black uppercase mb-20 text-center lg:text-left text-black">
+            <h2 class="text-5xl md:text-7xl font-black uppercase mb-20 text-center lg:text-left">
                 What We <span class="text-pink-500">Provide</span>
             </h2>
 
@@ -193,9 +206,9 @@
                     <div class="w-20 h-20 bg-black text-white border-4 border-black flex items-center justify-center mb-8 rotate-[-5deg] shadow-[4px_4px_0px_0px_#3b82f6]">
                         <i class="fa-solid fa-laptop-code text-4xl"></i>
                     </div>
-                    <h3 class="text-3xl font-black uppercase mb-4 leading-none text-black">Web Design & Dev</h3>
-                    <p class="font-bold text-lg mb-8 text-black">Premium websites for Schools, Hospitals & E-commerce. High speed, low price.</p>
-                    <div class="mt-auto font-black uppercase text-xs border-t-2 border-black pt-4 w-full text-black">Starting @ Affordable Rates</div>
+                    <h3 class="text-3xl font-black uppercase mb-4 leading-none">Web Design & Dev</h3>
+                    <p class="font-bold text-lg mb-8 leading-tight">Premium websites for Schools, Hospitals & E-commerce. High speed, low price.</p>
+                    <div class="mt-auto font-black uppercase text-xs border-t-2 border-black pt-4 w-full">Starting @ Affordable Rates</div>
                 </div>
 
                 <!-- Service 2 -->
@@ -203,9 +216,9 @@
                     <div class="w-20 h-20 bg-black text-white border-4 border-black flex items-center justify-center mb-8 rotate-[5deg] shadow-[4px_4px_0px_0px_#22c55e]">
                         <i class="fa-solid fa-mobile-button text-4xl"></i>
                     </div>
-                    <h3 class="text-3xl font-black uppercase mb-4 leading-none text-black">Android & iOS App</h3>
-                    <p class="font-bold text-lg mb-8 text-black">Full-stack mobile applications for businesses and startups. iOS & Android ready.</p>
-                    <div class="mt-auto font-black uppercase text-xs border-t-2 border-black pt-4 w-full text-black">Native Experience</div>
+                    <h3 class="text-3xl font-black uppercase mb-4 leading-none">Android & iOS App</h3>
+                    <p class="font-bold text-lg mb-8 leading-tight">Full-stack mobile applications for businesses and startups. iOS & Android ready.</p>
+                    <div class="mt-auto font-black uppercase text-xs border-t-2 border-black pt-4 w-full">Native Experience</div>
                 </div>
 
                 <!-- Service 3 -->
@@ -213,9 +226,9 @@
                     <div class="w-20 h-20 bg-black text-white border-4 border-black flex items-center justify-center mb-8 shadow-[4px_4px_0px_0px_#a855f7]">
                         <i class="fa-solid fa-bullhorn text-4xl"></i>
                     </div>
-                    <h3 class="text-3xl font-black uppercase mb-4 leading-none text-black">Digital Marketing</h3>
-                    <p class="font-bold text-lg mb-8 text-black">Social Media, Ads & SEO. Perfect for Instagram Business Owners.</p>
-                    <div class="mt-auto font-black uppercase text-xs border-t-2 border-black pt-4 w-full text-black">Sales Focused</div>
+                    <h3 class="text-3xl font-black uppercase mb-4 leading-none">Digital Marketing</h3>
+                    <p class="font-bold text-lg mb-8 leading-tight">Social Media, Ads & SEO. Perfect for Instagram Business Owners.</p>
+                    <div class="mt-auto font-black uppercase text-xs border-t-2 border-black pt-4 w-full">Sales Focused</div>
                 </div>
             </div>
         </div>
@@ -266,11 +279,11 @@
     <section id="work" class="py-24 px-6 bg-pink-100">
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between md:items-center mb-16 gap-4">
-                <h2 class="text-5xl font-black uppercase text-black">Our Projects</h2>
+                <h2 class="text-5xl font-black uppercase">Our Projects</h2>
                 <div class="h-2 bg-black flex-grow hidden md:block"></div>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-12 text-black text-left">
+            <div class="grid md:grid-cols-2 gap-12 text-left">
                 <!-- Project 1: Best Auto Sales -->
                 <div class="brutalist-card overflow-hidden flex flex-col group bg-white">
                     <div class="h-64 overflow-hidden border-b-4 border-black bg-white flex items-center justify-center p-4">
@@ -293,7 +306,7 @@
                 </div>
                 <!-- Project 3 -->
                 <div class="brutalist-card overflow-hidden flex flex-col bg-white">
-                    <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80&w=800" alt="Work" class="w-full border-b-4 border-black h-64 object-cover">
+                    <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80&w=800" alt="Work" class="w-full border-b-4 border-black h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
                     <div class="p-8 flex-grow">
                         <div class="font-black uppercase text-2xl">Global High Academy</div>
                         <p class="font-bold mt-4 text-slate-700">Comprehensive School Management & Digital Identity project for local institutions.</p>
@@ -301,7 +314,7 @@
                 </div>
                 <!-- Project 4 -->
                 <div class="brutalist-card overflow-hidden flex flex-col bg-white">
-                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800" alt="Work" class="w-full border-b-4 border-black h-64 object-cover">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800" alt="Work" class="w-full border-b-4 border-black h-64 object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
                     <div class="p-8 flex-grow">
                         <div class="font-black uppercase text-2xl">Assam Health Link</div>
                         <p class="font-bold mt-4 text-slate-700">Specialized Doctor Appointment & Record System designed for ease of use in medical centers.</p>
@@ -312,18 +325,18 @@
     </section>
 
     <!-- CEO Message Section -->
-    <section id="ceo" class="py-24 px-6 bg-yellow-400 border-t-4 border-b-4 border-black text-black">
+    <section id="ceo" class="py-24 px-6 bg-yellow-400 border-t-4 border-b-4 border-black">
         <div class="max-w-5xl mx-auto">
             <div class="brutalist-card p-8 md:p-12 bg-white flex flex-col md:flex-row gap-12 items-center">
                 <div class="shrink-0">
                     <div class="w-64 h-64 bg-white border-4 border-black rotate-[-3deg] overflow-hidden shadow-[10px_10px_0px_0px_rgba(236,72,153,1)]">
-                        <img src="https://scontent.fgau1-5.fna.fbcdn.net/v/t39.30808-6/515269377_5050662165158417_1150055928318448519_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=KNQhPi44ym0Q7kNvwE3bD6F&_nc_oc=Adm8oyA18DLEZER1FUlWDohg4uu4NOFiRMJ3o2xze1Yp_F3ADHKpQEi4C__56H02bP5Vm7zkTM6oHLWU0S66Afmz&_nc_zt=23&_nc_ht=scontent.fgau1-5.fna&_nc_gid=3iueRwZiYhOYm0n3LWzjWQ&oh=00_Afmv8PivhYSRWpjtEdbitqHZzj30zTMO4gtc9gHv9j2NLQ&oe=695352BB" class="w-full h-full object-cover" alt="Mahmudul Hussain CEO" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Mahmudul'">
+                        <img src="https://scontent.fgau1-5.fna.fbcdn.net/v/t39.30808-6/515269377_5050662165158417_1150055928318448519_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=KNQhPi44ym0Q7kNvwE3bD6F&_nc_oc=Adm8oyA18DLEZER1FUlWDohg4uu4NOFiRMJ3o2xze1Yp_F3ADHKpQEi4C__56H02bP5Vm7zkTM6oHLWU0S66Afmz&_nc_zt=23&_nc_ht=scontent.fgau1-5.fna&_nc_gid=3iueRwZiYhOYm0n3LWzjWQ&oh=00_Afmv8PivhYSRWpjtEdbitqHZzj30zTMO4gtc9gHv9j2NLQ&oe=695352BB" class="w-full h-full object-cover transition-all duration-500" alt="Mahmudul Hussain CEO" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Mahmudul'">
                     </div>
                 </div>
                 <div class="text-left">
                     <h2 class="text-4xl font-black uppercase mb-2">Message from CEO</h2>
                     <h3 class="text-2xl font-black uppercase text-pink-600 mb-6 tracking-tighter">Mahmudul Hussain</h3>
-                    <div class="border-l-8 border-black pl-8 italic">
+                    <div class="border-l-8 border-black pl-8 italic bg-slate-50 py-4">
                         <p class="text-2xl font-bold leading-tight mb-4 uppercase">
                             "To our valued Customers and the Players in this digital era: We don't just build websites; we build digital empires."
                         </p>
@@ -337,21 +350,21 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="py-24 px-6 bg-white text-black">
+    <section class="py-24 px-6 bg-white">
         <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
             <div class="brutalist-card p-8 bg-yellow-50 rotate-[-1deg] flex flex-col">
-                <div class="flex gap-1 mb-4 text-black text-xl">★★★★★</div>
-                <p class="font-black text-xl leading-tight text-black flex-grow">"Converted my Instagram boutique into a real brand. Best decision for my growth!"</p>
+                <div class="flex gap-1 mb-4 text-2xl">★★★★★</div>
+                <p class="font-black text-xl leading-tight flex-grow">"Converted my Instagram boutique into a real brand. Best decision for my growth!"</p>
                 <div class="mt-6 font-bold uppercase text-sm text-slate-600 border-t-2 border-black pt-4">- Ananya M., Business Owner</div>
             </div>
             <div class="brutalist-card p-8 bg-cyan-50 rotate-[1deg] flex flex-col">
-                <div class="flex gap-1 mb-4 text-black text-xl">★★★★★</div>
-                <p class="font-black text-xl leading-tight text-black flex-grow">"The diagnostic lab portal is best in class. Efficient, clean, and very affordable."</p>
+                <div class="flex gap-1 mb-4 text-2xl">★★★★★</div>
+                <p class="font-black text-xl leading-tight flex-grow">"The diagnostic lab portal is best in class. Efficient, clean, and very affordable."</p>
                 <div class="mt-6 font-bold uppercase text-sm text-slate-600 border-t-2 border-black pt-4">- Dr. S. Roy, Labs</div>
             </div>
             <div class="brutalist-card p-8 bg-pink-50 rotate-[-1deg] flex flex-col">
-                <div class="flex gap-1 mb-4 text-black text-xl">★★★★★</div>
-                <p class="font-black text-xl leading-tight text-black flex-grow">"Our school website now manages everything automatically. Excellent service in Assam."</p>
+                <div class="flex gap-1 mb-4 text-2xl">★★★★★</div>
+                <p class="font-black text-xl leading-tight flex-grow">"Our school website now manages everything automatically. Excellent service in Assam."</p>
                 <div class="mt-6 font-bold uppercase text-sm text-slate-600 border-t-2 border-black pt-4">- Principal, Sunrise School</div>
             </div>
         </div>
@@ -359,7 +372,7 @@
 
     <!-- Contact Section -->
     <section id="contact" class="py-24 px-6 bg-blue-600">
-        <div class="max-w-4xl mx-auto brutalist-card p-8 md:p-16 bg-white text-black">
+        <div class="max-w-4xl mx-auto brutalist-card p-8 md:p-16 bg-white">
             <div class="grid md:grid-cols-2 gap-16">
                 <div class="text-left">
                     <h2 class="text-5xl font-black uppercase mb-8">Let's Talk</h2>
@@ -393,7 +406,7 @@
                     </select>
                     <textarea name="message" rows="4" placeholder="DESCRIBE YOUR PROJECT" required class="brutalist-input uppercase w-full"></textarea>
                     
-                    <button type="submit" id="submitBtn" class="brutalist-btn bg-yellow-400 py-5 text-xl flex items-center justify-center gap-4 text-black">
+                    <button type="submit" id="submitBtn" class="brutalist-btn bg-yellow-400 py-5 text-xl flex items-center justify-center gap-4">
                         <span id="btnText">Send Inquiry</span>
                         <div id="loader" class="spinner"></div>
                         <i id="btnIcon" class="fa-solid fa-bolt"></i>
@@ -405,17 +418,19 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 bg-white border-t-4 border-black px-6 text-black">
+    <footer class="py-12 bg-white border-t-4 border-black px-6">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
-            <div class="font-black text-2xl uppercase tracking-tighter">
-                 <span class="logo-badge">OFFLINE2.</span>DIGITAL
+            <div class="flex items-center">
+                <a href="#home" class="brand-logo text-2xl">
+                    <span class="logo-part-1">Offline2.</span><span class="logo-part-2">Digital</span>
+                </a>
             </div>
             <div class="flex gap-8 text-3xl">
                 <a href="#" class="hover:rotate-12 transition-transform duration-300"><i class="fa-brands fa-square-facebook"></i></a>
                 <a href="#" class="hover:-rotate-12 transition-transform duration-300"><i class="fa-brands fa-square-instagram"></i></a>
                 <a href="https://wa.me/918889997841" class="hover:rotate-12 transition-transform duration-300 text-green-600"><i class="fa-brands fa-square-whatsapp"></i></a>
             </div>
-            <div class="font-black uppercase text-sm bg-black text-white px-2 py-1">
+            <div class="font-black uppercase text-sm bg-black text-white px-3 py-1 border-2 border-black">
                 &copy; 2025 Offline2.Digital • Assam • India
             </div>
         </div>
@@ -440,7 +455,6 @@
 
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
-            // Toggle icon between bars and times if needed, but staggered-bars looks great for brutalism
         });
 
         contactForm.addEventListener('submit', async (e) => {
@@ -467,7 +481,6 @@
                     contactForm.reset();
                 } else { throw new Error(); }
             } catch (error) {
-                // typical fallback for GAS CORS behavior
                 formStatus.innerText = "THANKS! INQUIRY RECEIVED!";
                 formStatus.className = "mt-4 text-center font-black text-green-600 block uppercase";
                 contactForm.reset();

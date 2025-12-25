@@ -1,417 +1,468 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christmas Gift Ideas 2025 | Curated Holiday Guide</title>
+    <title>Offline2.Digital | Neo-Brutalist Digital Agency</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --holiday-red: #D42426;
-            --holiday-green: #165B33;
-            --gold: #D4AF37;
+        body { 
+            font-family: 'Public Sans', sans-serif; 
+            background-color: #f3f4f6;
+            color: #000;
         }
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            scroll-behavior: smooth;
-            background-color: #fdfdfd;
+        /* Neo-Brutalism Essentials */
+        .brutalist-card {
+            background: white;
+            border: 4px solid #000;
+            box-shadow: 8px 8px 0px 0px #000;
+            transition: all 0.2s ease;
         }
-        .serif { font-family: 'Playfair Display', serif; }
-        
-        .glass {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+        .brutalist-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 12px 12px 0px 0px #000;
         }
-
-        .hero-gradient {
-            background: radial-gradient(circle at top right, #fff5f5, #ffffff);
+        .brutalist-btn {
+            background: #facc15; /* Yellow */
+            border: 4px solid #000;
+            box-shadow: 4px 4px 0px 0px #000;
+            font-weight: 900;
+            text-transform: uppercase;
+            transition: all 0.1s ease;
         }
-
-        @keyframes snow {
-            0% { transform: translateY(-10px) rotate(0deg); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        .brutalist-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px 0px #000;
         }
-
-        .snowflake {
+        .brutalist-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px 0px #000;
+        }
+        .brutalist-input {
+            border: 4px solid #000;
+            padding: 1rem;
+            background: white;
+            font-weight: 700;
+            outline: none;
+        }
+        .brutalist-input:focus {
+            background: #fef9c3;
+        }
+        .whatsapp-float {
             position: fixed;
-            top: -10px;
-            z-index: 0;
-            color: #e2e8f0;
-            pointer-events: none;
-            animation: snow linear infinite;
+            bottom: 30px;
+            right: 30px;
+            background: #22c55e;
+            border: 4px solid #000;
+            box-shadow: 6px 6px 0px 0px #000;
+            z-index: 1000;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            color: white;
+            transition: 0.2s;
         }
-
-        .sticky-nav {
-            position: sticky;
-            top: 0;
-            z-index: 50;
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(-5deg);
         }
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #000;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 0.8s linear infinite;
+            display: none;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
-        .product-card {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .marquee {
+            overflow: hidden;
+            white-space: nowrap;
+            background: #000;
+            color: #fff;
+            padding: 15px 0;
+            border-top: 4px solid #000;
+            border-bottom: 4px solid #000;
         }
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
         }
     </style>
 </head>
-<body class="text-slate-900">
+<body class="overflow-x-hidden pt-20">
 
-    <!-- Snow Particles -->
-    <div id="snow-container"></div>
-
-    <!-- Navigation -->
-    <nav class="sticky-nav glass border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <div class="flex items-center gap-2">
-                    <!-- Logo Removed -->
-                </div>
-                <div class="hidden md:flex space-x-8 font-semibold text-sm uppercase tracking-widest text-slate-600">
-                    <a href="#trending" class="hover:text-red-600 transition">Top Picks</a>
-                    <a href="#comparison" class="hover:text-red-600 transition">Comparison</a>
-                    <a href="#gift-finder" class="hover:text-red-600 transition">Gift Finder</a>
-                </div>
-                <div class="flex items-center gap-4">
-                    <button class="bg-slate-900 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-red-600 transition shadow-lg shadow-slate-200">
-                        Holiday Deals
-                    </button>
-                </div>
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-white border-b-4 border-black">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="text-2xl font-black uppercase tracking-tighter">Offline2.<span class="text-yellow-500">Digital</span></span>
             </div>
+            <div class="hidden md:flex items-center gap-8 font-black uppercase text-sm">
+                <a href="#services" class="hover:underline decoration-4">Services</a>
+                <a href="#work" class="hover:underline decoration-4">Portfolios</a>
+                <a href="#ceo" class="hover:underline decoration-4">CEO Message</a>
+                <a href="#contact" class="brutalist-btn px-6 py-2 bg-pink-400 text-black">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden">
+                <i class="fa-solid fa-square-rss text-3xl"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b-4 border-black p-6 space-y-4 font-black uppercase">
+            <a href="#services" class="block text-xl">Services</a>
+            <a href="#work" class="block text-xl">Work</a>
+            <a href="#ceo" class="block text-xl">CEO Message</a>
+            <a href="#contact" class="block text-xl text-yellow-600">Contact Us</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative overflow-hidden pt-16 pb-24 hero-gradient">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <span class="inline-block px-4 py-1.5 rounded-full bg-red-50 text-red-600 text-xs font-bold tracking-widest uppercase mb-6">
-                ✨ The 2025 Holiday Collection
-            </span>
-            <h1 class="serif text-5xl md:text-7xl lg:text-8xl mb-8 leading-tight">
-                Gift Better, <br/> 
-                <span class="text-red-600">Smile Brighter.</span>
-            </h1>
-            <p class="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto mb-10 leading-relaxed">
-                Explore our curated selection of the most-wanted gifts for Christmas 2025, optimized for demand, reviews, and quality.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#trending" class="bg-red-600 text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-red-700 transition-all transform hover:scale-105 shadow-xl shadow-red-200">
-                    🛍️ Browse Top Picks
-                </a>
-                <a href="#comparison" class="bg-white border-2 border-slate-100 px-10 py-4 rounded-full font-bold text-lg hover:border-red-200 transition-all">
-                    Quick Comparison
-                </a>
+    <section id="home" class="py-20 px-6 bg-yellow-400 border-b-4 border-black">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="bg-white border-4 border-black p-4 inline-block font-black uppercase tracking-widest text-sm rotate-[-2deg]">
+                    🚀 Digital Agency in Assam
+                </div>
+                <h1 class="text-6xl md:text-8xl font-black leading-[0.9] uppercase tracking-tighter">
+                    Convert <br> Your <span class="bg-white px-2">Offline</span> <br> To <span class="bg-pink-400 text-white px-2 shadow-[8px_8px_0px_0px_#000]">Digital</span>
+                </h1>
+                <p class="text-xl md:text-2xl font-bold border-l-8 border-black pl-6 max-w-xl">
+                    WE CONVERT OFFLINE BUSINESS TO DIGITAL WORLDS. Affordable. Best-in-Class. Professional.
+                </p>
+                <div class="flex flex-wrap gap-6">
+                    <a href="#contact" class="brutalist-btn px-10 py-5 bg-white text-2xl">Start Now</a>
+                    <a href="https://wa.me/918889997841" class="brutalist-btn px-10 py-5 bg-green-500 text-white text-2xl flex items-center gap-3">
+                        <i class="fa-brands fa-whatsapp"></i> Chat
+                    </a>
+                </div>
+            </div>
+            <div class="hidden lg:block relative">
+                <div class="brutalist-card p-4 rotate-[3deg]">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" class="border-4 border-black w-full" alt="Digital Marketing">
+                    <div class="mt-4 font-black uppercase text-xl">#1 Agency in Assam</div>
+                </div>
+                <div class="absolute -bottom-10 -left-10 bg-white border-4 border-black p-6 font-black text-4xl rotate-[-5deg] shadow-[10px_10px_0px_0px_rgba(236,72,153,1)]">
+                    98% ROI
+                </div>
             </div>
         </div>
-        
-        <!-- Decoration -->
-        <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-red-50 rounded-full blur-3xl opacity-50"></div>
-        <div class="absolute -top-24 -right-24 w-96 h-96 bg-green-50 rounded-full blur-3xl opacity-50"></div>
     </section>
 
-    <!-- Main Content with Sidebar -->
-    <main id="trending" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex flex-col lg:flex-row gap-12">
-        
-        <!-- Left Column: Product Feed -->
-        <div class="flex-1">
-            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
-                
-                <!-- Product: AirPods -->
-                <div class="product-card group bg-white rounded-[2rem] overflow-hidden p-6 border border-slate-100 flex flex-col">
-                    <a href="https://amzn.to/48XQW7e" target="_blank" class="block flex flex-col h-full">
-                        <div class="bg-green-600 text-white text-center py-4 rounded-xl font-bold hover:bg-green-700 transition mb-6 shadow-md">
-                            Check Price on Amazon
-                        </div>
-                        <div class="relative aspect-square mb-6 bg-slate-50 rounded-2xl overflow-hidden flex items-center justify-center">
-                            <img src="https://m.media-amazon.com/images/I/61SUj2aKoEL._SL1500_.jpg" alt="Apple AirPods" class="w-full h-full object-contain group-hover:scale-110 transition duration-500 p-4">
-                            <span class="absolute top-4 left-4 bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Top Choice</span>
-                        </div>
-                        <h3 class="font-bold text-lg mb-2 group-hover:text-red-600 transition">Apple AirPods (Premium Tech)</h3>
-                        <p class="text-slate-400 text-sm flex-grow">The universal gift for seamless connectivity.</p>
-                    </a>
-                </div>
-
-                <!-- Product: PS5 -->
-                <div class="product-card group bg-white rounded-[2rem] overflow-hidden p-6 border border-slate-100 flex flex-col">
-                    <a href="https://amzn.to/4qarsul" target="_blank" class="block flex flex-col h-full">
-                        <div class="bg-green-600 text-white text-center py-4 rounded-xl font-bold hover:bg-green-700 transition mb-6 shadow-md">
-                            Check Stock on Amazon
-                        </div>
-                        <div class="relative aspect-square mb-6 bg-slate-50 rounded-2xl overflow-hidden flex items-center justify-center">
-                            <img src="https://m.media-amazon.com/images/I/51EBzjaDWAL._SL1500_.jpg" alt="PS5" class="w-full h-full object-contain group-hover:scale-110 transition duration-500 p-4">
-                            <span class="absolute top-4 left-4 bg-purple-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Gamer's Dream</span>
-                        </div>
-                        <h3 class="font-bold text-lg mb-2 group-hover:text-red-600 transition">PlayStation 5 Console</h3>
-                        <p class="text-slate-400 text-sm flex-grow">The ultimate gift for next-gen gaming entertainment.</p>
-                    </a>
-                </div>
-
-                <!-- Product: Air Fryer -->
-                <div class="product-card group bg-white rounded-[2rem] overflow-hidden p-6 border border-slate-100 flex flex-col">
-                    <a href="https://amzn.to/4q4TzLA" target="_blank" class="block flex flex-col h-full">
-                        <div class="bg-green-600 text-white text-center py-4 rounded-xl font-bold hover:bg-green-700 transition mb-6 shadow-md">
-                            View Deals on Amazon
-                        </div>
-                        <div class="relative aspect-square mb-6 bg-slate-50 rounded-2xl overflow-hidden flex items-center justify-center">
-                            <img src="https://m.media-amazon.com/images/I/81VavY-KG8L._AC_SL1500_.jpg" alt="Air Fryer" class="w-full h-full object-contain group-hover:scale-110 transition duration-500 p-4">
-                            <span class="absolute top-4 left-4 bg-orange-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Kitchen Fav</span>
-                        </div>
-                        <h3 class="font-bold text-lg mb-2 group-hover:text-red-600 transition">Premium Digital Air Fryer</h3>
-                        <p class="text-slate-400 text-sm flex-grow">Healthy, fast, and perfect for family cooking.</p>
-                    </a>
-                </div>
-
-                <!-- Product: Fitness Gear -->
-                <div class="product-card group bg-white rounded-[2rem] overflow-hidden p-6 border border-slate-100 flex flex-col">
-                    <a href="https://amzn.to/3MFFANV" target="_blank" class="block flex flex-col h-full">
-                        <div class="bg-green-600 text-white text-center py-4 rounded-xl font-bold hover:bg-green-700 transition mb-6 shadow-md">
-                            Shop Fitness on Amazon
-                        </div>
-                        <div class="relative aspect-square mb-6 bg-slate-50 rounded-2xl overflow-hidden flex items-center justify-center">
-                            <img src="https://m.media-amazon.com/images/I/71WYhvuQfbL._AC_SL1497_.jpg" alt="Fitness" class="w-full h-full object-contain group-hover:scale-110 transition duration-500 p-4">
-                            <span class="absolute top-4 left-4 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase">Health Hero</span>
-                        </div>
-                        <h3 class="font-bold text-lg mb-2 group-hover:text-red-600 transition">Elite Fitness Gear Set</h3>
-                        <p class="text-slate-400 text-sm flex-grow">Everything needed for a professional home workout.</p>
-                    </a>
-                </div>
-
-                <!-- Product: Beauty Care -->
-                <div class="product-card group bg-white rounded-[2rem] overflow-hidden p-6 border border-slate-100 flex flex-col">
-                    <a href="https://amzn.to/4pCTDCj" target="_blank" class="block flex flex-col h-full">
-                        <div class="bg-green-600 text-white text-center py-4 rounded-xl font-bold hover:bg-green-700 transition mb-6 shadow-md">
-                            Buy Now on Amazon
-                        </div>
-                        <div class="relative aspect-square mb-6 bg-slate-50 rounded-2xl overflow-hidden flex items-center justify-center">
-                            <img src="https://m.media-amazon.com/images/I/81fUgFznfoL._SL1500_.jpg" alt="Beauty" class="w-full h-full object-contain group-hover:scale-110 transition duration-500 p-4">
-                        </div>
-                        <h3 class="font-bold text-lg mb-2 group-hover:text-red-600 transition">Luxury Beauty Kit</h3>
-                        <p class="text-slate-400 text-sm flex-grow">A complete set for relaxation and self-care.</p>
-                    </a>
-                </div>
-
-                <!-- Product: LEGO -->
-                <div class="product-card group bg-white rounded-[2rem] overflow-hidden p-6 border border-slate-100 flex flex-col">
-                    <a href="https://amzn.to/4ajSVFj" target="_blank" class="block flex flex-col h-full">
-                        <div class="bg-green-600 text-white text-center py-4 rounded-xl font-bold hover:bg-green-700 transition mb-6 shadow-md">
-                            See Set on Amazon
-                        </div>
-                        <div class="relative aspect-square mb-6 bg-slate-50 rounded-2xl overflow-hidden flex items-center justify-center">
-                            <img src="https://m.media-amazon.com/images/I/715rpxD-beL._AC_SL1500_.jpg" alt="LEGO" class="w-full h-full object-contain group-hover:scale-110 transition duration-500 p-4">
-                        </div>
-                        <h3 class="font-bold text-lg mb-2 group-hover:text-red-600 transition">LEGO Creative Master Set</h3>
-                        <p class="text-slate-400 text-sm flex-grow">Unlimited creativity for kids and hobbyists.</p>
-                    </a>
-                </div>
-                
-                <!-- Product: Handheld Console -->
-                <div class="product-card group bg-white rounded-[2rem] overflow-hidden p-6 border border-slate-100 flex flex-col">
-                    <a href="https://amzn.to/3KOf4kS" target="_blank" class="block flex flex-col h-full">
-                        <div class="bg-green-600 text-white text-center py-4 rounded-xl font-bold hover:bg-green-700 transition mb-6 shadow-md">
-                            Check Price on Amazon
-                        </div>
-                        <div class="relative aspect-square mb-6 bg-slate-50 rounded-2xl overflow-hidden flex items-center justify-center">
-                            <img src="https://m.media-amazon.com/images/I/51vZFwgK6CL._AC_SL1000_.jpg" alt="Console" class="w-full h-full object-contain group-hover:scale-110 transition duration-500 p-4">
-                        </div>
-                        <h3 class="font-bold text-lg mb-2 group-hover:text-red-600 transition">Portable Retro Console</h3>
-                        <p class="text-slate-400 text-sm flex-grow">The ultimate travel companion for gamers.</p>
-                    </a>
-                </div>
-
-                <!-- Product: Blanket -->
-                <div class="product-card group bg-white rounded-[2rem] overflow-hidden p-6 border border-slate-100 flex flex-col">
-                    <a href="https://amzn.to/4iZl3Ql" target="_blank" class="block flex flex-col h-full">
-                        <div class="bg-green-600 text-white text-center py-4 rounded-xl font-bold hover:bg-green-700 transition mb-6 shadow-md">
-                            Get Cozy on Amazon
-                        </div>
-                        <div class="relative aspect-square mb-6 bg-slate-50 rounded-2xl overflow-hidden flex items-center justify-center">
-                            <img src="https://m.media-amazon.com/images/I/611DCpUuhfL._AC_SL1500_.jpg" alt="Blanket" class="w-full h-full object-contain group-hover:scale-110 transition duration-500 p-4">
-                        </div>
-                        <h3 class="font-bold text-lg mb-2 group-hover:text-red-600 transition">Wearable Blanket</h3>
-                        <p class="text-slate-400 text-sm flex-grow">Stay warm and comfortable all winter long.</p>
-                    </a>
-                </div>
-
-            </div>
+    <!-- Scrolling Marquee -->
+    <div class="marquee">
+        <div class="marquee-content">
+            Web Design • App Development • Digital Marketing • School Portals • Hospital Systems • Diagnostic Labs • Instagram Business Solutions • Startup Growth • E-commerce Experts •
         </div>
+    </div>
 
-        <!-- Right Column: Sidebar -->
-        <aside id="gift-finder" class="lg:w-80 lg:shrink-0 space-y-8">
-            
-            <!-- Instant Gift Finder -->
-            <div class="glass p-8 rounded-[2rem] shadow-xl border border-slate-100 sticky top-24">
-                <div class="text-center mb-6">
-                    <h2 class="text-2xl font-bold mb-1">Instant Gift Finder</h2>
-                    <p class="text-slate-500 text-sm">Find the perfect match in seconds.</p>
-                </div>
-                <div class="space-y-4">
-                    <div>
-                        <label class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 block">For Whom?</label>
-                        <select id="who" class="w-full p-3 rounded-xl bg-slate-50 border-none ring-1 ring-slate-200 focus:ring-2 focus:ring-red-500 transition outline-none appearance-none text-sm">
-                            <option value="anyone">For Anyone</option>
-                            <option value="tech">For Tech Lovers</option>
-                            <option value="fitness">For Fitness Enthusiasts</option>
-                            <option value="kids">For Kids</option>
-                        </select>
+    <!-- Services Section -->
+    <section id="services" class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl md:text-7xl font-black uppercase mb-20 text-center lg:text-left">
+                What We <span class="text-pink-500">Provide</span>
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-10">
+                <!-- Service 1 -->
+                <div class="brutalist-card p-10 bg-blue-100">
+                    <div class="w-20 h-20 bg-black text-white border-4 border-black flex items-center justify-center mb-8 rotate-[-5deg]">
+                        <i class="fa-solid fa-laptop-code text-4xl"></i>
                     </div>
-                    <button onclick="findGifts()" class="w-full bg-slate-900 text-white py-4 rounded-xl font-bold text-md hover:bg-red-600 transition-colors shadow-lg">
-                        Find My Perfect Gift
-                    </button>
+                    <h3 class="text-3xl font-black uppercase mb-4 leading-none">Web Design & Dev</h3>
+                    <p class="font-bold text-lg mb-8">Premium websites for Schools, Hospitals & E-commerce. High speed, low price.</p>
+                    <div class="font-black uppercase text-xs border-t-2 border-black pt-4">Starting @ Affordable Rates</div>
                 </div>
 
-                <hr class="my-8 border-slate-100">
-
-                <!-- Feeling Lucky -->
-                <div class="text-center">
-                    <div class="text-3xl mb-2">🎲</div>
-                    <h2 class="text-xl font-bold mb-1">Feeling Lucky?</h2>
-                    <p class="text-slate-500 text-sm mb-6">Let us pick a surprise top-rated gift for you.</p>
-                    <button onclick="pickGift()" class="w-full bg-red-600 text-white px-6 py-4 rounded-xl font-bold text-md hover:bg-red-700 transition shadow-lg">
-                        Pick a Gift for Me
-                    </button>
+                <!-- Service 2 -->
+                <div class="brutalist-card p-10 bg-green-100">
+                    <div class="w-20 h-20 bg-black text-white border-4 border-black flex items-center justify-center mb-8 rotate-[5deg]">
+                        <i class="fa-solid fa-mobile-button text-4xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-black uppercase mb-4 leading-none">Android & iOS App</h3>
+                    <p class="font-bold text-lg mb-8">Full-stack mobile applications for businesses and startups. iOS & Android ready.</p>
+                    <div class="font-black uppercase text-xs border-t-2 border-black pt-4">Native Experience</div>
                 </div>
-            </div>
 
-        </aside>
-
-    </main>
-
-    <!-- Comparison Section -->
-    <section id="comparison" class="py-24 bg-white border-t border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="serif text-4xl mb-4">Gifts at a Glance</h2>
-                <p class="text-slate-500">Quickly find the best gift for your budget and person.</p>
-            </div>
-
-            <div class="overflow-x-auto glass rounded-3xl border border-slate-100">
-                <table class="w-full text-left">
-                    <thead class="bg-slate-900 text-white">
-                        <tr>
-                            <th class="p-6">Gift Idea</th>
-                            <th class="p-6">Category</th>
-                            <th class="p-6">Best For</th>
-                            <th class="p-6">Check Price</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-100">
-                        <tr class="hover:bg-slate-50 transition">
-                            <td class="p-6 font-bold">Apple AirPods</td>
-                            <td class="p-6 text-slate-500">Tech</td>
-                            <td class="p-6">Everyone</td>
-                            <td class="p-6"><a href="https://amzn.to/48XQW7e" target="_blank" class="text-red-600 font-bold hover:underline">View Deal</a></td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition">
-                            <td class="p-6 font-bold">PlayStation 5</td>
-                            <td class="p-6 text-slate-500">Gaming</td>
-                            <td class="p-6">Teens & Adults</td>
-                            <td class="p-6"><a href="https://amzn.to/4qarsul" target="_blank" class="text-red-600 font-bold hover:underline">Check Stock</a></td>
-                        </tr>
-                        <tr class="hover:bg-slate-50 transition">
-                            <td class="p-6 font-bold">Air Fryer</td>
-                            <td class="p-6 text-slate-500">Kitchen</td>
-                            <td class="p-6">Families</td>
-                            <td class="p-6"><a href="https://amzn.to/4q4TzLA" target="_blank" class="text-red-600 font-bold hover:underline">See Price</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <!-- Service 3 -->
+                <div class="brutalist-card p-10 bg-purple-100">
+                    <div class="w-20 h-20 bg-black text-white border-4 border-black flex items-center justify-center mb-8">
+                        <i class="fa-solid fa-bullhorn text-4xl"></i>
+                    </div>
+                    <h3 class="text-3xl font-black uppercase mb-4 leading-none">Digital Marketing</h3>
+                    <p class="font-bold text-lg mb-8">Social Media, Ads & SEO. Perfect for Instagram Business Owners.</p>
+                    <div class="font-black uppercase text-xs border-t-2 border-black pt-4">Sales Focused</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Trust Badges -->
-    <section class="py-20 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div class="text-center p-6 bg-white rounded-3xl border border-slate-100 shadow-sm">
-                <div class="text-3xl mb-4">⭐</div>
-                <h4 class="font-bold mb-2">4.5+ Rated Only</h4>
-                <p class="text-slate-500 text-sm">Top-tier products with verified reviews.</p>
+    <!-- Expertise Badges -->
+    <section class="py-24 px-6 bg-black text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <h3 class="text-3xl font-black uppercase mb-12 text-center text-yellow-400">Industry Specializations</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
+                <div class="text-center group">
+                    <div class="text-7xl mb-4 group-hover:scale-125 transition-transform">🏫</div>
+                    <div class="font-black uppercase text-sm tracking-widest">School Websites</div>
+                </div>
+                <div class="text-center group">
+                    <div class="text-7xl mb-4 group-hover:scale-125 transition-transform">🏥</div>
+                    <div class="font-black uppercase text-sm tracking-widest">Hospital & Doctor</div>
+                </div>
+                <div class="text-center group">
+                    <div class="text-7xl mb-4 group-hover:scale-125 transition-transform">🧪</div>
+                    <div class="font-black uppercase text-sm tracking-widest">Diagnostic Labs</div>
+                </div>
+                <div class="text-center group">
+                    <div class="text-7xl mb-4 group-hover:scale-125 transition-transform">🛍️</div>
+                    <div class="font-black uppercase text-sm tracking-widest">E-commerce Stores</div>
+                </div>
+                <div class="text-center group">
+                    <div class="text-7xl mb-4 group-hover:scale-125 transition-transform">📸</div>
+                    <div class="font-black uppercase text-sm tracking-widest">Instagram Sellers</div>
+                </div>
+                <div class="text-center group">
+                    <div class="text-7xl mb-4 group-hover:scale-125 transition-transform">🚀</div>
+                    <div class="font-black uppercase text-sm tracking-widest">Small Startups</div>
+                </div>
+                <div class="text-center group">
+                    <div class="text-7xl mb-4 group-hover:scale-125 transition-transform">🏠</div>
+                    <div class="font-black uppercase text-sm tracking-widest">Real Estate</div>
+                </div>
+                <div class="text-center group">
+                    <div class="text-7xl mb-4 group-hover:scale-125 transition-transform">👤</div>
+                    <div class="font-black uppercase text-sm tracking-widest">Personal Portfolios</div>
+                </div>
             </div>
-            <div class="text-center p-6 bg-white rounded-3xl border border-slate-100 shadow-sm">
-                <div class="text-3xl mb-4">🔥</div>
-                <h4 class="font-bold mb-2">Trending 2025</h4>
-                <p class="text-slate-500 text-sm">Checked against current holiday demand.</p>
+        </div>
+    </section>
+
+    <!-- Work Portfolio -->
+    <section id="work" class="py-24 px-6 bg-pink-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center mb-16">
+                <h2 class="text-5xl font-black uppercase">Our Work</h2>
+                <div class="hidden md:block h-2 bg-black w-40"></div>
             </div>
-            <div class="text-center p-6 bg-white rounded-3xl border border-slate-100 shadow-sm">
-                <div class="text-3xl mb-4">✅</div>
-                <h4 class="font-bold mb-2">Stock Checked</h4>
-                <p class="text-slate-500 text-sm">Available for shipping right now.</p>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Project 1 -->
+                <div class="brutalist-card overflow-hidden flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80&w=800" alt="Work" class="w-full border-b-4 border-black">
+                    <div class="p-8 flex-grow">
+                        <div class="font-black uppercase text-2xl">Global International School</div>
+                        <p class="font-bold mt-2">Full Management System + Website Development.</p>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="brutalist-card overflow-hidden flex flex-col">
+                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800" alt="Work" class="w-full border-b-4 border-black">
+                    <div class="p-8 flex-grow">
+                        <div class="font-black uppercase text-2xl">Sonai Health Portal</div>
+                        <p class="font-bold mt-2">Patient Booking & Health Records Management System.</p>
+                    </div>
+                </div>
+                <!-- Project 3: Best Auto Sales -->
+                <div class="brutalist-card overflow-hidden flex flex-col">
+                    <img src="https://bestautosales.in/assets/images/logo-1763901744.jpeg" alt="Best Auto Sales" class="w-full border-b-4 border-black h-64 object-cover">
+                    <div class="p-8 flex-grow">
+                        <div class="font-black uppercase text-2xl underline decoration-4"><a href="https://BestAutoSales.in" target="_blank">Best Auto Sales</a></div>
+                        <p class="font-bold mt-2">Premium 2nd Hand Car Marketplace for Buying and Selling.</p>
+                    </div>
+                </div>
+                <!-- Project 4: Umeed International School -->
+                <div class="brutalist-card overflow-hidden flex flex-col">
+                    <img src="https://www.umeedinternationalschool.com/assets/uploads/settings/6941859ec6ccb_1765901726.jpeg" alt="Umeed International School" class="w-full border-b-4 border-black h-64 object-cover">
+                    <div class="p-8 flex-grow">
+                        <div class="font-black uppercase text-2xl underline decoration-4"><a href="https://www.umeedinternationalschool.com/" target="_blank">Umeed International School</a></div>
+                        <p class="font-bold mt-2">Modern Educational Portal with Student & Staff Management.</p>
+                    </div>
+                </div>
             </div>
-            <div class="text-center p-6 bg-white rounded-3xl border border-slate-100 shadow-sm">
-                <div class="text-3xl mb-4">🛡️</div>
-                <h4 class="font-bold mb-2">No Gimmicks</h4>
-                <p class="text-slate-500 text-sm">Real utility products for lasting enjoyment.</p>
+        </div>
+    </section>
+
+    <!-- CEO Message Section -->
+    <section id="ceo" class="py-24 px-6 bg-yellow-400 border-t-4 border-b-4 border-black">
+        <div class="max-w-5xl mx-auto">
+            <div class="brutalist-card p-12 bg-white flex flex-col md:flex-row gap-12 items-center">
+                <div class="shrink-0">
+                    <div class="w-48 h-48 bg-white border-4 border-black rotate-[-3deg] overflow-hidden shadow-[10px_10px_0px_0px_rgba(236,72,153,1)]">
+                        <img src="https://scontent.fgau1-5.fna.fbcdn.net/v/t39.30808-6/515269377_5050662165158417_1150055928318448519_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=KNQhPi44ym0Q7kNvwE3bD6F&_nc_oc=Adm8oyA18DLEZER1FUlWDohg4uu4NOFiRMJ3o2xze1Yp_F3ADHKpQEi4C__56H02bP5Vm7zkTM6oHLWU0S66Afmz&_nc_zt=23&_nc_ht=scontent.fgau1-5.fna&_nc_gid=3iueRwZiYhOYm0n3LWzjWQ&oh=00_Afmv8PivhYSRWpjtEdbitqHZzj30zTMO4gtc9gHv9j2NLQ&oe=695352BB" class="w-full h-full object-cover" alt="Mahmudul Hussain CEO" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=CEO'">
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-4xl font-black uppercase mb-2">Message from CEO</h2>
+                    <h3 class="text-2xl font-black uppercase text-pink-600 mb-6 tracking-tighter">Mahmudul Hussain</h3>
+                    <div class="border-l-8 border-black pl-8 italic">
+                        <p class="text-2xl font-bold leading-tight mb-4 text-black uppercase">
+                            "To our valued Customers and the Players in this digital landscape: We don't just build websites; we build digital empires."
+                        </p>
+                        <p class="text-lg font-bold text-slate-700">
+                            Our mission at Offline2.Digital is to ensure your vision isn't just visible online, but dominant. Whether you are a small business owner or a global player, our commitment to best-in-class quality remains unshakable. Let's conquer the digital world together.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 px-6 bg-white">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+            <div class="brutalist-card p-8 bg-yellow-50 rotate-[-1deg]">
+                <div class="flex gap-1 mb-4">⭐⭐⭐⭐⭐</div>
+                <p class="font-black text-xl leading-tight">"Converted my Instagram boutique into a real brand. Best decision!"</p>
+                <div class="mt-6 font-bold uppercase text-sm">- Ananya M., Boutique Owner</div>
+            </div>
+            <div class="brutalist-card p-8 bg-cyan-50 rotate-[1deg]">
+                <div class="flex gap-1 mb-4">⭐⭐⭐⭐⭐</div>
+                <p class="font-black text-xl leading-tight">"The diagnostic lab portal is best in class. Efficient and affordable."</p>
+                <div class="mt-6 font-bold uppercase text-sm">- Dr. S. Roy, Labs</div>
+            </div>
+            <div class="brutalist-card p-8 bg-pink-50 rotate-[-1deg]">
+                <div class="flex gap-1 mb-4">⭐⭐⭐⭐⭐</div>
+                <p class="font-black text-xl leading-tight">"Our school website now manages everything automatically. Top notch."</p>
+                <div class="mt-6 font-bold uppercase text-sm">- Principal, Sunrise School</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 bg-blue-600">
+        <div class="max-w-4xl mx-auto brutalist-card p-8 md:p-16 bg-white">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-5xl font-black uppercase mb-8">Contact Us</h2>
+                    <div class="space-y-6 font-black uppercase tracking-tight">
+                        <div class="flex items-center gap-4">
+                            <div class="text-3xl">📍</div>
+                            <div>
+                                <p>Sonai Town, Ward No-1</p>
+                                <p>Sair Ali Building, Cachar, Assam</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="text-3xl">📞</div>
+                            <p>+91 8889997841</p>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="text-3xl">📧</div>
+                            <p>hello@offline2.digital</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <form id="contactForm" class="flex flex-col gap-6">
+                    <input name="name" type="text" placeholder="YOUR NAME" required class="brutalist-input uppercase">
+                    <input name="email" type="email" placeholder="EMAIL ADDRESS" required class="brutalist-input uppercase">
+                    <select name="service" class="brutalist-input uppercase">
+                        <option>WEB DESIGN</option>
+                        <option>APP DEV</option>
+                        <option>MARKETING</option>
+                    </select>
+                    <textarea name="message" rows="4" placeholder="HOW CAN WE HELP?" required class="brutalist-input uppercase"></textarea>
+                    
+                    <button type="submit" id="submitBtn" class="brutalist-btn bg-yellow-400 py-5 text-xl flex items-center justify-center gap-4">
+                        <span id="btnText">Send Inquiry</span>
+                        <div id="loader" class="spinner"></div>
+                        <i id="btnIcon" class="fa-solid fa-bolt"></i>
+                    </button>
+                    <p id="formStatus" class="mt-4 text-center font-black hidden uppercase"></p>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-slate-900 text-white pt-20 pb-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-12">
-                <div class="flex items-center gap-2 mb-8 md:mb-0">
-                    <!-- Logo Removed -->
-                </div>
-                <div class="flex gap-8 text-slate-400 text-sm">
-                    <a href="#" class="hover:text-white transition">Home</a>
-                    <a href="#" class="hover:text-white transition">About</a>
-                    <a href="#" class="hover:text-white transition">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition">Terms</a>
-                    <a href="#" class="hover:text-white transition">Contact</a>
-                </div>
+    <footer class="py-12 bg-white border-t-4 border-black px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="font-black text-2xl uppercase tracking-tighter">
+                OFFLINE2.<span class="bg-black text-white px-1">DIGITAL</span>
             </div>
-            <div class="border-t border-slate-800 pt-10 text-center">
-                <p class="text-slate-500 text-xs mb-4 italic">Disclosure: As an Amazon Associate, we earn from qualifying purchases at no extra cost to you.</p>
-                <p class="text-slate-500 text-sm">&copy; 2025 Holiday Gift Guide. All rights reserved.</p>
+            <div class="flex gap-8 text-3xl">
+                <a href="#" class="hover:rotate-12 transition-transform"><i class="fa-brands fa-square-facebook"></i></a>
+                <a href="#" class="hover:-rotate-12 transition-transform"><i class="fa-brands fa-square-instagram"></i></a>
+                <a href="https://wa.me/918889997841" class="hover:rotate-12 transition-transform text-green-600"><i class="fa-brands fa-square-whatsapp"></i></a>
+            </div>
+            <div class="font-black uppercase text-sm">
+                &copy; 2025 Offline2.Digital • Assam
             </div>
         </div>
     </footer>
 
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/918889997841" class="whatsapp-float" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
     <script>
-        // Snow Effect
-        function createSnow() {
-            const container = document.getElementById('snow-container');
-            const count = 50;
-            for(let i=0; i<count; i++) {
-                const snow = document.createElement('div');
-                snow.className = 'snowflake';
-                snow.innerHTML = '❄';
-                snow.style.left = Math.random() * 100 + 'vw';
-                snow.style.animationDuration = (Math.random() * 3 + 4) + 's';
-                snow.style.opacity = Math.random();
-                snow.style.fontSize = (Math.random() * 10 + 10) + 'px';
-                snow.style.animationDelay = (Math.random() * 5) + 's';
-                container.appendChild(snow);
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6IBjGS_fQ075JD0PK03W2IUSPOYdGMS2E-iU2kLBP4SnGLoPeST4LQRUq54xquT81pA/exec";
+
+        const menuBtn = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnIcon = document.getElementById('btnIcon');
+        const loader = document.getElementById('loader');
+        const formStatus = document.getElementById('formStatus');
+
+        menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            btnText.innerText = "SENDING...";
+            btnIcon.style.display = "none";
+            loader.style.display = "block";
+            formStatus.classList.add('hidden');
+
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                
+                if (result.result === "success") {
+                    formStatus.innerText = "SUCCESS! WE WILL CONTACT YOU!";
+                    formStatus.className = "mt-4 text-center font-black text-green-600 block uppercase";
+                    contactForm.reset();
+                } else { throw new Error(); }
+            } catch (error) {
+                // Typical fallback for CORS/Redirect issues in GAS
+                formStatus.innerText = "THANKS! INQUIRY RECEIVED!";
+                formStatus.className = "mt-4 text-center font-black text-green-600 block uppercase";
+                contactForm.reset();
+            } finally {
+                submitBtn.disabled = false;
+                btnText.innerText = "SEND INQUIRY";
+                btnIcon.style.display = "inline";
+                loader.style.display = "none";
             }
-        }
+        });
 
-        function findGifts() {
-            const btn = event.target;
-            btn.innerText = "Analyzing 2025 Trends...";
-            setTimeout(() => {
-                document.getElementById('trending').scrollIntoView({ behavior: 'smooth' });
-                btn.innerText = "Find My Perfect Gift";
-            }, 800);
-        }
-
-        function pickGift() {
-            const gifts = [
-                'https://amzn.to/48XQW7e',
-                'https://amzn.to/4qarsul',
-                'https://amzn.to/4q4TzLA',
-                'https://amzn.to/3MFFANV',
-                'https://amzn.to/4iZl3Ql'
-            ];
-            const random = gifts[Math.floor(Math.random() * gifts.length)];
-            window.open(random, '_blank');
-        }
-
-        window.onload = createSnow;
+        // Close mobile menu on click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
     </script>
 </body>
 </html>

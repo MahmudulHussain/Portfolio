@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Offline2.Digital | Neo-Brutalist Digital Agency Assam</title>
+    <title>Offline2.Digital | Leading Digital Agency Assam</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;900&display=swap" rel="stylesheet">
@@ -13,19 +13,19 @@
             background-color: #f3f4f6;
             color: #000;
         }
-        /* Neo-Brutalism Essentials */
+        /* Neo-Brutalism Design System */
         .brutalist-card {
             background: white;
             border: 4px solid #000;
             box-shadow: 8px 8px 0px 0px #000;
-            transition: all 0.2s ease;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
         }
         .brutalist-card:hover {
-            transform: translate(-4px, -4px);
-            box-shadow: 12px 12px 0px 0px #000;
+            transform: translate(-2px, -2px);
+            box-shadow: 10px 10px 0px 0px #000;
         }
         .brutalist-btn {
-            background: #facc15; /* Yellow */
+            background: #facc15; /* Brand Yellow */
             border: 4px solid #000;
             box-shadow: 4px 4px 0px 0px #000;
             font-weight: 900;
@@ -47,9 +47,6 @@
             font-weight: 700;
             outline: none;
         }
-        .brutalist-input:focus {
-            background: #fef9c3;
-        }
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -67,19 +64,7 @@
             color: white;
             transition: 0.2s;
         }
-        .whatsapp-float:hover {
-            transform: scale(1.1) rotate(-5deg);
-        }
-        .spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            border-top: 4px solid #000;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            animation: spin 0.8s linear infinite;
-            display: none;
-        }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .whatsapp-float:hover { transform: scale(1.1); }
         
         .marquee {
             overflow: hidden;
@@ -92,80 +77,105 @@
         }
         .marquee-content {
             display: inline-block;
-            animation: marquee 20s linear infinite;
+            animation: marquee 25s linear infinite;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: 2px;
         }
-        @keyframes marquee {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
+        @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-        /* Improved Two-Color Logo */
+        /* Two-Color Brand Logo */
         .brand-logo {
             display: flex;
             align-items: center;
             font-weight: 900;
             text-transform: uppercase;
-            letter-spacing: -0.05em;
         }
         .logo-part-1 {
             background: #000;
             color: #fff;
-            padding: 4px 10px;
+            padding: 4px 12px;
             border: 3px solid #000;
         }
         .logo-part-2 {
             background: #facc15;
             color: #000;
-            padding: 4px 10px;
+            padding: 4px 12px;
             border: 3px solid #000;
-            margin-left: -3px; /* Overlap border */
+            margin-left: -3px;
+        }
+
+        /* Tech Item Style */
+        .tech-card {
+            background: white;
+            border: 3px solid #000;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            box-shadow: 4px 4px 0px 0px #000;
+            font-size: 0.875rem;
+        }
+
+        /* Hero UI Text Fixes */
+        .hero-title-box {
+            background: white;
+            padding: 0.5rem 1rem;
+            box-shadow: 6px 6px 0px 0px #000;
+            border: 4px solid #000;
+            display: inline-block;
+        }
+
+        /* Remove All Image Hover Effects */
+        img, .brutalist-card img {
+            filter: none !important;
+            transform: none !important;
+            transition: none !important;
         }
     </style>
 </head>
-<body class="overflow-x-hidden pt-20 text-black">
+<body class="overflow-x-hidden pt-20">
 
     <!-- Navbar -->
     <nav class="fixed top-0 w-full z-50 bg-white border-b-4 border-black">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <div class="flex items-center">
-                <a href="#home" class="brand-logo text-2xl">
+            <div>
+                <a href="#home" class="brand-logo text-xl md:text-2xl">
                     <span class="logo-part-1">Offline2.</span><span class="logo-part-2">Digital</span>
                 </a>
             </div>
             <div class="hidden md:flex items-center gap-8 font-black uppercase text-sm">
-                <a href="#services" class="hover:underline decoration-4 underline-offset-4 transition-all">Services</a>
-                <a href="#work" class="hover:underline decoration-4 underline-offset-4 transition-all">Portfolios</a>
-                <a href="#ceo" class="hover:underline decoration-4 underline-offset-4 transition-all">CEO Message</a>
+                <a href="#services" class="hover:underline decoration-4 underline-offset-4">Services</a>
+                <a href="#work" class="hover:underline decoration-4 underline-offset-4">Portfolios</a>
+                <a href="#tech" class="hover:underline decoration-4 underline-offset-4">Tech</a>
                 <a href="#contact" class="brutalist-btn px-6 py-2 bg-pink-400">Contact</a>
             </div>
-            <button id="mobile-menu-button" class="md:hidden border-4 border-black bg-yellow-400 p-2 shadow-[2px_2px_0px_0px_#000] active:shadow-none active:translate-x-0.5 active:translate-y-0.5 transition-all">
+            <button id="mobile-menu-button" class="md:hidden border-4 border-black bg-yellow-400 p-2 shadow-[3px_3px_0px_0px_#000]">
                 <i class="fa-solid fa-bars-staggered text-2xl"></i>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b-4 border-black p-6 space-y-4 font-black uppercase">
-            <a href="#services" class="block text-xl hover:text-pink-500 transition-colors">Services</a>
-            <a href="#work" class="block text-xl hover:text-pink-500 transition-colors">Work</a>
-            <a href="#ceo" class="block text-xl hover:text-pink-500 transition-colors">CEO Message</a>
-            <a href="#contact" class="block text-xl text-yellow-600 border-t-2 border-black pt-2">Contact Us</a>
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b-4 border-black p-6 space-y-4 font-black uppercase shadow-xl">
+            <a href="#services" class="block text-xl">Services</a>
+            <a href="#work" class="block text-xl">Work</a>
+            <a href="#tech" class="block text-xl">Tech</a>
+            <a href="#ceo" class="block text-xl">CEO Msg</a>
+            <a href="#contact" class="block text-xl text-pink-600 border-t-2 border-black pt-2">Get Quote</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section id="home" class="py-20 px-6 bg-yellow-400 border-b-4 border-black">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-            <div class="space-y-8 text-left">
-                <div class="bg-white border-4 border-black p-4 inline-block font-black uppercase tracking-widest text-sm rotate-[-2deg] shadow-[4px_4px_0px_0px_#000]">
-                    🚀 Leading Digital Agency in Assam
+            <div class="space-y-10">
+                <div class="bg-white border-4 border-black p-4 inline-block font-black uppercase tracking-widest text-sm rotate-[-1deg] shadow-[4px_4px_0px_0px_#000]">
+                    🚀 Digital Agency Assam
                 </div>
-                <!-- Hero UI Text -->
-                <h1 class="text-6xl md:text-8xl font-black leading-[1.0] uppercase tracking-tighter">
-                    Convert <br> Your <span class="bg-white px-3 shadow-[8px_8px_0px_0px_#000]">Offline</span> <br> To <span class="bg-pink-400 text-white px-3 shadow-[8px_8px_0px_0px_#000]">Digital</span>
+                <h1 class="text-6xl md:text-8xl font-black leading-[1.0] uppercase tracking-tighter text-black">
+                    Convert <br> Your <span class="hero-title-box">Offline</span> <br> To <span class="bg-pink-400 text-white px-3 shadow-[8px_8px_0px_0px_#000] border-4 border-black">Digital</span>
                 </h1>
-                <p class="text-xl md:text-2xl font-bold border-l-8 border-black pl-6 max-w-xl bg-white/30 py-2">
-                    WE CONVERT OFFLINE BUSINESS TO DIGITAL WORLDS. Affordable. Best-in-Class. High ROI.
+                <p class="text-xl md:text-2xl font-bold border-l-8 border-black pl-6 max-w-xl bg-white/40 py-3 uppercase">
+                    WE CONVERT OFFLINE BUSINESS TO DIGITAL WORLDS. Affordable. Professional. Best-In-Class.
                 </p>
                 <div class="flex flex-wrap gap-6">
                     <a href="#contact" class="brutalist-btn px-10 py-5 bg-white text-2xl">Start Now</a>
@@ -175,173 +185,149 @@
                 </div>
             </div>
             <div class="hidden lg:block relative">
-                <div class="brutalist-card p-4 rotate-[3deg] bg-white">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" class="border-4 border-black w-full" alt="Digital Marketing">
-                    <div class="mt-4 font-black uppercase text-xl">#1 Agency in Assam</div>
+                <div class="brutalist-card p-4 rotate-[2deg] bg-white">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" class="border-4 border-black w-full" alt="Marketing">
+                    <div class="mt-4 font-black uppercase text-xl text-center">#1 Digital Partner in Assam</div>
                 </div>
-                <div class="absolute -bottom-10 -left-10 bg-white border-4 border-black p-6 font-black text-4xl rotate-[-5deg] shadow-[10px_10px_0px_0px_rgba(236,72,153,1)]">
-                    98% Success
+                <div class="absolute -bottom-8 -left-8 bg-pink-500 text-white border-4 border-black p-6 font-black text-4xl rotate-[-4deg] shadow-[8px_8px_0px_0px_#000]">
+                    98% ROI
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Scrolling Marquee -->
+    <!-- Marquee -->
     <div class="marquee">
         <div class="marquee-content">
-            Web Design • App Development • Digital Marketing • School Portals • Hospital Systems • Diagnostic Labs • Instagram Business Solutions • Startup Growth • E-commerce Experts • 
+            FRONTEND MASTERY • TAILWIND CSS • BOOTSTRAP • REACT • FLUTTER • LARAVEL • NODE.JS • PYTHON • DJANGO • WORDPRESS • SEO • SCHOOL PORTALS • HOSPITAL SYSTEMS • E-COMMERCE • 
         </div>
     </div>
 
-    <!-- Services Section -->
-    <section id="services" class="py-24 px-6 bg-white">
+    <!-- Tech Stack Section -->
+    <section id="tech" class="py-24 px-6 bg-white border-b-4 border-black">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-5xl md:text-7xl font-black uppercase mb-20 text-center lg:text-left">
-                What We <span class="text-pink-500">Provide</span>
-            </h2>
+            <h2 class="text-5xl font-black uppercase mb-16 text-center">Our <span class="bg-blue-500 text-white px-3">Technology</span> Stack</h2>
+            
+            <div class="space-y-12">
+                <!-- Frontend -->
+                <div>
+                    <h3 class="text-2xl font-black uppercase mb-6 border-b-4 border-black inline-block">Frontend & Design</h3>
+                    <div class="flex flex-wrap gap-6">
+                        <div class="tech-card"><i class="fa-brands fa-html5 text-orange-600 text-2xl"></i> HTML5</div>
+                        <div class="tech-card"><i class="fa-brands fa-css3-alt text-blue-600 text-2xl"></i> CSS3</div>
+                        <div class="tech-card"><i class="fa-brands fa-js text-yellow-500 text-2xl"></i> JAVASCRIPT</div>
+                        <div class="tech-card"><i class="fa-solid fa-wind text-cyan-500 text-2xl"></i> TAILWIND CSS</div>
+                        <div class="tech-card"><i class="fa-brands fa-bootstrap text-purple-700 text-2xl"></i> BOOTSTRAP</div>
+                        <div class="tech-card"><i class="fa-brands fa-react text-cyan-400 text-2xl"></i> REACT.JS</div>
+                    </div>
+                </div>
 
+                <!-- Backend & Mobile -->
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mb-6 border-b-4 border-black inline-block">Backend / Server</h3>
+                        <div class="flex flex-wrap gap-4">
+                            <div class="tech-card"><i class="fa-brands fa-php text-indigo-600 text-2xl"></i> PHP</div>
+                            <div class="tech-card"><i class="fa-brands fa-laravel text-red-600 text-2xl"></i> LARAVEL</div>
+                            <div class="tech-card"><i class="fa-brands fa-node-js text-green-600 text-2xl"></i> NODE.JS</div>
+                            <div class="tech-card"><i class="fa-brands fa-python text-blue-500 text-2xl"></i> PYTHON</div>
+                            <div class="tech-card"><i class="fa-solid fa-code text-green-700 text-2xl"></i> DJANGO</div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-black uppercase mb-6 border-b-4 border-black inline-block">Mobile Apps</h3>
+                        <div class="flex flex-wrap gap-4">
+                            <div class="tech-card"><i class="fa-solid fa-mobile-screen-button text-blue-400 text-2xl"></i> FLUTTER</div>
+                            <div class="tech-card"><i class="fa-brands fa-react text-blue-600 text-2xl"></i> REACT NATIVE</div>
+                            <div class="tech-card"><i class="fa-brands fa-android text-green-500 text-2xl"></i> ANDROID</div>
+                            <div class="tech-card"><i class="fa-brands fa-apple text-black text-2xl"></i> IOS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-24 px-6 bg-slate-100">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl md:text-7xl font-black uppercase mb-20 text-black">What We <span class="text-pink-600">Provide</span></h2>
             <div class="grid md:grid-cols-3 gap-10">
-                <!-- Service 1 -->
-                <div class="brutalist-card p-10 bg-blue-100 flex flex-col items-start">
-                    <div class="w-20 h-20 bg-black text-white border-4 border-black flex items-center justify-center mb-8 rotate-[-5deg] shadow-[4px_4px_0px_0px_#3b82f6]">
-                        <i class="fa-solid fa-laptop-code text-4xl"></i>
+                <div class="brutalist-card p-10 bg-blue-50">
+                    <div class="w-16 h-16 bg-black text-white border-4 border-black flex items-center justify-center mb-8 rotate-[-5deg]">
+                        <i class="fa-solid fa-laptop-code text-3xl"></i>
                     </div>
-                    <h3 class="text-3xl font-black uppercase mb-4 leading-none">Web Design & Dev</h3>
-                    <p class="font-bold text-lg mb-8 leading-tight">Premium websites for Schools, Hospitals & E-commerce. High speed, low price.</p>
-                    <div class="mt-auto font-black uppercase text-xs border-t-2 border-black pt-4 w-full">Starting @ Affordable Rates</div>
+                    <h3 class="text-3xl font-black uppercase mb-4 leading-none">Web Ecosystems</h3>
+                    <p class="font-bold text-lg mb-8">High-performance websites using React, Tailwind & Laravel for maximum speed.</p>
+                    <div class="mt-auto font-black uppercase text-xs border-t-2 border-black pt-4">Schools • Hospitals • Ecom</div>
                 </div>
-
-                <!-- Service 2 -->
-                <div class="brutalist-card p-10 bg-green-100 flex flex-col items-start">
-                    <div class="w-20 h-20 bg-black text-white border-4 border-black flex items-center justify-center mb-8 rotate-[5deg] shadow-[4px_4px_0px_0px_#22c55e]">
-                        <i class="fa-solid fa-mobile-button text-4xl"></i>
+                <div class="brutalist-card p-10 bg-green-50">
+                    <div class="w-16 h-16 bg-black text-white border-4 border-black flex items-center justify-center mb-8 rotate-[5deg]">
+                        <i class="fa-solid fa-mobile-button text-3xl"></i>
                     </div>
-                    <h3 class="text-3xl font-black uppercase mb-4 leading-none">Android & iOS App</h3>
-                    <p class="font-bold text-lg mb-8 leading-tight">Full-stack mobile applications for businesses and startups. iOS & Android ready.</p>
-                    <div class="mt-auto font-black uppercase text-xs border-t-2 border-black pt-4 w-full">Native Experience</div>
+                    <h3 class="text-3xl font-black uppercase mb-4 leading-none">Mobile Apps</h3>
+                    <p class="font-bold text-lg mb-8">Native experience apps for Android and iOS using Flutter and React Native.</p>
+                    <div class="mt-auto font-black uppercase text-xs border-t-2 border-black pt-4">Business • Social • Tools</div>
                 </div>
-
-                <!-- Service 3 -->
-                <div class="brutalist-card p-10 bg-purple-100 flex flex-col items-start">
-                    <div class="w-20 h-20 bg-black text-white border-4 border-black flex items-center justify-center mb-8 shadow-[4px_4px_0px_0px_#a855f7]">
-                        <i class="fa-solid fa-bullhorn text-4xl"></i>
+                <div class="brutalist-card p-10 bg-purple-50">
+                    <div class="w-16 h-16 bg-black text-white border-4 border-black flex items-center justify-center mb-8">
+                        <i class="fa-solid fa-bullhorn text-3xl"></i>
                     </div>
-                    <h3 class="text-3xl font-black uppercase mb-4 leading-none">Digital Marketing</h3>
-                    <p class="font-bold text-lg mb-8 leading-tight">Social Media, Ads & SEO. Perfect for Instagram Business Owners.</p>
-                    <div class="mt-auto font-black uppercase text-xs border-t-2 border-black pt-4 w-full">Sales Focused</div>
+                    <h3 class="text-3xl font-black uppercase mb-4 leading-none">Digital Ads</h3>
+                    <p class="font-bold text-lg mb-8">Growth-driven marketing for Instagram businesses and local startups.</p>
+                    <div class="mt-auto font-black uppercase text-xs border-t-2 border-black pt-4">SEO • SMM • PPC</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Expertise Badges -->
-    <section class="py-24 px-6 bg-black text-white overflow-hidden border-y-4 border-black">
+    <!-- Projects -->
+    <section id="work" class="py-24 px-6 bg-white">
         <div class="max-w-7xl mx-auto">
-            <h3 class="text-3xl font-black uppercase mb-12 text-center text-yellow-400">Our Specializations</h3>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
-                <div class="group">
-                    <div class="text-7xl mb-4">🏫</div>
-                    <div class="font-black uppercase text-sm tracking-widest">Schools</div>
-                </div>
-                <div class="group">
-                    <div class="text-7xl mb-4">🏥</div>
-                    <div class="font-black uppercase text-sm tracking-widest">Hospitals</div>
-                </div>
-                <div class="group">
-                    <div class="text-7xl mb-4">🧪</div>
-                    <div class="font-black uppercase text-sm tracking-widest">Diagnostic Labs</div>
-                </div>
-                <div class="group">
-                    <div class="text-7xl mb-4">🛍️</div>
-                    <div class="font-black uppercase text-sm tracking-widest">E-commerce</div>
-                </div>
-                <div class="group">
-                    <div class="text-7xl mb-4">📸</div>
-                    <div class="font-black uppercase text-sm tracking-widest">Instagram Brands</div>
-                </div>
-                <div class="group">
-                    <div class="text-7xl mb-4">🚀</div>
-                    <div class="font-black uppercase text-sm tracking-widest">Small Startups</div>
-                </div>
-                <div class="group">
-                    <div class="text-7xl mb-4">🏠</div>
-                    <div class="font-black uppercase text-sm tracking-widest">Real Estate</div>
-                </div>
-                <div class="group">
-                    <div class="text-7xl mb-4">👤</div>
-                    <div class="font-black uppercase text-sm tracking-widest">Personal Portfolios</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Work Portfolio -->
-    <section id="work" class="py-24 px-6 bg-pink-100">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between md:items-center mb-16 gap-4">
-                <h2 class="text-5xl font-black uppercase">Our Projects</h2>
-                <div class="h-2 bg-black flex-grow hidden md:block"></div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12 text-left">
-                <!-- Project 1: Best Auto Sales -->
+            <h2 class="text-5xl font-black uppercase mb-16">Project <span class="bg-pink-400 text-white px-2">We have done</span></h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Best Auto -->
                 <div class="brutalist-card overflow-hidden flex flex-col bg-white">
-                    <div class="h-64 border-b-4 border-black bg-white flex items-center justify-center p-4">
-                        <img src="https://bestautosales.in/assets/images/logo-1763901744.jpeg" alt="Best Auto Sales" class="max-h-full max-w-full object-contain">
+                    <div class="h-64 border-b-4 border-black bg-white flex items-center justify-center p-8">
+                        <img src="https://bestautosales.in/assets/images/logo-1763901744.jpeg" alt="Best Auto" class="max-h-full max-w-full object-contain">
                     </div>
                     <div class="p-8 flex-grow">
-                        <div class="font-black uppercase text-2xl underline decoration-4 underline-offset-4"><a href="https://BestAutoSales.in" target="_blank">Best Auto Sales</a></div>
-                        <p class="font-bold mt-4 text-slate-700">Premium 2nd Hand Car Marketplace. Buy & Sell with confidence in a modern digital environment.</p>
+                        <div class="font-black uppercase text-2xl"><a href="https://BestAutoSales.in" target="_blank" class="underline decoration-4">Best Auto Sales</a></div>
+                        <p class="font-bold mt-4 text-slate-600 uppercase">Premium 2nd Hand Car Marketplace. Digital buying/selling ecosystem.</p>
                     </div>
                 </div>
-                <!-- Project 2: Umeed International School -->
+                <!-- Umeed School -->
                 <div class="brutalist-card overflow-hidden flex flex-col bg-white">
-                    <div class="h-64 border-b-4 border-black bg-white flex items-center justify-center p-4">
-                        <img src="https://www.umeedinternationalschool.com/assets/uploads/settings/6941859ec6ccb_1765901726.jpeg" alt="Umeed School" class="max-h-full max-w-full object-contain">
+                    <div class="h-64 border-b-4 border-black bg-white flex items-center justify-center p-8">
+                        <img src="https://www.umeedinternationalschool.com/assets/uploads/settings/6941859ec6ccb_1765901726.jpeg" alt="Umeed" class="max-h-full max-w-full object-contain">
                     </div>
                     <div class="p-8 flex-grow">
-                        <div class="font-black uppercase text-2xl underline decoration-4 underline-offset-4"><a href="https://www.umeedinternationalschool.com/" target="_blank">Umeed International School</a></div>
-                        <p class="font-bold mt-4 text-slate-700">Complete Educational Portal. Managing Student records, Staff communication & Fee systems.</p>
-                    </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="brutalist-card overflow-hidden flex flex-col bg-white">
-                    <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80&w=800" alt="Work" class="w-full border-b-4 border-black h-64 object-cover">
-                    <div class="p-8 flex-grow">
-                        <div class="font-black uppercase text-2xl">Global High Academy</div>
-                        <p class="font-bold mt-4 text-slate-700">Comprehensive School Management & Digital Identity project for local institutions.</p>
-                    </div>
-                </div>
-                <!-- Project 4 -->
-                <div class="brutalist-card overflow-hidden flex flex-col bg-white">
-                    <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800" alt="Work" class="w-full border-b-4 border-black h-64 object-cover">
-                    <div class="p-8 flex-grow">
-                        <div class="font-black uppercase text-2xl">Assam Health Link</div>
-                        <p class="font-bold mt-4 text-slate-700">Specialized Doctor Appointment & Record System designed for ease of use in medical centers.</p>
+                        <div class="font-black uppercase text-2xl"><a href="https://www.umeedinternationalschool.com/" target="_blank" class="underline decoration-4">Umeed Intl School</a></div>
+                        <p class="font-bold mt-4 text-slate-600 uppercase">Modern Education Portal. Management, Fees & Staff administration system.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CEO Message Section -->
-    <section id="ceo" class="py-24 px-6 bg-yellow-400 border-t-4 border-b-4 border-black">
+    <!-- CEO Section -->
+    <section id="ceo" class="py-24 px-6 bg-yellow-400 border-y-4 border-black">
         <div class="max-w-5xl mx-auto">
             <div class="brutalist-card p-8 md:p-12 bg-white flex flex-col md:flex-row gap-12 items-center">
                 <div class="shrink-0">
-                    <div class="w-64 h-64 bg-white border-4 border-black rotate-[-3deg] overflow-hidden shadow-[10px_10px_0px_0px_rgba(236,72,153,1)]">
+                    <div class="w-64 h-64 bg-white border-4 border-black rotate-[-3deg] overflow-hidden shadow-[10px_10px_0px_0px_#000]">
                         <img src="https://scontent.fgau1-5.fna.fbcdn.net/v/t39.30808-6/515269377_5050662165158417_1150055928318448519_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=KNQhPi44ym0Q7kNvwE3bD6F&_nc_oc=Adm8oyA18DLEZER1FUlWDohg4uu4NOFiRMJ3o2xze1Yp_F3ADHKpQEi4C__56H02bP5Vm7zkTM6oHLWU0S66Afmz&_nc_zt=23&_nc_ht=scontent.fgau1-5.fna&_nc_gid=3iueRwZiYhOYm0n3LWzjWQ&oh=00_Afmv8PivhYSRWpjtEdbitqHZzj30zTMO4gtc9gHv9j2NLQ&oe=695352BB" class="w-full h-full object-cover" alt="Mahmudul Hussain CEO" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Mahmudul'">
                     </div>
                 </div>
                 <div class="text-left">
                     <h2 class="text-4xl font-black uppercase mb-2">Message from CEO</h2>
                     <h3 class="text-2xl font-black uppercase text-pink-600 mb-6 tracking-tighter">Mahmudul Hussain</h3>
-                    <div class="border-l-8 border-black pl-8 italic bg-slate-50 py-4">
+                    <div class="border-l-8 border-black pl-8 italic bg-slate-50 py-4 shadow-[4px_4px_0px_0px_#000]">
                         <p class="text-2xl font-bold leading-tight mb-4 uppercase">
-                            "To our valued Customers and the Players in this digital era: We don't just build websites; we build digital empires."
+                            "To our valued Customers and the Players: We don't just build websites; we build digital empires."
                         </p>
-                        <p class="text-lg font-bold text-slate-700">
-                            Our mission at Offline2.Digital is to ensure your vision isn't just visible online, but dominant. Whether you are a small business owner or a global player, our commitment to best-in-class quality remains unshakable. Let's conquer the digital world together.
+                        <p class="text-lg font-bold text-slate-700 uppercase">
+                            OUR MISSION AT OFFLINE2.DIGITAL IS TO ENSURE YOUR VISION IS DOMINANT. WE PROVIDE BEST-IN-CLASS QUALITY FOR LOCAL PLAYERS AND GLOBAL DREAMS.
                         </p>
                     </div>
                 </div>
@@ -349,65 +335,41 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="py-24 px-6 bg-white text-black">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
-            <div class="brutalist-card p-8 bg-yellow-50 rotate-[-1deg] flex flex-col">
-                <div class="flex gap-1 mb-4 text-2xl">★★★★★</div>
-                <p class="font-black text-xl leading-tight flex-grow">"Converted my Instagram boutique into a real brand. Best decision for my growth!"</p>
-                <div class="mt-6 font-bold uppercase text-sm text-slate-600 border-t-2 border-black pt-4">- Ananya M., Business Owner</div>
-            </div>
-            <div class="brutalist-card p-8 bg-cyan-50 rotate-[1deg] flex flex-col">
-                <div class="flex gap-1 mb-4 text-2xl">★★★★★</div>
-                <p class="font-black text-xl leading-tight flex-grow">"The diagnostic lab portal is best in class. Efficient, clean, and very affordable."</p>
-                <div class="mt-6 font-bold uppercase text-sm text-slate-600 border-t-2 border-black pt-4">- Dr. S. Roy, Labs</div>
-            </div>
-            <div class="brutalist-card p-8 bg-pink-50 rotate-[-1deg] flex flex-col">
-                <div class="flex gap-1 mb-4 text-2xl">★★★★★</div>
-                <p class="font-black text-xl leading-tight flex-grow">"Our school website now manages everything automatically. Excellent service in Assam."</p>
-                <div class="mt-6 font-bold uppercase text-sm text-slate-600 border-t-2 border-black pt-4">- Principal, Sunrise School</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section id="contact" class="py-24 px-6 bg-blue-600">
-        <div class="max-w-4xl mx-auto brutalist-card p-8 md:p-16 bg-white">
-            <div class="grid md:grid-cols-2 gap-16 text-black">
-                <div class="text-left">
+        <div class="max-w-4xl mx-auto brutalist-card p-8 md:p-16 bg-white text-black">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
                     <h2 class="text-5xl font-black uppercase mb-8">Let's Talk</h2>
                     <div class="space-y-6 font-black uppercase tracking-tight">
-                        <div class="flex items-center gap-4 text-left">
+                        <div class="flex items-start gap-4">
                             <div class="text-3xl">📍</div>
-                            <div>
+                            <div class="text-sm">
                                 <p>Sonai Town, Ward No-1</p>
                                 <p>Sair Ali Building, Cachar, Assam</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-4">
                             <div class="text-3xl">📞</div>
-                            <p>+91 8889997841</p>
+                            <p class="text-lg">+91 8889997841</p>
                         </div>
                         <div class="flex items-center gap-4">
                             <div class="text-3xl">📧</div>
-                            <p>hello@offline2.digital</p>
+                            <p class="text-lg">hello@offline2.digital</p>
                         </div>
                     </div>
                 </div>
-                
-                <form id="contactForm" class="flex flex-col gap-6 text-left">
+                <form id="contactForm" class="flex flex-col gap-6">
                     <input name="name" type="text" placeholder="YOUR NAME" required class="brutalist-input uppercase w-full">
                     <input name="email" type="email" placeholder="EMAIL ADDRESS" required class="brutalist-input uppercase w-full">
                     <select name="service" class="brutalist-input uppercase w-full bg-white">
                         <option>WEB DESIGN</option>
                         <option>APP DEV</option>
                         <option>MARKETING</option>
-                        <option>E-COMMERCE</option>
                     </select>
-                    <textarea name="message" rows="4" placeholder="DESCRIBE YOUR PROJECT" required class="brutalist-input uppercase w-full"></textarea>
-                    
+                    <textarea name="message" rows="4" placeholder="DESCRIBE PROJECT" required class="brutalist-input uppercase w-full"></textarea>
                     <button type="submit" id="submitBtn" class="brutalist-btn bg-yellow-400 py-5 text-xl flex items-center justify-center gap-4">
-                        <span id="btnText">Send Inquiry</span>
+                        <span id="btnText">Inquiry Now</span>
                         <div id="loader" class="spinner"></div>
                         <i id="btnIcon" class="fa-solid fa-bolt"></i>
                     </button>
@@ -418,16 +380,16 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 bg-white border-t-4 border-black px-6">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
-            <div class="flex items-center">
+    <footer class="py-12 bg-white border-t-4 border-black px-6 text-black">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div>
                 <a href="#home" class="brand-logo text-2xl">
                     <span class="logo-part-1">Offline2.</span><span class="logo-part-2">Digital</span>
                 </a>
             </div>
             <div class="flex gap-8 text-3xl">
-                <a href="#" class="hover:rotate-12 transition-transform duration-300"><i class="fa-brands fa-square-facebook"></i></a>
-                <a href="#" class="hover:-rotate-12 transition-transform duration-300"><i class="fa-brands fa-square-instagram"></i></a>
+                <a href="#" class="hover:rotate-12 transition-transform duration-300"><i class="fa-brands fa-square-facebook text-black"></i></a>
+                <a href="#" class="hover:-rotate-12 transition-transform duration-300"><i class="fa-brands fa-square-instagram text-black"></i></a>
                 <a href="https://wa.me/918889997841" class="hover:rotate-12 transition-transform duration-300 text-green-600"><i class="fa-brands fa-square-whatsapp"></i></a>
             </div>
             <div class="font-black uppercase text-sm bg-black text-white px-3 py-1 border-2 border-black">
@@ -436,14 +398,13 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
+    <!-- Floating WhatsApp -->
     <a href="https://wa.me/918889997841" class="whatsapp-float" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
+        <i class="fa-brands fa-whatsapp text-white"></i>
     </a>
 
     <script>
         const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6IBjGS_fQ075JD0PK03W2IUSPOYdGMS2E-iU2kLBP4SnGLoPeST4LQRUq54xquT81pA/exec";
-
         const menuBtn = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         const contactForm = document.getElementById('contactForm');
@@ -464,34 +425,27 @@
             btnIcon.style.display = "none";
             loader.style.display = "block";
             formStatus.classList.add('hidden');
-
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData.entries());
-
             try {
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    body: JSON.stringify(data)
-                });
+                const response = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(data) });
                 const result = await response.json();
-                
                 if (result.result === "success") {
-                    formStatus.innerText = "SUCCESS! WE WILL CONTACT YOU!";
+                    formStatus.innerText = "SUCCESS! DATA RECORDED.";
                     formStatus.className = "mt-4 text-center font-black text-green-600 block uppercase";
                     contactForm.reset();
                 } else { throw new Error(); }
             } catch (error) {
-                formStatus.innerText = "THANKS! INQUIRY RECEIVED!";
+                formStatus.innerText = "THANK YOU! LEAD RECEIVED.";
                 formStatus.className = "mt-4 text-center font-black text-green-600 block uppercase";
                 contactForm.reset();
             } finally {
                 submitBtn.disabled = false;
-                btnText.innerText = "SEND INQUIRY";
+                btnText.innerText = "INQUIRY NOW";
                 btnIcon.style.display = "inline";
                 loader.style.display = "none";
             }
         });
-
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
         });

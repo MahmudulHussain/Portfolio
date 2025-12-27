@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -31,6 +32,7 @@
             font-weight: 900;
             text-transform: uppercase;
             transition: all 0.1s ease;
+            cursor: pointer;
         }
         .brutalist-btn:hover {
             transform: translate(-2px, -2px);
@@ -126,15 +128,63 @@
             display: inline-block;
         }
 
-        /* Remove All Image Hover Effects */
-        img, .brutalist-card img {
-            filter: none !important;
-            transform: none !important;
-            transition: none !important;
+        /* Spinner for Form */
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0,0,0,0.1);
+            border-radius: 50%;
+            border-top-color: #000;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Modal Backdrop */
+        #successModal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(4px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Service Tag Styling */
+        .service-tag {
+            background: #fff;
+            border: 2px solid #000;
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            box-shadow: 2px 2px 0px 0px #000;
         }
     </style>
 </head>
 <body class="overflow-x-hidden pt-20">
+
+    <!-- Success Popup Modal -->
+    <div id="successModal">
+        <div class="brutalist-card bg-white p-8 max-w-lg w-full text-center relative rotate-[-1deg]">
+            <div class="w-20 h-20 bg-green-500 text-white border-4 border-black flex items-center justify-center mx-auto mb-6 rotate-[5deg] shadow-[6px_6px_0px_0px_#000]">
+                <i class="fa-solid fa-check text-4xl"></i>
+            </div>
+            <h2 class="text-4xl font-black uppercase mb-4">Message Received!</h2>
+            <p class="text-xl font-bold mb-6 uppercase leading-tight">
+                Thank you for reaching out! Our team will get back to you shortly.
+            </p>
+            <div class="bg-yellow-100 border-4 border-black p-4 mb-8 rotate-[1deg]">
+                <p class="font-black uppercase text-sm mb-2">🚨 Is it very urgent?</p>
+                <p class="text-2xl font-black">CALL OR WHATSAPP</p>
+                <a href="tel:+918889997841" class="text-2xl font-black text-pink-600 underline">+91 8889997841</a>
+            </div>
+            <button onclick="closeModal()" class="brutalist-btn w-full py-4 text-xl">Got it, thanks!</button>
+        </div>
+    </div>
 
     <!-- Navbar -->
     <nav class="fixed top-0 w-full z-50 bg-white border-b-4 border-black">
@@ -147,6 +197,7 @@
             <div class="hidden md:flex items-center gap-8 font-black uppercase text-sm">
                 <a href="#services" class="hover:underline decoration-4 underline-offset-4">Services</a>
                 <a href="#work" class="hover:underline decoration-4 underline-offset-4">Portfolios</a>
+                <a href="#reviews" class="hover:underline decoration-4 underline-offset-4">Reviews</a>
                 <a href="#tech" class="hover:underline decoration-4 underline-offset-4">Tech</a>
                 <a href="#contact" class="brutalist-btn px-6 py-2 bg-pink-400">Contact</a>
             </div>
@@ -158,8 +209,8 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white border-b-4 border-black p-6 space-y-4 font-black uppercase shadow-xl">
             <a href="#services" class="block text-xl">Services</a>
             <a href="#work" class="block text-xl">Work</a>
+            <a href="#reviews" class="block text-xl">Reviews</a>
             <a href="#tech" class="block text-xl">Tech</a>
-            <a href="#ceo" class="block text-xl">CEO Msg</a>
             <a href="#contact" class="block text-xl text-pink-600 border-t-2 border-black pt-2">Get Quote</a>
         </div>
     </nav>
@@ -207,9 +258,7 @@
     <section id="tech" class="py-24 px-6 bg-white border-b-4 border-black">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-5xl font-black uppercase mb-16 text-center">Our <span class="bg-blue-500 text-white px-3">Technology</span> Stack</h2>
-            
             <div class="space-y-12">
-                <!-- Frontend -->
                 <div>
                     <h3 class="text-2xl font-black uppercase mb-6 border-b-4 border-black inline-block">Frontend & Design</h3>
                     <div class="flex flex-wrap gap-6">
@@ -222,7 +271,6 @@
                     </div>
                 </div>
 
-                <!-- Backend & Mobile -->
                 <div class="grid md:grid-cols-2 gap-12">
                     <div>
                         <h3 class="text-2xl font-black uppercase mb-6 border-b-4 border-black inline-block">Backend / Server</h3>
@@ -249,44 +297,67 @@
     </section>
 
     <!-- Services -->
-    <section id="services" class="py-24 px-6 bg-slate-100">
+    <section id="services" class="py-24 px-6 bg-slate-100 border-b-4 border-black">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-5xl md:text-7xl font-black uppercase mb-20 text-black">What We <span class="text-pink-600">Provide</span></h2>
-            <div class="grid md:grid-cols-3 gap-10">
-                <div class="brutalist-card p-10 bg-blue-50">
-                    <div class="w-16 h-16 bg-black text-white border-4 border-black flex items-center justify-center mb-8 rotate-[-5deg]">
+            <div class="mb-20">
+                <span class="bg-black text-white px-4 py-2 font-black uppercase text-sm tracking-widest mb-4 inline-block">Expertise</span>
+                <h2 class="text-6xl md:text-8xl font-black uppercase leading-none text-black">What We <span class="text-pink-600">Provide</span></h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-12">
+                <!-- Service Card 1 -->
+                <div class="brutalist-card p-10 bg-white relative group">
+                    <div class="absolute -top-6 -right-6 w-20 h-20 bg-blue-500 border-4 border-black flex items-center justify-center font-black text-4xl text-white group-hover:rotate-12 transition-transform">01</div>
+                    <div class="w-16 h-16 bg-blue-100 border-4 border-black flex items-center justify-center mb-8 rotate-[-5deg]">
                         <i class="fa-solid fa-laptop-code text-3xl"></i>
                     </div>
-                    <h3 class="text-3xl font-black uppercase mb-4 leading-none">Web Ecosystems</h3>
-                    <p class="font-bold text-lg mb-8">High-performance websites using React, Tailwind & Laravel for maximum speed.</p>
-                    <div class="mt-auto font-black uppercase text-xs border-t-2 border-black pt-4">Schools • Hospitals • Ecom</div>
+                    <h3 class="text-3xl font-black uppercase mb-6 leading-tight">Web Design & Development</h3>
+                    <p class="font-bold text-lg mb-10 text-slate-700">Crafting modern, responsive, and SEO-optimized websites using React, Tailwind, and Laravel for maximum speed and performance.</p>
+                    <div class="flex flex-wrap gap-3 mt-auto">
+                        <span class="service-tag">Corporate</span>
+                        <span class="service-tag">E-commerce</span>
+                        <span class="service-tag">Portfolios</span>
+                    </div>
                 </div>
-                <div class="brutalist-card p-10 bg-green-50">
-                    <div class="w-16 h-16 bg-black text-white border-4 border-black flex items-center justify-center mb-8 rotate-[5deg]">
+
+                <!-- Service Card 2 -->
+                <div class="brutalist-card p-10 bg-white relative group md:translate-y-8">
+                    <div class="absolute -top-6 -right-6 w-20 h-20 bg-green-500 border-4 border-black flex items-center justify-center font-black text-4xl text-white group-hover:-rotate-12 transition-transform">02</div>
+                    <div class="w-16 h-16 bg-green-100 border-4 border-black flex items-center justify-center mb-8 rotate-[5deg]">
                         <i class="fa-solid fa-mobile-button text-3xl"></i>
                     </div>
-                    <h3 class="text-3xl font-black uppercase mb-4 leading-none">Mobile Apps</h3>
-                    <p class="font-bold text-lg mb-8">Native experience apps for Android and iOS using Flutter and React Native.</p>
-                    <div class="mt-auto font-black uppercase text-xs border-t-2 border-black pt-4">Business • Social • Tools</div>
+                    <h3 class="text-3xl font-black uppercase mb-6 leading-tight">App Development</h3>
+                    <p class="font-bold text-lg mb-10 text-slate-700">Building high-performance, native-quality applications for iOS and Android using cross-platform tools like Flutter and React Native.</p>
+                    <div class="flex flex-wrap gap-3 mt-auto">
+                        <span class="service-tag">iOS</span>
+                        <span class="service-tag">Android</span>
+                        <span class="service-tag">Custom UI</span>
+                    </div>
                 </div>
-                <div class="brutalist-card p-10 bg-purple-50">
-                    <div class="w-16 h-16 bg-black text-white border-4 border-black flex items-center justify-center mb-8">
+
+                <!-- Service Card 3 -->
+                <div class="brutalist-card p-10 bg-white relative group">
+                    <div class="absolute -top-6 -right-6 w-20 h-20 bg-purple-500 border-4 border-black flex items-center justify-center font-black text-4xl text-white group-hover:rotate-6 transition-transform">03</div>
+                    <div class="w-16 h-16 bg-purple-100 border-4 border-black flex items-center justify-center mb-8">
                         <i class="fa-solid fa-bullhorn text-3xl"></i>
                     </div>
-                    <h3 class="text-3xl font-black uppercase mb-4 leading-none">Digital Ads</h3>
-                    <p class="font-bold text-lg mb-8">Growth-driven marketing for Instagram businesses and local startups.</p>
-                    <div class="mt-auto font-black uppercase text-xs border-t-2 border-black pt-4">SEO • SMM • PPC</div>
+                    <h3 class="text-3xl font-black uppercase mb-6 leading-tight">Digital Marketing</h3>
+                    <p class="font-bold text-lg mb-10 text-slate-700">Scaling your brand presence with data-driven SEO strategies, Social Media Marketing, and high-ROI targeted PPC campaigns.</p>
+                    <div class="flex flex-wrap gap-3 mt-auto">
+                        <span class="service-tag">SEO</span>
+                        <span class="service-tag">SMM</span>
+                        <span class="service-tag">Ads</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Projects -->
-    <section id="work" class="py-24 px-6 bg-white">
+    <section id="work" class="py-24 px-6 bg-white border-b-4 border-black">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-5xl font-black uppercase mb-16">Project <span class="bg-pink-400 text-white px-2">We have done</span></h2>
+            <h2 class="text-5xl font-black uppercase mb-16">Project <span class="bg-pink-400 text-white px-2 shadow-[4px_4px_0px_0px_#000]">We have done</span></h2>
             <div class="grid md:grid-cols-2 gap-12">
-                <!-- Best Auto -->
                 <div class="brutalist-card overflow-hidden flex flex-col bg-white">
                     <div class="h-64 border-b-4 border-black bg-white flex items-center justify-center p-8">
                         <img src="https://bestautosales.in/assets/images/logo-1763901744.jpeg" alt="Best Auto" class="max-h-full max-w-full object-contain">
@@ -296,7 +367,6 @@
                         <p class="font-bold mt-4 text-slate-600 uppercase">Premium 2nd Hand Car Marketplace. Digital buying/selling ecosystem.</p>
                     </div>
                 </div>
-                <!-- Umeed School -->
                 <div class="brutalist-card overflow-hidden flex flex-col bg-white">
                     <div class="h-64 border-b-4 border-black bg-white flex items-center justify-center p-8">
                         <img src="https://www.umeedinternationalschool.com/assets/uploads/settings/6941859ec6ccb_1765901726.jpeg" alt="Umeed" class="max-h-full max-w-full object-contain">
@@ -310,13 +380,72 @@
         </div>
     </section>
 
+    <!-- Reviews -->
+    <section id="reviews" class="py-24 px-6 bg-slate-100 border-b-4 border-black">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-5xl font-black uppercase mb-16">What <span class="bg-green-400 text-black px-3 shadow-[6px_6px_0px_0px_#000] border-4 border-black">Clients Say</span></h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="brutalist-card p-8 bg-white flex flex-col">
+                    <div class="flex gap-1 mb-4">
+                        <i class="fa-solid fa-star text-yellow-500"></i>
+                        <i class="fa-solid fa-star text-yellow-500"></i>
+                        <i class="fa-solid fa-star text-yellow-500"></i>
+                        <i class="fa-solid fa-star text-yellow-500"></i>
+                        <i class="fa-solid fa-star text-yellow-500"></i>
+                    </div>
+                    <p class="font-bold text-xl uppercase leading-tight mb-8">"Offline2.Digital transformed our car showroom into a digital hub. Our leads increased by 200% in the first month!"</p>
+                    <div class="mt-auto flex items-center gap-4 border-t-4 border-black pt-6">
+                        <img src="https://scontent.fgau1-4.fna.fbcdn.net/v/t1.6435-9/80293564_1030904350605309_7831771395653632000_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=kcaMSQuDTRYQ7kNvwFall1i&_nc_oc=AdmLWCa8wAQFTgrPZXZeznhzEV4Nm4L4Uigh-8bJFKNOeYq4BGl0tfI4XA6PcFzp9LsgU0YdtjUwZyyt-44Z_Drq&_nc_zt=23&_nc_ht=scontent.fgau1-4.fna&_nc_gid=uN-pB5f1B4F3bCLYmWBIfQ&oh=00_AflJafQGsyXl1VUfLmKZxIRBLYqhdXP6TLL5t4meQNsDzw&oe=69764C88" class="w-14 h-14 border-2 border-black bg-yellow-400 object-cover" alt="Shavej Choudhury">
+                        <div>
+                            <div class="font-black uppercase text-sm">Shavej Choudhury</div>
+                            <div class="font-bold text-xs text-pink-600 uppercase">Owner, Best Auto Sales</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="brutalist-card p-8 bg-white flex flex-col rotate-[-1deg]">
+                    <div class="flex gap-1 mb-4">
+                        <i class="fa-solid fa-star text-yellow-500"></i>
+                        <i class="fa-solid fa-star text-yellow-500"></i>
+                        <i class="fa-solid fa-star text-yellow-500"></i>
+                        <i class="fa-solid fa-star text-yellow-500"></i>
+                        <i class="fa-solid fa-star text-yellow-500"></i>
+                    </div>
+                    <p class="font-bold text-xl uppercase leading-tight mb-8">"The school management system they built is flawless. It handled our entire admission cycle without a single glitch."</p>                    <div class="mt-auto flex items-center gap-4 border-t-4 border-black pt-6">
+                        <img src="https://www.umeedinternationalschool.com/assets/uploads/messages/69418f60cb12a_1765904224.jpeg" class="w-14 h-14 border-2 border-black bg-blue-400 object-cover" alt="Md Hanif Barbhuiya">
+                        <div>
+                            <div class="font-black uppercase text-sm">Md Hanif Barbhuiya</div>
+                            <div class="font-bold text-xs text-pink-600 uppercase">Umeed Intl School</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="brutalist-card p-8 bg-white flex flex-col rotate-[1deg]">
+                    <div class="flex gap-1 mb-4">
+                        <i class="fa-solid fa-star text-yellow-500"></i>
+                        <i class="fa-solid fa-star text-yellow-500"></i>
+                        <i class="fa-solid fa-star text-yellow-500"></i>
+                        <i class="fa-solid fa-star text-yellow-500"></i>
+                        <i class="fa-solid fa-star text-yellow-400/30"></i>
+                    </div>
+                    <p class="font-bold text-xl uppercase leading-tight mb-8">"Best tech partner in Cachar. They understand the local market and deliver global quality. Highly recommended for startups."</p>
+                    <div class="mt-auto flex items-center gap-4 border-t-4 border-black pt-6">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Ankit" class="w-14 h-14 border-2 border-black bg-purple-400" alt="Client">
+                        <div>
+                            <div class="font-black uppercase text-sm">Ankit Mazumdar</div>
+                            <div class="font-bold text-xs text-pink-600 uppercase">Founder, AssamMart</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CEO Section -->
-    <section id="ceo" class="py-24 px-6 bg-yellow-400 border-y-4 border-black">
+    <section id="ceo" class="py-24 px-6 bg-yellow-400 border-b-4 border-black">
         <div class="max-w-5xl mx-auto">
             <div class="brutalist-card p-8 md:p-12 bg-white flex flex-col md:flex-row gap-12 items-center">
                 <div class="shrink-0">
                     <div class="w-64 h-64 bg-white border-4 border-black rotate-[-3deg] overflow-hidden shadow-[10px_10px_0px_0px_#000]">
-                        <img src="https://scontent.fgau1-1.fna.fbcdn.net/v/t51.82787-15/555012273_18484042909079834_3419408323581448439_n.webp?stp=dst-jpg_tt6&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=eIY_SffVDfcQ7kNvwFuXlqu&_nc_oc=Admg9oqaRAXSLT0O5Np__l616iOpxGXPg5uSUAHb0Rld56V1qWUDGwp1xzzOjA7Vi1BdNoAmDr5dN1lxT1EookOZ&_nc_zt=23&_nc_ht=scontent.fgau1-1.fna&_nc_gid=f0brZCkCnXmTfr6VXd6TQA&oh=00_AfkTZ9GtNfl_kCRp_kxKBuS-DxlTqUEPnN4irjE7SP4-lQ&oe=695400CC" class="w-full h-full object-cover" alt="Mahmudul Hussain CEO" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Mahmudul'">
+                        <img src="https://offline2.digital/ceo.png" class="w-full h-full object-cover" alt="CEO" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Mahmudul'">
                     </div>
                 </div>
                 <div class="text-left">
@@ -413,6 +542,17 @@
         const btnIcon = document.getElementById('btnIcon');
         const loader = document.getElementById('loader');
         const formStatus = document.getElementById('formStatus');
+        const successModal = document.getElementById('successModal');
+
+        function showModal() {
+            successModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            successModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
 
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
@@ -425,20 +565,24 @@
             btnIcon.style.display = "none";
             loader.style.display = "block";
             formStatus.classList.add('hidden');
+            
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData.entries());
+
             try {
-                const response = await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(data) });
+                const response = await fetch(SCRIPT_URL, { 
+                    method: 'POST', 
+                    body: JSON.stringify(data) 
+                });
                 const result = await response.json();
+                
                 if (result.result === "success") {
-                    formStatus.innerText = "SUCCESS! DATA RECORDED.";
-                    formStatus.className = "mt-4 text-center font-black text-green-600 block uppercase";
                     contactForm.reset();
+                    showModal();
                 } else { throw new Error(); }
             } catch (error) {
-                formStatus.innerText = "THANK YOU! LEAD RECEIVED.";
-                formStatus.className = "mt-4 text-center font-black text-green-600 block uppercase";
                 contactForm.reset();
+                showModal();
             } finally {
                 submitBtn.disabled = false;
                 btnText.innerText = "INQUIRY NOW";
@@ -446,8 +590,17 @@
                 loader.style.display = "none";
             }
         });
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+
+        document.querySelectorAll('#mobile-menu a, nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                if(!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
         });
     </script>
 </body>

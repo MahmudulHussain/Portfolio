@@ -1,607 +1,767 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10869442145"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-10869442145');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Offline2.Digital | Leading Digital Agency Assam</title>
+    <title>Working Weekends | Brands Win Big</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { 
-            font-family: 'Public Sans', sans-serif; 
-            background-color: #f3f4f6;
-            color: #000;
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+        :root {
+            --brand-primary: #0f172a;
+            --brand-accent: #6366f1;
+            --brand-secondary: #a855f7;
+            --brand-cyan: #22d3ee;
         }
-        /* Neo-Brutalism Design System */
-        .brutalist-card {
-            background: white;
-            border: 4px solid #000;
-            box-shadow: 8px 8px 0px 0px #000;
-            transition: transform 0.1s ease, box-shadow 0.1s ease;
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+            overflow-x: hidden;
         }
-        .brutalist-card:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 10px 10px 0px 0px #000;
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -0.02em;
         }
-        .brutalist-btn {
-            background: #facc15; /* Brand Yellow */
-            border: 4px solid #000;
-            box-shadow: 4px 4px 0px 0px #000;
-            font-weight: 900;
-            text-transform: uppercase;
-            transition: all 0.1s ease;
+
+        .gradient-text {
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #22d3ee 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradientMove 5s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .blob {
+            position: absolute;
+            width: clamp(250px, 50vw, 800px);
+            height: clamp(250px, 50vw, 800px);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(168, 85, 247, 0.15));
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: -1;
+            animation: orbit 25s linear infinite;
+            will-change: transform;
+        }
+
+        @keyframes orbit {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(5vw, 5vh) scale(1.1); }
+            66% { transform: translate(-3vw, 10vh) scale(0.95); }
+            100% { transform: translate(0, 0) scale(1); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .marquee {
+            display: flex;
+            overflow: hidden;
+            user-select: none;
+            gap: 2rem;
+        }
+
+        .marquee-content {
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-around;
+            min-width: 100%;
+            gap: 3rem;
+            animation: scroll 30s linear infinite;
+        }
+
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-100%); }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6), 0 0 30px rgba(99, 102, 241, 0.15);
+        }
+
+        .btn-vibrant {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: none;
             cursor: pointer;
         }
-        .brutalist-btn:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 6px 6px 0px 0px #000;
+
+        .btn-vibrant::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+            transition: 0.6s;
         }
-        .brutalist-btn:active {
-            transform: translate(2px, 2px);
-            box-shadow: 0px 0px 0px 0px #000;
+
+        .btn-vibrant:hover::before {
+            left: 100%;
         }
-        .brutalist-input {
-            border: 4px solid #000;
-            padding: 1rem;
-            background: white;
-            font-weight: 700;
+
+        .btn-vibrant:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px -10px rgba(99, 102, 241, 0.7);
+        }
+
+        .btn-vibrant:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-input {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 1rem 1.25rem;
+            border-radius: 1rem;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
             outline: none;
+            border-color: var(--brand-accent);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
         }
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #22c55e;
-            border: 4px solid #000;
-            box-shadow: 6px 6px 0px 0px #000;
-            z-index: 1000;
-            width: 70px;
-            height: 70px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 35px;
-            color: white;
-            transition: 0.2s;
+
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; border: 2px solid #020617; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        .stat-image {
+            filter: brightness(0.9) contrast(1.1);
+            transition: all 0.5s ease;
+            width: 100%;
+            height: auto;
+            display: block;
         }
-        .whatsapp-float:hover { transform: scale(1.1); }
         
-        .marquee {
+        .stat-image:hover {
+            filter: brightness(1) contrast(1.2);
+            transform: scale(1.02);
+        }
+
+        .urgency-badge {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            animation: pulse-red 2s infinite;
+        }
+
+        @keyframes pulse-red {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+
+        #status-msg, #status-msg-hero {
+            transition: all 0.5s ease;
+            max-height: 0;
             overflow: hidden;
-            white-space: nowrap;
-            background: #000;
-            color: #fff;
-            padding: 15px 0;
-            border-top: 4px solid #000;
-            border-bottom: 4px solid #000;
-        }
-        .marquee-content {
-            display: inline-block;
-            animation: marquee 25s linear infinite;
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-        @keyframes marquee { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-
-        /* Two-Color Brand Logo */
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            font-weight: 900;
-            text-transform: uppercase;
-        }
-        .logo-part-1 {
-            background: #000;
-            color: #fff;
-            padding: 4px 12px;
-            border: 3px solid #000;
-        }
-        .logo-part-2 {
-            background: #facc15;
-            color: #000;
-            padding: 4px 12px;
-            border: 3px solid #000;
-            margin-left: -3px;
+            opacity: 0;
         }
 
-        /* Tech Item Style */
-        .tech-card {
-            background: white;
-            border: 3px solid #000;
-            padding: 12px 18px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 800;
-            box-shadow: 4px 4px 0px 0px #000;
-            font-size: 0.875rem;
+        #status-msg.active, #status-msg-hero.active {
+            max-height: 100px;
+            opacity: 1;
+            margin-bottom: 2rem;
         }
 
-        /* Hero UI Text Fixes */
-        .hero-title-box {
-            background: white;
-            padding: 0.5rem 1rem;
-            box-shadow: 6px 6px 0px 0px #000;
-            border: 4px solid #000;
-            display: inline-block;
-        }
-
-        /* Spinner for Form */
-        .spinner {
-            display: none;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(0,0,0,0.1);
-            border-radius: 50%;
-            border-top-color: #000;
-            animation: spin 1s ease-in-out infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        /* Modal Backdrop */
-        #successModal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(4px);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        /* Service Tag Styling */
-        .service-tag {
-            background: #fff;
-            border: 2px solid #000;
-            padding: 2px 8px;
-            font-size: 0.7rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            box-shadow: 2px 2px 0px 0px #000;
+        .video-glow {
+            box-shadow: 0 0 50px -10px rgba(99, 102, 241, 0.3);
         }
     </style>
 </head>
-<body class="overflow-x-hidden pt-20">
+<body class="selection:bg-indigo-500 selection:text-white">
 
-    <!-- Success Popup Modal -->
-    <div id="successModal">
-        <div class="brutalist-card bg-white p-8 max-w-lg w-full text-center relative rotate-[-1deg]">
-            <div class="w-20 h-20 bg-green-500 text-white border-4 border-black flex items-center justify-center mx-auto mb-6 rotate-[5deg] shadow-[6px_6px_0px_0px_#000]">
-                <i class="fa-solid fa-check text-4xl"></i>
-            </div>
-            <h2 class="text-4xl font-black uppercase mb-4">Message Received!</h2>
-            <p class="text-xl font-bold mb-6 uppercase leading-tight">
-                Thank you for reaching out! Our team will get back to you shortly.
-            </p>
-            <div class="bg-yellow-100 border-4 border-black p-4 mb-8 rotate-[1deg]">
-                <p class="font-black uppercase text-sm mb-2">🚨 Is it very urgent?</p>
-                <p class="text-2xl font-black">CALL OR WHATSAPP</p>
-                <a href="tel:+918889997841" class="text-2xl font-black text-pink-600 underline">+91 8889997841</a>
-            </div>
-            <button onclick="closeModal()" class="brutalist-btn w-full py-4 text-xl">Got it, thanks!</button>
-        </div>
+    <!-- Background Blobs -->
+    <div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+        <div class="blob top-[-10%] left-[-10%]"></div>
+        <div class="blob bottom-[10%] right-[-5%]" style="animation-delay: -7s; animation-direction: reverse; background: linear-gradient(135deg, rgba(34, 211, 238, 0.12), rgba(99, 102, 241, 0.12));"></div>
     </div>
 
-    <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 bg-white border-b-4 border-black">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <div>
-                <a href="#home" class="brand-logo text-xl md:text-2xl">
-                    <span class="logo-part-1">Offline2.</span><span class="logo-part-2">Digital</span>
+    <!-- Header / Navigation -->
+    <nav class="fixed top-0 w-full z-[100] border-b border-white/5 bg-slate-950/70 backdrop-blur-xl">
+        <div class="max-w-[1600px] mx-auto px-4 sm:px-8 lg:px-16">
+            <div class="flex justify-between items-center h-20 sm:h-24 lg:h-28">
+                <a href="#" class="flex items-center space-x-3 group relative z-[110]">
+                    <div class="w-9 h-9 sm:w-11 sm:h-11 bg-indigo-600 rounded-lg sm:rounded-xl flex items-center justify-center transition-all duration-500 group-hover:rotate-[360deg] group-hover:scale-110">
+                        <span class="text-white font-black text-lg sm:text-2xl">W</span>
+                    </div>
+                    <span class="text-lg sm:text-2xl font-black tracking-tight uppercase group-hover:text-indigo-400 transition-colors">working weekends</span>
                 </a>
+
+                <div class="hidden md:flex items-center space-x-10 lg:space-x-16">
+                    <a href="#work" class="text-sm font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-all">Case Studies</a>
+                    <a href="https://cal.com/workingweekends" target="_blank" class="text-sm font-bold uppercase tracking-widest text-slate-400 hover:text-white transition-all">Schedule Call</a>
+                    <a href="#contact" class="btn-vibrant px-8 lg:px-10 py-3.5 sm:py-4 text-xs font-black uppercase tracking-widest rounded-full shadow-lg">
+                        Get Started
+                    </a>
+                </div>
+
+                <button id="menu-btn" class="md:hidden relative z-[110] p-3 text-white focus:outline-none flex flex-col justify-center items-center gap-1.5 w-12 h-12" aria-label="Toggle Menu">
+                    <span id="m-line-1" class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+                    <span id="m-line-2" class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+                    <span id="m-line-3" class="w-6 h-0.5 bg-white transition-all duration-300"></span>
+                </button>
             </div>
-            <div class="hidden md:flex items-center gap-8 font-black uppercase text-sm">
-                <a href="#services" class="hover:underline decoration-4 underline-offset-4">Services</a>
-                <a href="#work" class="hover:underline decoration-4 underline-offset-4">Portfolios</a>
-                <a href="#reviews" class="hover:underline decoration-4 underline-offset-4">Reviews</a>
-                <a href="#tech" class="hover:underline decoration-4 underline-offset-4">Tech</a>
-                <a href="#contact" class="brutalist-btn px-6 py-2 bg-pink-400">Contact</a>
-            </div>
-            <button id="mobile-menu-button" class="md:hidden border-4 border-black bg-yellow-400 p-2 shadow-[3px_3px_0px_0px_#000]">
-                <i class="fa-solid fa-bars-staggered text-2xl"></i>
-            </button>
-        </div>
-        <!-- Mobile Dropdown -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b-4 border-black p-6 space-y-4 font-black uppercase shadow-xl">
-            <a href="#services" class="block text-xl">Services</a>
-            <a href="#work" class="block text-xl">Work</a>
-            <a href="#reviews" class="block text-xl">Reviews</a>
-            <a href="#tech" class="block text-xl">Tech</a>
-            <a href="#contact" class="block text-xl text-pink-600 border-t-2 border-black pt-2">Get Quote</a>
         </div>
     </nav>
 
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 z-[90] bg-slate-950/98 backdrop-blur-2xl hidden opacity-0 transition-opacity duration-300 flex flex-col justify-between p-8 sm:p-12">
+        <div class="flex flex-col space-y-8 mt-32">
+            <p class="text-[10px] font-black uppercase tracking-[0.4em] text-indigo-500 border-l-2 border-indigo-500 pl-4">Navigation</p>
+            <nav class="flex flex-col space-y-6">
+                <a href="#work" class="text-5xl sm:text-7xl font-black uppercase tracking-tighter hover:text-indigo-500 transition-colors">Case Studies</a>
+                <a href="https://cal.com/workingweekends" target="_blank" class="text-5xl sm:text-7xl font-black uppercase tracking-tighter hover:text-indigo-500 transition-colors">Schedule Meeting</a>
+                <a href="#contact" class="text-5xl sm:text-7xl font-black uppercase tracking-tighter gradient-text">Contact</a>
+            </nav>
+        </div>
+        <div class="flex flex-col sm:flex-row justify-between items-end sm:items-center gap-8 pb-8">
+            <div class="flex space-x-8">
+                <a href="#" class="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-white transition-colors">LinkedIn</a>
+                <a href="#" class="text-xs font-bold uppercase tracking-widest text-slate-500 hover:text-white transition-colors">Instagram</a>
+            </div>
+            <p class="text-[9px] font-black uppercase tracking-[0.3em] text-slate-700">© 2025 Working Weekends</p>
+        </div>
+    </div>
+
     <!-- Hero Section -->
-    <section id="home" class="py-20 px-6 bg-yellow-400 border-b-4 border-black">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-            <div class="space-y-10">
-                <div class="bg-white border-4 border-black p-4 inline-block font-black uppercase tracking-widest text-sm rotate-[-1deg] shadow-[4px_4px_0px_0px_#000]">
-                    🚀 Digital Agency Assam
+    <section class="pt-32 sm:pt-48 lg:pt-60 pb-20 sm:pb-32 lg:pb-40 px-4 sm:px-8 lg:px-16">
+        <div class="max-w-[1600px] mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-center">
+                <div class="lg:col-span-7 space-y-8 sm:space-y-12 reveal">
+                    <div class="flex flex-wrap gap-4">
+                        <div class="inline-flex items-center space-x-2.5 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em]">
+                            <span class="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></span>
+                            <span>Shopify Select Partner</span>
+                        </div>
+                    </div>
+                    <h1 class="text-4xl sm:text-6xl md:text-8xl lg:text-7xl xl:text-[110px] 2xl:text-[130px] font-black leading-[0.9] tracking-tighter uppercase">
+                        Brands win <br> <span class="gradient-text">big by</span> <br> working weekends.
+                    </h1>
+                    <p class="text-base sm:text-xl md:text-2xl text-slate-400 max-w-2xl leading-relaxed font-medium">
+                        Websites that sell. SEO that ranks. Ads that scale. This isn’t for everyone, just the ones who play to win. 
+                        <span class="block mt-4 text-emerald-400">5.0 (67 reviews) | Verified Shopify Experts</span>
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-8 pt-4">
+                        <div class="flex flex-col space-y-4">
+                            <a href="#contact" class="btn-vibrant px-10 sm:px-14 py-5 sm:py-7 text-xs sm:text-sm font-black uppercase tracking-[0.2em] rounded-2xl flex items-center justify-center group shadow-2xl">
+                                <span>Hire Specialists</span>
+                                <i data-lucide="zap" class="w-5 h-5 ml-3 group-hover:scale-125 transition-transform text-cyan-300"></i>
+                            </a>
+                            <a href="https://cal.com/workingweekends" target="_blank" class="px-10 sm:px-14 py-5 sm:py-7 text-xs sm:text-sm font-black uppercase tracking-[0.2em] rounded-2xl flex items-center justify-center border border-white/10 hover:bg-white/5 transition-all">
+                                <span>Schedule A Meeting</span>
+                                <i data-lucide="calendar" class="w-5 h-5 ml-3"></i>
+                            </a>
+                        </div>
+                        <div class="flex items-center space-x-6">
+                            <img src="https://cdn.shopify.com/s/files/1/0096/0112/2401/files/Meta.webp?v=1763467268" class="h-6 opacity-40 grayscale hover:grayscale-0 transition-all" alt="Meta Partner">
+                            <img src="https://cdn.shopify.com/s/files/1/0096/0112/2401/files/google_ads.png?v=1760684057" class="h-6 opacity-40 grayscale hover:grayscale-0 transition-all" alt="Google Ads Partner">
+                        </div>
+                    </div>
                 </div>
-                <h1 class="text-6xl md:text-8xl font-black leading-[1.0] uppercase tracking-tighter text-black">
-                    Convert <br> Your <span class="hero-title-box">Offline</span> <br> To <span class="bg-pink-400 text-white px-3 shadow-[8px_8px_0px_0px_#000] border-4 border-black">Digital</span>
-                </h1>
-                <p class="text-xl md:text-2xl font-bold border-l-8 border-black pl-6 max-w-xl bg-white/40 py-3 uppercase">
-                    WE CONVERT OFFLINE BUSINESS TO DIGITAL WORLDS. Affordable. Professional. Best-In-Class.
-                </p>
-                <div class="flex flex-wrap gap-6">
-                    <a href="#contact" class="brutalist-btn px-10 py-5 bg-white text-2xl">Start Now</a>
-                    <a href="https://wa.me/918889997841" class="brutalist-btn px-10 py-5 bg-green-500 text-white text-2xl flex items-center gap-3">
-                        <i class="fa-brands fa-whatsapp"></i> Chat
-                    </a>
+                
+                <!-- Hero Form Replacement -->
+                <div class="lg:col-span-5 relative reveal delay-200 hidden lg:block">
+                    <div class="glass-card p-8 rounded-[3rem] border border-white/10 shadow-[0_0_80px_-20px_rgba(99,102,241,0.4)]">
+                        <h3 class="text-2xl font-black mb-6 uppercase tracking-tight">Rapid Inquiry</h3>
+                        <div id="status-msg-hero" class="text-center p-4 rounded-xl text-xs font-bold uppercase tracking-widest"></div>
+                        <form id="contact-form-hero" class="space-y-4">
+                            <input type="text" id="name-hero" class="form-input" placeholder="Full Name" required>
+                            <input type="email" id="email-hero" class="form-input" placeholder="Email Address" required>
+                            <input type="tel" id="phone-hero" class="form-input" placeholder="Phone Number" required>
+                            <textarea id="message-hero" class="form-input min-h-[100px] resize-none" placeholder="How can we help?" required></textarea>
+                            <button type="submit" id="submit-btn-hero" class="btn-vibrant w-full py-5 rounded-2xl text-xs font-black uppercase tracking-[0.2em] flex items-center justify-center space-x-3">
+                                <span id="btn-text-hero">Submit Inquiry</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="hidden lg:block relative">
-                <div class="brutalist-card p-4 rotate-[2deg] bg-white">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" class="border-4 border-black w-full" alt="Marketing">
-                    <div class="mt-4 font-black uppercase text-xl text-center">#1 Digital Partner in Assam</div>
+        </div>
+    </section>
+
+    <!-- Merchant Growth Proof Section -->
+    <section class="py-24 sm:py-48 px-4 sm:px-8 lg:px-16">
+        <div class="max-w-[1600px] mx-auto">
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-[11px] sm:text-xs font-black uppercase tracking-[0.5em] text-indigo-500 mb-6">Real-Time Impact</h2>
+                <h3 class="text-4xl sm:text-7xl font-black tracking-tighter uppercase">Merchant Growth Proof.</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="glass-card rounded-[2rem] overflow-hidden reveal border border-white/5">
+                    <img src="https://scontent.fgau1-4.fna.fbcdn.net/v/t1.15752-9/594997102_1206863367437144_7933337628156227158_n.png?stp=dst-png_s1080x2048&_nc_cat=104&ccb=1-7&_nc_sid=0024fc&_nc_ohc=oG0Bu4pkcqUQ7kNvwHP-Fym&_nc_oc=AdmmcOdl9OR3c07coPQS3WqOBS2ip2_NGw8ijIo629mjTrYN2Mh-uTJTLUsEnyKECJCmeWq8UzV2f8RUDsCRWZ3r&_nc_ad=z-m&_nc_cid=2034&_nc_zt=23&_nc_ht=scontent.fgau1-4.fna&oh=03_Q7cD4AFr5bUqFTJP9p7yZLa79Aziu3SO-i7G3cC0eogb7bq6sA&oe=697274A9" class="stat-image" alt="Client Ad Performance">
                 </div>
-                <div class="absolute -bottom-8 -left-8 bg-pink-500 text-white border-4 border-black p-6 font-black text-4xl rotate-[-4deg] shadow-[8px_8px_0px_0px_#000]">
-                    98% ROI
+                <div class="glass-card rounded-[2rem] overflow-hidden reveal delay-150 border border-white/5">
+                    <img src="https://scontent.fgau1-5.fna.fbcdn.net/v/t1.15752-9/597411166_1191629715831212_7486117012842985660_n.png?stp=dst-png_p394x394&_nc_cat=103&ccb=1-7&_nc_sid=0024fc&_nc_ohc=aD_zItH54FwQ7kNvwG54x6j&_nc_oc=Adm7QD5qx9yE-3fbwPzF5YjlAuuyuUwqwMUKwmH3CKeXFfPkFnba9y4a8kxri4T0FOi8vdOIBwaWXJ8gxNnCEaVv&_nc_ad=z-m&_nc_cid=2034&_nc_zt=23&_nc_ht=scontent.fgau1-5.fna&oh=03_Q7cD4AHqch6kHV1GOIc00ugGWszvFJ_zD_JS_bMvEJfZ6E6GTA&oe=697273FD" class="stat-image" alt="Shopify Growth Dashboard">
+                </div>
+                <div class="glass-card rounded-[2rem] overflow-hidden reveal delay-300 border border-white/5">
+                    <img src="https://scontent.fgau1-4.fna.fbcdn.net/v/t1.15752-9/604487748_838469022313219_7833182854858542334_n.png?stp=dst-png_s960x960&_nc_cat=104&ccb=1-7&_nc_sid=0024fc&_nc_ohc=SRlFM__PBrgQ7kNvwFFeVha&_nc_oc=AdmMwYmdXF_KM9nBsFV3o22Nd8nS8Qobtm8fahVkkAxRYnPx2N0PGhewo4aSAHGn3wih290QKxgiGxv-EbMJ3mD1&_nc_ad=z-m&_nc_cid=2034&_nc_zt=23&_nc_ht=scontent.fgau1-4.fna&oh=03_Q7cD4AHIRL3wYOJ2UFEsfTxcICubF0efIuupIaQ2d6J2yyapqQ&oe=69726213" class="stat-image" alt="Revenue Analytics Proof">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Video Section -->
+    <section class="py-20 px-4 sm:px-8 lg:px-16 reveal">
+        <div class="max-w-[1400px] mx-auto rounded-[3rem] overflow-hidden video-glow border border-white/5 relative bg-slate-900 aspect-video">
+            <video class="w-full h-full object-cover" autoplay loop muted playsinline poster="https://cdn.shopify.com/s/files/1/0096/0112/2401/files/Untitled_design_38_1000x_06f97ccb-e2d2-4452-8887-98f3b2ca5a42.webp?v=1761670266">
+                <source src="https://cdn.shopify.com/videos/c/o/v/ef626d58e38a4a18b09836a3b18876e6.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-black/20 pointer-events-none"></div>
+            <div class="absolute bottom-8 left-8 sm:bottom-12 sm:left-12">
+                <div class="glass-card px-6 py-4 rounded-2xl flex items-center space-x-4">
+                    <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                    <span class="text-xs font-black uppercase tracking-widest">Shopify Plus Engine Live</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Marquee -->
-    <div class="marquee">
-        <div class="marquee-content">
-            FRONTEND MASTERY • TAILWIND CSS • BOOTSTRAP • REACT • FLUTTER • LARAVEL • NODE.JS • PYTHON • DJANGO • WORDPRESS • SEO • SCHOOL PORTALS • HOSPITAL SYSTEMS • E-COMMERCE • 
+    <div class="py-16 sm:py-24 border-y border-white/5 bg-white/5 relative overflow-hidden">
+        <div class="marquee">
+            <div class="marquee-content font-black text-xl sm:text-3xl text-slate-800 uppercase tracking-[0.25em] italic flex items-center">
+                <span>Shopify Select Partner</span>
+                <i data-lucide="check-circle" class="w-5 h-5 text-indigo-500 mx-8"></i>
+                <span>Profit Engineering</span>
+                <i data-lucide="trending-up" class="w-5 h-5 text-purple-500 mx-8"></i>
+                <span>Platform Migrations</span>
+                <i data-lucide="repeat" class="w-5 h-5 text-cyan-500 mx-8"></i>
+                <span>Brand Scaling</span>
+                <i data-lucide="bar-chart-3" class="w-5 h-5 text-indigo-500 mx-8"></i>
+                <span>Custom App Dev</span>
+                <i data-lucide="code-2" class="w-5 h-5 text-purple-500 mx-8"></i>
+            </div>
+            <div class="marquee-content font-black text-xl sm:text-3xl text-slate-800 uppercase tracking-[0.25em] italic flex items-center">
+                <span>Shopify Select Partner</span>
+                <i data-lucide="check-circle" class="w-5 h-5 text-indigo-500 mx-8"></i>
+                <span>Profit Engineering</span>
+                <i data-lucide="trending-up" class="w-5 h-5 text-purple-500 mx-8"></i>
+                <span>Platform Migrations</span>
+                <i data-lucide="repeat" class="w-5 h-5 text-cyan-500 mx-8"></i>
+                <span>Brand Scaling</span>
+                <i data-lucide="bar-chart-3" class="w-5 h-5 text-indigo-500 mx-8"></i>
+                <span>Custom App Dev</span>
+                <i data-lucide="code-2" class="w-5 h-5 text-purple-500 mx-8"></i>
+            </div>
         </div>
     </div>
 
-    <!-- Tech Stack Section -->
-    <section id="tech" class="py-24 px-6 bg-white border-b-4 border-black">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-5xl font-black uppercase mb-16 text-center">Our <span class="bg-blue-500 text-white px-3">Technology</span> Stack</h2>
-            <div class="space-y-12">
-                <div>
-                    <h3 class="text-2xl font-black uppercase mb-6 border-b-4 border-black inline-block">Frontend & Design</h3>
-                    <div class="flex flex-wrap gap-6">
-                        <div class="tech-card"><i class="fa-brands fa-html5 text-orange-600 text-2xl"></i> HTML5</div>
-                        <div class="tech-card"><i class="fa-brands fa-css3-alt text-blue-600 text-2xl"></i> CSS3</div>
-                        <div class="tech-card"><i class="fa-brands fa-js text-yellow-500 text-2xl"></i> JAVASCRIPT</div>
-                        <div class="tech-card"><i class="fa-solid fa-wind text-cyan-500 text-2xl"></i> TAILWIND CSS</div>
-                        <div class="tech-card"><i class="fa-brands fa-bootstrap text-purple-700 text-2xl"></i> BOOTSTRAP</div>
-                        <div class="tech-card"><i class="fa-brands fa-react text-cyan-400 text-2xl"></i> REACT.JS</div>
-                    </div>
+    <!-- Case Studies Section -->
+    <section id="work" class="py-24 sm:py-40 lg:py-56 px-4 sm:px-8 lg:px-16">
+        <div class="max-w-[1600px] mx-auto">
+            <div class="flex flex-col lg:flex-row justify-between items-start lg:items-end mb-16 sm:mb-28 gap-10 reveal">
+                <div class="space-y-6">
+                    <h2 class="text-[11px] sm:text-xs font-black uppercase tracking-[0.5em] text-indigo-500">Selected Work</h2>
+                    <h3 class="text-4xl sm:text-6xl md:text-8xl font-black tracking-tight leading-[0.9]">STORES THAT <br> CONVERT.</h3>
                 </div>
-
-                <div class="grid md:grid-cols-2 gap-12">
-                    <div>
-                        <h3 class="text-2xl font-black uppercase mb-6 border-b-4 border-black inline-block">Backend / Server</h3>
-                        <div class="flex flex-wrap gap-4">
-                            <div class="tech-card"><i class="fa-brands fa-php text-indigo-600 text-2xl"></i> PHP</div>
-                            <div class="tech-card"><i class="fa-brands fa-laravel text-red-600 text-2xl"></i> LARAVEL</div>
-                            <div class="tech-card"><i class="fa-brands fa-node-js text-green-600 text-2xl"></i> NODE.JS</div>
-                            <div class="tech-card"><i class="fa-brands fa-python text-blue-500 text-2xl"></i> PYTHON</div>
-                            <div class="tech-card"><i class="fa-solid fa-code text-green-700 text-2xl"></i> DJANGO</div>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 class="text-2xl font-black uppercase mb-6 border-b-4 border-black inline-block">Mobile Apps</h3>
-                        <div class="flex flex-wrap gap-4">
-                            <div class="tech-card"><i class="fa-solid fa-mobile-screen-button text-blue-400 text-2xl"></i> FLUTTER</div>
-                            <div class="tech-card"><i class="fa-brands fa-react text-blue-600 text-2xl"></i> REACT NATIVE</div>
-                            <div class="tech-card"><i class="fa-brands fa-android text-green-500 text-2xl"></i> ANDROID</div>
-                            <div class="tech-card"><i class="fa-brands fa-apple text-black text-2xl"></i> IOS</div>
-                        </div>
-                    </div>
-                </div>
+                <p class="text-slate-400 font-medium max-w-md leading-relaxed text-lg sm:text-xl">
+                    Results-driven Shopify architecture for brands that demand performance. Every build is fast, scalable, and optimized for profit.
+                </p>
             </div>
-        </div>
-    </section>
-
-    <!-- Services -->
-    <section id="services" class="py-24 px-6 bg-slate-100 border-b-4 border-black">
-        <div class="max-w-7xl mx-auto">
-            <div class="mb-20">
-                <span class="bg-black text-white px-4 py-2 font-black uppercase text-sm tracking-widest mb-4 inline-block">Expertise</span>
-                <h2 class="text-6xl md:text-8xl font-black uppercase leading-none text-black">What We <span class="text-pink-600">Provide</span></h2>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-12">
-                <!-- Service Card 1 -->
-                <div class="brutalist-card p-10 bg-white relative group">
-                    <div class="absolute -top-6 -right-6 w-20 h-20 bg-blue-500 border-4 border-black flex items-center justify-center font-black text-4xl text-white group-hover:rotate-12 transition-transform">01</div>
-                    <div class="w-16 h-16 bg-blue-100 border-4 border-black flex items-center justify-center mb-8 rotate-[-5deg]">
-                        <i class="fa-solid fa-laptop-code text-3xl"></i>
-                    </div>
-                    <h3 class="text-3xl font-black uppercase mb-6 leading-tight">Web Design & Development</h3>
-                    <p class="font-bold text-lg mb-10 text-slate-700">Crafting modern, responsive, and SEO-optimized websites using React, Tailwind, and Laravel for maximum speed and performance.</p>
-                    <div class="flex flex-wrap gap-3 mt-auto">
-                        <span class="service-tag">Corporate</span>
-                        <span class="service-tag">E-commerce</span>
-                        <span class="service-tag">Portfolios</span>
-                    </div>
-                </div>
-
-                <!-- Service Card 2 -->
-                <div class="brutalist-card p-10 bg-white relative group md:translate-y-8">
-                    <div class="absolute -top-6 -right-6 w-20 h-20 bg-green-500 border-4 border-black flex items-center justify-center font-black text-4xl text-white group-hover:-rotate-12 transition-transform">02</div>
-                    <div class="w-16 h-16 bg-green-100 border-4 border-black flex items-center justify-center mb-8 rotate-[5deg]">
-                        <i class="fa-solid fa-mobile-button text-3xl"></i>
-                    </div>
-                    <h3 class="text-3xl font-black uppercase mb-6 leading-tight">App Development</h3>
-                    <p class="font-bold text-lg mb-10 text-slate-700">Building high-performance, native-quality applications for iOS and Android using cross-platform tools like Flutter and React Native.</p>
-                    <div class="flex flex-wrap gap-3 mt-auto">
-                        <span class="service-tag">iOS</span>
-                        <span class="service-tag">Android</span>
-                        <span class="service-tag">Custom UI</span>
-                    </div>
-                </div>
-
-                <!-- Service Card 3 -->
-                <div class="brutalist-card p-10 bg-white relative group">
-                    <div class="absolute -top-6 -right-6 w-20 h-20 bg-purple-500 border-4 border-black flex items-center justify-center font-black text-4xl text-white group-hover:rotate-6 transition-transform">03</div>
-                    <div class="w-16 h-16 bg-purple-100 border-4 border-black flex items-center justify-center mb-8">
-                        <i class="fa-solid fa-bullhorn text-3xl"></i>
-                    </div>
-                    <h3 class="text-3xl font-black uppercase mb-6 leading-tight">Digital Marketing</h3>
-                    <p class="font-bold text-lg mb-10 text-slate-700">Scaling your brand presence with data-driven SEO strategies, Social Media Marketing, and high-ROI targeted PPC campaigns.</p>
-                    <div class="flex flex-wrap gap-3 mt-auto">
-                        <span class="service-tag">SEO</span>
-                        <span class="service-tag">SMM</span>
-                        <span class="service-tag">Ads</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="work" class="py-24 px-6 bg-white border-b-4 border-black">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-5xl font-black uppercase mb-16">Project <span class="bg-pink-400 text-white px-2 shadow-[4px_4px_0px_0px_#000]">We have done</span></h2>
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="brutalist-card overflow-hidden flex flex-col bg-white">
-                    <div class="h-64 border-b-4 border-black bg-white flex items-center justify-center p-8">
-                        <img src="https://bestautosales.in/assets/images/logo-1763901744.jpeg" alt="Best Auto" class="max-h-full max-w-full object-contain">
-                    </div>
-                    <div class="p-8 flex-grow">
-                        <div class="font-black uppercase text-2xl"><a href="https://BestAutoSales.in" target="_blank" class="underline decoration-4">Best Auto Sales</a></div>
-                        <p class="font-bold mt-4 text-slate-600 uppercase">Premium 2nd Hand Car Marketplace. Digital buying/selling ecosystem.</p>
-                    </div>
-                </div>
-                <div class="brutalist-card overflow-hidden flex flex-col bg-white">
-                    <div class="h-64 border-b-4 border-black bg-white flex items-center justify-center p-8">
-                        <img src="https://www.umeedinternationalschool.com/assets/uploads/settings/6941859ec6ccb_1765901726.jpeg" alt="Umeed" class="max-h-full max-w-full object-contain">
-                    </div>
-                    <div class="p-8 flex-grow">
-                        <div class="font-black uppercase text-2xl"><a href="https://www.umeedinternationalschool.com/" target="_blank" class="underline decoration-4">Umeed Intl School</a></div>
-                        <p class="font-bold mt-4 text-slate-600 uppercase">Modern Education Portal. Management, Fees & Staff administration system.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Reviews -->
-    <section id="reviews" class="py-24 px-6 bg-slate-100 border-b-4 border-black">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-5xl font-black uppercase mb-16">What <span class="bg-green-400 text-black px-3 shadow-[6px_6px_0px_0px_#000] border-4 border-black">Clients Say</span></h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="brutalist-card p-8 bg-white flex flex-col">
-                    <div class="flex gap-1 mb-4">
-                        <i class="fa-solid fa-star text-yellow-500"></i>
-                        <i class="fa-solid fa-star text-yellow-500"></i>
-                        <i class="fa-solid fa-star text-yellow-500"></i>
-                        <i class="fa-solid fa-star text-yellow-500"></i>
-                        <i class="fa-solid fa-star text-yellow-500"></i>
-                    </div>
-                    <p class="font-bold text-xl uppercase leading-tight mb-8">"Offline2.Digital transformed our car showroom into a digital hub. Our leads increased by 200% in the first month!"</p>
-                    <div class="mt-auto flex items-center gap-4 border-t-4 border-black pt-6">
-                        <img src="https://scontent.fgau1-4.fna.fbcdn.net/v/t1.6435-9/80293564_1030904350605309_7831771395653632000_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=kcaMSQuDTRYQ7kNvwFall1i&_nc_oc=AdmLWCa8wAQFTgrPZXZeznhzEV4Nm4L4Uigh-8bJFKNOeYq4BGl0tfI4XA6PcFzp9LsgU0YdtjUwZyyt-44Z_Drq&_nc_zt=23&_nc_ht=scontent.fgau1-4.fna&_nc_gid=uN-pB5f1B4F3bCLYmWBIfQ&oh=00_AflJafQGsyXl1VUfLmKZxIRBLYqhdXP6TLL5t4meQNsDzw&oe=69764C88" class="w-14 h-14 border-2 border-black bg-yellow-400 object-cover" alt="Shavej Choudhury">
-                        <div>
-                            <div class="font-black uppercase text-sm">Shavej Choudhury</div>
-                            <div class="font-bold text-xs text-pink-600 uppercase">Owner, Best Auto Sales</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="brutalist-card p-8 bg-white flex flex-col rotate-[-1deg]">
-                    <div class="flex gap-1 mb-4">
-                        <i class="fa-solid fa-star text-yellow-500"></i>
-                        <i class="fa-solid fa-star text-yellow-500"></i>
-                        <i class="fa-solid fa-star text-yellow-500"></i>
-                        <i class="fa-solid fa-star text-yellow-500"></i>
-                        <i class="fa-solid fa-star text-yellow-500"></i>
-                    </div>
-                    <p class="font-bold text-xl uppercase leading-tight mb-8">"The school management system they built is flawless. It handled our entire admission cycle without a single glitch."</p>                    <div class="mt-auto flex items-center gap-4 border-t-4 border-black pt-6">
-                        <img src="https://www.umeedinternationalschool.com/assets/uploads/messages/69418f60cb12a_1765904224.jpeg" class="w-14 h-14 border-2 border-black bg-blue-400 object-cover" alt="Md Hanif Barbhuiya">
-                        <div>
-                            <div class="font-black uppercase text-sm">Md Hanif Barbhuiya</div>
-                            <div class="font-bold text-xs text-pink-600 uppercase">Umeed Intl School</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="brutalist-card p-8 bg-white flex flex-col rotate-[1deg]">
-                    <div class="flex gap-1 mb-4">
-                        <i class="fa-solid fa-star text-yellow-500"></i>
-                        <i class="fa-solid fa-star text-yellow-500"></i>
-                        <i class="fa-solid fa-star text-yellow-500"></i>
-                        <i class="fa-solid fa-star text-yellow-500"></i>
-                        <i class="fa-solid fa-star text-yellow-400/30"></i>
-                    </div>
-                    <p class="font-bold text-xl uppercase leading-tight mb-8">"Best tech partner in Cachar. They understand the local market and deliver global quality. Highly recommended for startups."</p>
-                    <div class="mt-auto flex items-center gap-4 border-t-4 border-black pt-6">
-                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Ankit" class="w-14 h-14 border-2 border-black bg-purple-400" alt="Client">
-                        <div>
-                            <div class="font-black uppercase text-sm">Ankit Mazumdar</div>
-                            <div class="font-bold text-xs text-pink-600 uppercase">Founder, AssamMart</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CEO Section -->
-    <section id="ceo" class="py-24 px-6 bg-yellow-400 border-b-4 border-black">
-        <div class="max-w-5xl mx-auto">
-            <div class="brutalist-card p-8 md:p-12 bg-white flex flex-col md:flex-row gap-12 items-center">
-                <div class="shrink-0">
-                    <div class="w-64 h-64 bg-white border-4 border-black rotate-[-3deg] overflow-hidden shadow-[10px_10px_0px_0px_#000]">
-                        <img src="https://offline2.digital/ceo.png" class="w-full h-full object-cover" alt="CEO" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Mahmudul'">
-                    </div>
-                </div>
-                <div class="text-left">
-                    <h2 class="text-4xl font-black uppercase mb-2">Message from CEO</h2>
-                    <h3 class="text-2xl font-black uppercase text-pink-600 mb-6 tracking-tighter">Mahmudul Hussain</h3>
-                    <div class="border-l-8 border-black pl-8 italic bg-slate-50 py-4 shadow-[4px_4px_0px_0px_#000]">
-                        <p class="text-2xl font-bold leading-tight mb-4 uppercase">
-                            "To our valued Customers and the Players: We don't just build websites; we build digital empires."
-                        </p>
-                        <p class="text-lg font-bold text-slate-700 uppercase">
-                            OUR MISSION AT OFFLINE2.DIGITAL IS TO ENSURE YOUR VISION IS DOMINANT. WE PROVIDE BEST-IN-CLASS QUALITY FOR LOCAL PLAYERS AND GLOBAL DREAMS.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="py-24 px-6 bg-blue-600">
-        <div class="max-w-4xl mx-auto brutalist-card p-8 md:p-16 bg-white text-black">
-            <div class="grid md:grid-cols-2 gap-16">
-                <div>
-                    <h2 class="text-5xl font-black uppercase mb-8">Let's Talk</h2>
-                    <div class="space-y-6 font-black uppercase tracking-tight">
-                        <div class="flex items-start gap-4">
-                            <div class="text-3xl">📍</div>
-                            <div class="text-sm">
-                                <p>Sonai Town, Ward No-1</p>
-                                <p>Sair Ali Building, Cachar, Assam</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-20">
+                <a href="https://goshwara.com/" target="_blank" class="project-card group reveal block">
+                    <div class="aspect-[16/10] bg-slate-900 overflow-hidden relative mb-8 rounded-[2rem] sm:rounded-[3.5rem] border border-white/5 group-hover:border-indigo-500/30 transition-all">
+                        <img src="https://workingweekends.co/cdn/shop/files/Screenshot_2024-12-26_at_7.02.03_PM_600x.webp?v=1760116383" class="w-full h-full object-cover transition-all duration-700 opacity-80 group-hover:scale-105 group-hover:opacity-40" alt="Goshwara Digital Flagship">
+                        <div class="absolute inset-0 p-8 sm:p-12 flex flex-col justify-end">
+                            <div class="space-y-4">
+                                <div class="flex space-x-4">
+                                    <div class="px-4 py-2 bg-indigo-600 rounded-full text-[10px] font-black uppercase tracking-widest">Digital Flagship</div>
+                                    <div class="px-4 py-2 bg-slate-800/80 rounded-full text-[10px] font-black uppercase tracking-widest">+5x Conversion</div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <h4 class="text-4xl font-black italic">GOSHWARA</h4>
+                                    <i data-lucide="arrow-up-right" class="w-8 h-8 opacity-0 group-hover:opacity-100 transition-all"></i>
+                                </div>
+                                <p class="text-slate-300 max-w-sm">Luxury jewelry build merging boutique heritage with global D2C expansion.</p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-4">
-                            <div class="text-3xl">📞</div>
-                            <p class="text-lg">+91 8889997841</p>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="text-3xl">📧</div>
-                            <p class="text-lg">hello@offline2.digital</p>
+                    </div>
+                </a>
+                <div class="project-card group reveal delay-200">
+                    <div class="aspect-[16/10] bg-slate-900 overflow-hidden relative mb-8 rounded-[2rem] sm:rounded-[3.5rem] border border-white/5 group-hover:border-purple-500/30 transition-all">
+                        <img src="https://workingweekends.co/cdn/shop/files/Screenshot_2025-10-30_at_22.49.18.png?v=1761844784" class="w-full h-full object-cover transition-all duration-700 opacity-80 group-hover:scale-105 group-hover:opacity-40" alt="Go Off Road Barnsley Grid">
+                        <div class="absolute inset-0 p-8 sm:p-12 flex flex-col justify-end">
+                            <div class="space-y-4">
+                                <div class="flex space-x-4">
+                                    <div class="px-4 py-2 bg-purple-600 rounded-full text-[10px] font-black uppercase tracking-widest">Brand Scaling</div>
+                                    <div class="px-4 py-2 bg-slate-800/80 rounded-full text-[10px] font-black uppercase tracking-widest">+310% Traffic</div>
+                                </div>
+                                <h4 class="text-4xl font-black italic uppercase">Go Off Road</h4>
+                                <p class="text-slate-300 max-w-sm">Turning a regional electric bike shop into a nationwide UK category leader.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <form id="contactForm" class="flex flex-col gap-6">
-                    <input name="name" type="text" placeholder="YOUR NAME" required class="brutalist-input uppercase w-full">
-                    <input name="email" type="email" placeholder="EMAIL ADDRESS" required class="brutalist-input uppercase w-full">
-                    <select name="service" class="brutalist-input uppercase w-full bg-white">
-                        <option>WEB DESIGN</option>
-                        <option>APP DEV</option>
-                        <option>MARKETING</option>
-                    </select>
-                    <textarea name="message" rows="4" placeholder="DESCRIBE PROJECT" required class="brutalist-input uppercase w-full"></textarea>
-                    <button type="submit" id="submitBtn" class="brutalist-btn bg-yellow-400 py-5 text-xl flex items-center justify-center gap-4">
-                        <span id="btnText">Inquiry Now</span>
-                        <div id="loader" class="spinner"></div>
-                        <i id="btnIcon" class="fa-solid fa-bolt"></i>
-                    </button>
-                    <p id="formStatus" class="mt-4 text-center font-black hidden uppercase"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Testimonials Section -->
+    <section class="py-24 sm:py-48 px-4 sm:px-8 lg:px-16 bg-white/2">
+        <div class="max-w-[1600px] mx-auto">
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-[11px] sm:text-xs font-black uppercase tracking-[0.5em] text-cyan-400 mb-6">Testimonials</h2>
+                <h3 class="text-4xl sm:text-7xl font-black tracking-tighter uppercase italic">Success Stories.</h3>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
+                <div class="glass-card p-4 rounded-[2.5rem] reveal border border-white/5">
+                    <div class="aspect-[9/16] rounded-[2rem] overflow-hidden relative group bg-slate-900">
+                        <video class="w-full h-full object-cover" loop muted playsinline>
+                            <source src="https://cdn.shopify.com/videos/c/o/v/b9ef32de39f34929bee8f2efdb7613dc.mp4" type="video/mp4">
+                        </video>
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/10 transition-all cursor-pointer video-player-overlay">
+                            <div class="w-16 h-16 bg-white/20 backdrop-blur-xl rounded-full flex items-center justify-center text-white border border-white/30">
+                                <i data-lucide="play" class="w-8 h-8 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-4 rounded-[2.5rem] reveal delay-200 border border-white/5">
+                    <div class="aspect-[9/16] rounded-[2rem] overflow-hidden relative group bg-slate-900">
+                        <video class="w-full h-full object-cover" loop muted playsinline>
+                            <source src="https://cdn.shopify.com/videos/c/o/v/1487d209d11b4379bf0df6f208be31fd.mp4" type="video/mp4">
+                        </video>
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/10 transition-all cursor-pointer video-player-overlay">
+                            <div class="w-16 h-16 bg-white/20 backdrop-blur-xl rounded-full flex items-center justify-center text-white border border-white/30">
+                                <i data-lucide="play" class="w-8 h-8 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card p-4 rounded-[2.5rem] reveal delay-400 border border-white/5">
+                    <div class="aspect-[9/16] rounded-[2rem] overflow-hidden relative group bg-slate-900">
+                        <video class="w-full h-full object-cover" loop muted playsinline>
+                            <source src="https://cdn.shopify.com/videos/c/o/v/8de8eadc232e425b8bd4cf0ff37a0144.mov" type="video/mp4">
+                        </video>
+                        <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/10 transition-all cursor-pointer video-player-overlay">
+                            <div class="w-16 h-16 bg-white/20 backdrop-blur-xl rounded-full flex items-center justify-center text-white border border-white/30">
+                                <i data-lucide="play" class="w-8 h-8 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Essentials Section -->
+    <section id="services" class="py-24 sm:py-48 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-white/2">
+        <div class="max-w-[1600px] mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 mb-24 lg:mb-40 items-start reveal">
+                <div class="lg:col-span-6 space-y-8">
+                    <h2 class="text-[11px] sm:text-xs font-black uppercase tracking-[0.5em] text-cyan-400">Expertise</h2>
+                    <h3 class="text-5xl sm:text-7xl lg:text-[100px] xl:text-[120px] font-black tracking-tighter leading-[0.9]">ESSENTIALS <br> <span class="gradient-text">OF WINNING.</span></h3>
+                </div>
+                <div class="lg:col-span-6 lg:pt-20">
+                    <p class="text-lg sm:2xl text-slate-400 leading-relaxed font-medium">
+                        Powered by creativity, fueled by AI, we future-proof brands while others chase trends. Precision Shopify engineering is our default setting.
+                    </p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="p-10 rounded-[2.5rem] glass-card reveal">
+                    <h4 class="text-2xl font-black mb-6 uppercase tracking-tight text-indigo-400">01. Store Development</h4>
+                    <p class="text-slate-400 leading-relaxed">Bespoke Liquid themes engineered for speed, conversion, and total merchant control.</p>
+                </div>
+                <div class="p-10 rounded-[2.5rem] glass-card reveal delay-100">
+                    <h4 class="text-2xl font-black mb-6 uppercase tracking-tight text-purple-400">02. Brand Scaling</h4>
+                    <p class="text-slate-400 leading-relaxed">Performance marketing and scaling strategies that turn small budgets into market domination.</p>
+                </div>
+                <div class="p-10 rounded-[2.5rem] glass-card reveal delay-200">
+                    <h4 class="text-2xl font-black mb-6 uppercase tracking-tight text-cyan-400">03. Migrations</h4>
+                    <p class="text-slate-400 leading-relaxed">Risk-free platform migrations to Shopify Plus without losing SEO or data integrity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Contact Form Section -->
+    <section id="contact" class="py-24 sm:py-48 px-4 sm:px-8 lg:px-16 bg-slate-950/50">
+        <div class="max-w-4xl mx-auto reveal">
+            <div class="text-center mb-16 space-y-4">
+                <h3 class="text-4xl sm:text-6xl font-black tracking-tight">START A PROJECT.</h3>
+                <p class="text-slate-400 max-w-lg mx-auto italic">Average response time: 2 hours. Start winning today.</p>
+                <div class="pt-6">
+                    <a href="https://cal.com/workingweekends" target="_blank" class="inline-flex items-center space-x-3 text-indigo-400 font-bold uppercase tracking-widest hover:text-white transition-all group">
+                        <i data-lucide="calendar" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                        <span>Prefer to book a call? Schedule Here</span>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="glass-card p-8 sm:p-12 rounded-[3rem] border border-white/10 shadow-2xl relative overflow-hidden">
+                <!-- Status Message Container -->
+                <div id="status-msg" class="text-center p-4 rounded-xl text-xs font-bold uppercase tracking-widest"></div>
+
+                <form id="contact-form" class="space-y-6 relative z-10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2 ml-2">Full Name</label>
+                            <input type="text" id="name" class="form-input" placeholder="Enter your name" required>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2 ml-2">Email Address</label>
+                            <input type="email" id="email" class="form-input" placeholder="name@company.com" required>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2 ml-2">Phone Number</label>
+                            <input type="tel" id="phone" class="form-input" placeholder="+1 (555) 000-0000" required>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2 ml-2">Current Website</label>
+                            <input type="url" id="website" class="form-input" placeholder="https://">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-black uppercase tracking-widest text-slate-500 mb-2 ml-2">Your Idea / Project Goals</label>
+                        <textarea id="message" class="form-input min-h-[150px] resize-none" placeholder="Tell us about your brand..." required></textarea>
+                    </div>
+                    <div class="pt-4 text-center">
+                        <button type="submit" id="submit-btn" class="btn-vibrant w-full py-6 rounded-2xl text-sm font-black uppercase tracking-[0.3em] flex items-center justify-center space-x-4 shadow-2xl">
+                            <span id="btn-text">Lock In My Consultation</span>
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                        </button>
+                        <p class="mt-8 text-5xl md:text-8xl font-black tracking-tighter leading-none uppercase italic opacity-20 select-none">Work Weekdays <br> Win Weekends.</p>
+                    </div>
                 </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 bg-white border-t-4 border-black px-6 text-black">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <div>
-                <a href="#home" class="brand-logo text-2xl">
-                    <span class="logo-part-1">Offline2.</span><span class="logo-part-2">Digital</span>
-                </a>
+    <footer class="bg-slate-950 py-24 sm:py-40 px-4 sm:px-8 lg:px-16 border-t border-white/5">
+        <div class="max-w-[1600px] mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-24 reveal">
+                <div>
+                    <div class="w-12 h-8 rounded mb-4 overflow-hidden border border-white/10"><img src="https://cdn.shopify.com/s/files/1/0096/0112/2401/files/uk.png?v=1765431774" class="w-full h-full object-cover" alt="UK"></div>
+                    <h4 class="text-lg font-black uppercase tracking-widest mb-2">London</h4>
+                    <p class="text-slate-500 text-sm">Unit 3, Shoreditch Lane, EC2A 3LT</p>
+                </div>
+                <div>
+                    <div class="w-12 h-8 rounded mb-4 overflow-hidden border border-white/10"><img src="https://cdn.shopify.com/s/files/1/0096/0112/2401/files/usa.png?v=1765431774" class="w-full h-full object-cover" alt="USA"></div>
+                    <h4 class="text-lg font-black uppercase tracking-widest mb-2">New York</h4>
+                    <p class="text-slate-500 text-sm">200 Park Ave S, NY 10003</p>
+                </div>
+                <div>
+                    <div class="w-12 h-8 rounded mb-4 overflow-hidden border border-white/10"><img src="https://cdn.shopify.com/s/files/1/0096/0112/2401/files/india.png?v=1765431774" class="w-full h-full object-cover" alt="India"></div>
+                    <h4 class="text-lg font-black uppercase tracking-widest mb-2">Noida</h4>
+                    <p class="text-slate-500 text-sm">Sector 16B, Uttar Pradesh</p>
+                </div>
+                <div>
+                    <div class="w-12 h-8 rounded mb-4 overflow-hidden border border-white/10"><img src="https://cdn.shopify.com/s/files/1/0096/0112/2401/files/canada.png?v=1765431774" class="w-full h-full object-cover" alt="Dubai"></div>
+                    <h4 class="text-lg font-black uppercase tracking-widest mb-2">Dubai</h4>
+                    <p class="text-slate-500 text-sm">Jumeirah Lake Towers</p>
+                </div>
             </div>
-            <div class="flex gap-8 text-3xl">
-                <a href="#" class="hover:rotate-12 transition-transform duration-300"><i class="fa-brands fa-square-facebook text-black"></i></a>
-                <a href="#" class="hover:-rotate-12 transition-transform duration-300"><i class="fa-brands fa-square-instagram text-black"></i></a>
-                <a href="https://wa.me/918889997841" class="hover:rotate-12 transition-transform duration-300 text-green-600"><i class="fa-brands fa-square-whatsapp"></i></a>
+            <div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-16 lg:gap-24 mb-24 border-t border-white/5 pt-24">
+                <div class="md:col-span-2 lg:col-span-2 space-y-10">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white font-black text-2xl shadow-lg">W</div>
+                        <span class="text-3xl font-black tracking-tight uppercase">working weekends</span>
+                    </div>
+                    <p class="text-slate-500 max-w-sm text-lg sm:text-xl leading-relaxed">A boutique technical agency specialized in the Shopify Plus ecosystem. Precision engineering for high-stakes commerce.</p>
+                </div>
+                <div class="grid grid-cols-2 gap-12 md:col-span-2 lg:col-span-3">
+                    <div class="space-y-8">
+                        <h5 class="text-[11px] font-black uppercase tracking-[0.5em] text-slate-600">Company</h5>
+                        <ul class="space-y-5 font-bold uppercase text-[12px] tracking-widest text-slate-400">
+                            <li><a href="#work" class="hover:text-indigo-400 transition-colors">Case Studies</a></li>
+                            <li><a href="https://www.shopify.com/partners/directory/partner/webeo" target="_blank" class="hover:text-indigo-400 transition-colors italic">Partner Profile</a></li>
+                            <li><a href="https://cal.com/workingweekends" target="_blank" class="hover:text-indigo-400 transition-colors">Book Call</a></li>
+                        </ul>
+                    </div>
+                    <div class="space-y-8">
+                        <h5 class="text-[11px] font-black uppercase tracking-[0.5em] text-slate-600">Connect</h5>
+                        <ul class="space-y-5 font-bold uppercase text-[12px] tracking-widest text-slate-400">
+                            <li><a href="#" class="hover:text-indigo-400 transition-colors">LinkedIn</a></li>
+                            <li><a href="#" class="hover:text-indigo-400 transition-colors">Twitter</a></li>
+                            <li><a href="#" class="hover:text-indigo-400 transition-colors">Instagram</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="font-black uppercase text-sm bg-black text-white px-3 py-1 border-2 border-black">
-                &copy; 2025 Offline2.Digital • Assam • India
+            <div class="pt-12 border-t border-white/5 flex flex-col lg:flex-row justify-between items-center text-slate-600 text-[10px] sm:text-[12px] font-black uppercase tracking-widest gap-8">
+                <p class="text-center lg:text-left">&copy; 2025 WORKING WEEKENDS AGENCY • PREMIER SHOPIFY PARTNER</p>
+                <div class="flex items-center space-x-10 sm:space-x-14">
+                    <span class="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
+                    <span class="flex items-center text-emerald-500 group">
+                        <span class="w-2 h-2 bg-emerald-500 rounded-full mr-3 animate-pulse shadow-[0_0_10px_rgba(16,185,129,0.5)]"></span>
+                        SHOPIFY PARTNER STATUS: SELECT
+                    </span>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Floating WhatsApp -->
-    <a href="https://wa.me/918889997841" class="whatsapp-float" target="_blank">
-        <i class="fa-brands fa-whatsapp text-white"></i>
-    </a>
-
     <script>
-        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw6IBjGS_fQ075JD0PK03W2IUSPOYdGMS2E-iU2kLBP4SnGLoPeST4LQRUq54xquT81pA/exec";
-        const menuBtn = document.getElementById('mobile-menu-button');
+        lucide.createIcons();
+
+        // --- GOOGLE APPS SCRIPT INTEGRATION ---
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyBRRzcX4eynkU64x0j8om55CEabzHWHslxv17ts-Iql7vl1gdlGBDGohuzna0RGYJC/exec';
+        
+        // Unified Handler for multiple forms
+        const setupForm = (formId, submitBtnId, btnTextId, statusMsgId) => {
+            const form = document.getElementById(formId);
+            const submitBtn = document.getElementById(submitBtnId);
+            const btnText = document.getElementById(btnTextId);
+            const statusMsg = document.getElementById(statusMsgId);
+
+            if (!form) return;
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                submitBtn.disabled = true;
+                const originalText = btnText.innerText;
+                btnText.innerText = "SENDING...";
+                statusMsg.classList.remove('active', 'bg-emerald-500/20', 'text-emerald-400', 'bg-red-500/20', 'text-red-400');
+
+                // Collect data based on form IDs
+                const suffix = formId === 'contact-form-hero' ? '-hero' : '';
+                const formData = {
+                    name: document.getElementById('name' + suffix).value,
+                    email: document.getElementById('email' + suffix).value,
+                    phone: document.getElementById('phone' + suffix).value,
+                    website: document.getElementById('website' + suffix)?.value || 'N/A',
+                    message: document.getElementById('message' + suffix).value
+                };
+
+                try {
+                    await fetch(SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors', 
+                        cache: 'no-cache',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(formData)
+                    });
+
+                    showStatus(statusMsg, "Success! We'll reach out shortly.", "success");
+                    form.reset();
+                } catch (error) {
+                    console.error('Error!', error.message);
+                    showStatus(statusMsg, "Error. Please try again.", "error");
+                } finally {
+                    submitBtn.disabled = false;
+                    btnText.innerText = originalText;
+                }
+            });
+        };
+
+        const showStatus = (el, msg, type) => {
+            el.innerText = msg;
+            el.className = `text-center p-4 rounded-xl text-xs font-bold uppercase tracking-widest active ${type === 'success' ? 'bg-emerald-500/20 text-emerald-400' : 'bg-red-500/20 text-red-400'}`;
+            setTimeout(() => { el.classList.remove('active'); }, 8000);
+        };
+
+        // Initialize both forms
+        setupForm('contact-form', 'submit-btn', 'btn-text', 'status-msg');
+        setupForm('contact-form-hero', 'submit-btn-hero', 'btn-text-hero', 'status-msg-hero');
+
+        // --- NAVIGATION & UI LOGIC ---
+        const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
-        const contactForm = document.getElementById('contactForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const btnText = document.getElementById('btnText');
-        const btnIcon = document.getElementById('btnIcon');
-        const loader = document.getElementById('loader');
-        const formStatus = document.getElementById('formStatus');
-        const successModal = document.getElementById('successModal');
+        const lines = [document.getElementById('m-line-1'), document.getElementById('m-line-2'), document.getElementById('m-line-3')];
+        let isMenuOpen = false;
 
-        function showModal() {
-            successModal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            successModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            submitBtn.disabled = true;
-            btnText.innerText = "SENDING...";
-            btnIcon.style.display = "none";
-            loader.style.display = "block";
-            formStatus.classList.add('hidden');
-            
-            const formData = new FormData(contactForm);
-            const data = Object.fromEntries(formData.entries());
-
-            try {
-                const response = await fetch(SCRIPT_URL, { 
-                    method: 'POST', 
-                    body: JSON.stringify(data) 
-                });
-                const result = await response.json();
-                
-                if (result.result === "success") {
-                    contactForm.reset();
-                    showModal();
-                } else { throw new Error(); }
-            } catch (error) {
-                contactForm.reset();
-                showModal();
-            } finally {
-                submitBtn.disabled = false;
-                btnText.innerText = "INQUIRY NOW";
-                btnIcon.style.display = "inline";
-                loader.style.display = "none";
+        const toggleMenu = (show) => {
+            isMenuOpen = show;
+            if (show) {
+                mobileMenu.classList.remove('hidden');
+                setTimeout(() => { mobileMenu.classList.remove('opacity-0'); }, 10);
+                lines[0].style.transform = "translateY(8px) rotate(45deg)";
+                lines[1].style.opacity = "0";
+                lines[2].style.transform = "translateY(-8px) rotate(-45deg)";
+                document.body.style.overflow = 'hidden';
+            } else {
+                mobileMenu.classList.add('opacity-0');
+                lines[0].style.transform = "none";
+                lines[1].style.opacity = "1";
+                lines[2].style.transform = "none";
+                setTimeout(() => { mobileMenu.classList.add('hidden'); }, 300);
+                document.body.style.overflow = 'auto';
             }
-        });
+        };
 
-        document.querySelectorAll('#mobile-menu a, nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                if(!mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
+        menuBtn.addEventListener('click', () => toggleMenu(!isMenuOpen));
+
+        // Video Player Logic
+        document.querySelectorAll('.video-player-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function() {
+                const video = this.previousElementSibling;
+                if (video.paused) {
+                    video.play();
+                    this.style.opacity = '0';
+                } else {
+                    video.pause();
+                    this.style.opacity = '1';
                 }
             });
         });
 
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
-        });
+        // Scroll Reveal
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     </script>
 </body>
 </html>
